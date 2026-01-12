@@ -1,0 +1,51 @@
+@use "./../../../public/styles/all_styles.scss" as all;
+
+section {
+	background-image: url('../../../public/assets/01_Background/12 Isolated Paper Rips copia3.png');
+	background-repeat: no-repeat;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+
+	.content {
+		align-items: start;
+		padding: 0 10% 10% 10%;
+
+		h1 {
+			font-size: clamp(1.5rem, 6dvw, 4rem);
+			margin-top: 4rem;
+			color: white;
+			width: 100%;
+			margin-bottom: 10rem;
+		}
+
+		h2,
+		h3 {
+			color: #3355ff;
+			margin-top: 2rem;
+		}
+
+		p {
+			margin-top: 2rem;
+		}
+
+		.back-btn {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+
+			a {
+				color: black;
+				width: fit-content;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				cursor: pointer;
+			}
+
+			&:hover {
+				color: #335cff;
+			}
+		}
+	}
+}

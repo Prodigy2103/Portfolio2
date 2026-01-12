@@ -1,0 +1,41 @@
+<header>
+    <div class="content">
+        <div class="logo">
+            <img src="assets/Extras/LOGONEU.png" alt="Logo">
+        </div>
+
+        <button class="burgerBtn" (click)="toggleMenu()" [class.open]="isMenuOpen()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav [class.open]="isMenuOpen()">
+            <ul>
+                @for (item of navItems; track item.anchor) {
+                <li [class]="item.class">
+                    <a (click)="handleNavigation(item.anchor)">
+                        {{ item.translationKey | translate }}
+                    </a>
+                </li>
+                }
+            </ul>
+
+            <div class="languageBtn">
+                @for (lang of languages; track lang.code) {
+                <button (click)="useLanguage(lang.code)">
+                    <img [src]="getLanguageIcon(lang)" [alt]="lang.alt">
+                </button>
+                }
+            </div>
+
+            <div class="navLinks">
+                @for (link of socialLinks; track link.url) {
+                <a [href]="link.url" [target]="link.external ? 'blank' : '_self'">
+                    <img [src]="link.icon" [alt]="link.alt">
+                </a>
+                }
+            </div>
+        </nav>
+    </div>
+</header>

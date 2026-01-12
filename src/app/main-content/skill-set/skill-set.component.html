@@ -1,0 +1,55 @@
+<section>
+    <div class="content">
+
+        <!-- #region skillInfo -->
+        <div class="skill-info">
+
+            <div class="skill-title">
+                <p>My Stack</p>
+                <h1 class="skill-set">{{ "skills.privacyline" | translate }}</h1>
+            </div>
+
+            <div class="skill-description">
+                <p [innerHTML]="'skills.description' | translate"></p>
+            </div>
+
+        </div>
+        <!-- #endregion -->
+
+        <!-- #region allPeel -->
+        <div class="skill-main-container">
+
+            <div class="skill-peel">
+
+                <div class="skill-icons">
+                    <div class="skill-icon-box" *ngFor="let skill of skillIcons; let i = index">
+                        <img class="skill-icon color" [src]="skillIcons[i].src" [alt]="skillIcons[i].name" />
+                        <span>{{ skill.name }}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="peel-container" (click)="isCoverVisible = true">
+                <img src="assets/03_Stickers/01_Skills - Peel off/Finalsmall.png" alt="">
+                <p>{{ "skills.interested" | translate }}</p>
+                <div class="peel-img">
+                    <div class="peel-icon-box" *ngFor="let peel of peelIcons; let i = index">
+                        <img class="peel-icon color" [src]="peelIcons[i].src" [alt]="peelIcons[i].name" />
+                        <span>{{ peel.name }}</span>
+                    </div>
+                </div>
+                <div class="peel-container-cover" *ngIf="isCoverVisible"
+                    (click)="isCoverVisible = false; $event.stopPropagation()">
+                    <img src="assets/03_Stickers/01_Skills - Peel off/Defaultsmall.png" alt="">
+                    <div class="peel-arrow">
+                        <img src="assets/03_Stickers/Arrow.png" alt="">
+                        <span>{{ "skills.peelAni" | translate }}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- #endregion -->
+    </div>
+</section>

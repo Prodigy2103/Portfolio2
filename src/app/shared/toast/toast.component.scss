@@ -1,0 +1,47 @@
+@use '../../../../public/styles/all_styles.scss' as all;
+
+:host {
+    position: absolute;
+    top: 30rem;
+    right: 25rem;
+    z-index: 10;
+
+    @include all.mobile {
+        @include all.marpad($mar: 2rem 0 0 0);
+        top: 24rem;
+        right: 5.5rem;
+    }
+}
+
+.toast {
+    @include all.slightInFromRightAnimation();
+    @include all.size($w: 15rem, $h: 2rem);
+    @include all.borRad();
+    @include all.fl($jc: center, $alit: center);
+    z-index: 5;
+    pointer-events: auto;
+
+    @include all.mobile {
+        width: 50%;
+        height: 3rem;
+    }
+
+    span {
+        color: white;
+        font-size: 1rem;
+
+        @include all.mobile {
+            font-size: 1rem;
+        }
+    }
+}
+
+.success {
+    width: 11dvw;
+    border: 2px solid green;
+
+    @include all.tablet {
+        height: 2rem;
+        width: 56dvw;
+    }
+}

@@ -1,0 +1,246 @@
+@use "../../../../public/styles/all_styles.scss" as all;
+@forward "../../../../public/styles/component-styles.scss";
+
+section {
+    @include all.size($h: 80dvh);
+    padding: 5rem;
+
+    @media(min-width: 2150px) {
+        height: auto;
+    }
+
+    @include all.notebook {
+        padding: 1rem;
+    }
+
+    @include all.tablet {
+        @include all.size($h: auto);
+    }
+
+    .content {
+        @include all.size($h: 100%);
+        @include all.fl($alit: center, $gap: 2rem);
+        cursor: pointer;
+
+        @include all.tablet {
+            @include all.fl($flexdir: column-reverse);
+            padding: 0;
+        }
+
+        // #region aboutBasics
+        .about-basic {
+            @include all.size($w: 100%, $h: 40dvh);
+            @include all.fl($flexdir: column);
+
+            @include all.tablet {
+                padding-left: 2.3rem;
+                padding-top: 2rem;
+            }
+
+            @include all.mobile {
+                padding-left: 0;
+                margin-top: 0;
+            }
+
+            .yellow-pic {
+                position: relative;
+                @include all.fl($jc: center, $alit: center);
+                @include all.size($w: 100%, $h: 20dvh);
+                transform: rotate(-4deg);
+                z-index: 2;
+
+                &>img:first-child {
+                    @include all.absolute($top: 0, $right: 0.5rem);
+                    @include all.size($w: 100%, $h: 20dvh);
+                    @include all.fl($jc: center, $alit: center);
+                    transform: translate(10px, 10px);
+
+                    @include all.mobile {
+                        height: 15dvh;
+                        transform: translate(0px, 25px);
+                    }
+                }
+            }
+
+            .location-container {
+                @include all.fl($jc: center, $alit: center, $gap: 1rem);
+                margin-top: 2.5rem;
+                z-index: 20;
+
+                @include all.mobile {
+                    gap: 0;
+                    margin-top: 2rem;
+                    margin-left: 0rem;
+                }
+
+                .location-img {
+                    display: block;
+
+                    img {
+                        @include all.size($w: 2rem, $h: 2rem);
+                    }
+                }
+            }
+
+            .blue-pic {
+                position: relative;
+                @include all.fl($jc: center, $alit: center);
+                @include all.size($w: 100%, $h: 16dvh);
+                z-index: 1;
+
+                &>img:first-child {
+                    @include all.absolute($top: 0, $left: 0);
+                    @include all.size($w: 100%, $h: 16dvh);
+
+                    @include all.mobile {
+                        height: 13dvh;
+                    }
+                }
+
+                .relocation-container {
+                    @include all.fl($jc: center, $alit: center, $gap: 1rem);
+                    margin-top: 1.2rem;
+                    z-index: 20;
+
+                    @include all.tablet {
+                        gap: 0;
+                    }
+                }
+
+                .relocation-img {
+                    display: block;
+
+                    img {
+                        @include all.size($w: 2rem, $h: 2rem);
+                    }
+                }
+            }
+
+            .orange-pic {
+                position: relative;
+                @include all.fl($jc: center, $alit: center);
+                @include all.size($w: 100%, $h: 20dvh);
+                transform: rotate(3deg);
+
+                &>img:first-child {
+                    @include all.absolute($top: 0, $left: 0);
+                    @include all.size($w: 100%, $h: 16dvh);
+
+                    @include all.mobile {
+                        height: 13dvh;
+                    }
+                }
+
+                .remote-container {
+                    @include all.fl($jc: center, $alit: center, $gap: 1rem);
+                    margin-bottom: 0.5rem;
+                    transform: rotate(6deg);
+
+                    @include all.tablet {
+                        gap: 0;
+                    }
+                }
+
+                .remote-img {
+                    display: block;
+
+                    img {
+                        @include all.size($w: 2rem, $h: 2rem);
+                    }
+                }
+            }
+
+            p {
+                color: white;
+                font-size: clamp(1rem, 2dvw, 2rem);
+            }
+        }
+    }
+
+    // #endregion
+
+    // #region aboutInfo
+    .about-info {
+        @include all.size($w: 100%, $h: 50dvh);
+        @include all.marpad($mar: 1.5rem 0 0 0);
+
+        @include all.bigscreen {
+            padding-top: 0;
+            height: 40dvh;
+        }
+
+        @include all.tablet {
+            padding: 2rem 1rem;
+        }
+
+        .owner-info {
+            @include all.size($w: 100%, $h: 18dvh);
+            flex-direction: column;
+
+            .owner-paragraph {
+                width: 100%;
+                font-size: 1.5rem;
+                color: black;
+            }
+
+            h1 {
+                width: 100%;
+                font-size: 4rem;
+                z-index: 0;
+
+                @include all.tablet {
+                    font-size: 2.8rem;
+                }
+            }
+        }
+
+        .desc-btn {
+            height: auto;
+            margin-bottom: 1rem;
+
+            .owner-description {
+                height: 15dvh;
+            }
+
+            .talk-btn {
+                display: flex;
+                justify-content: end;
+                top: 3rem;
+                z-index: 20;
+
+                @include all.tablet {
+                    top: 6rem;
+                }
+            }
+        }
+    }
+
+    .head {
+        position: relative;
+        overflow: hidden;
+        padding-top: 0.8rem;
+        width: fit-content;
+        height: 12vh;
+
+        &:after {
+            content: "";
+            @include all.absolute($top: 50%, $left: 0);
+            @include all.size($w: 50%, $h: 3.5rem);
+            @include all.bg-setup();
+            background-image: url("../../../../public/assets/00_Hand-drawn lines/01_About me/Color option 3.png");
+            z-index: 1;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 0.5s ease-out;
+
+            @include all.tablet {
+                @include all.size($w: 80%, $h: 3.5rem);
+            }
+        }
+
+        &:hover:after {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+}
+
+// #endregion

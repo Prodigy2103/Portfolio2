@@ -1,0 +1,82 @@
+<section>
+    <div class="content">
+
+        <!-- #region topRow -->
+        <div class="top-row">
+            <div class="project">
+                <div class="project-info">
+                    <p>{{ 'projects.info.title' | translate}}</p>
+                    <h1 class="head-skill">{{ 'projects.info.privacyline' | translate}}</h1>
+                </div>
+                <div class="project-description">
+                    <p>{{ 'projects.info.description' | translate}}</p>
+                </div>
+            </div>
+
+            <div class="project-main">
+                <div class="project-img">
+                    <img class="project-one" src="assets/ProjectsImg/join.png" alt="">
+                    <div class="project-btn">
+                        <button class="btn-set" (click)="toggleProjectView('join')">{{ 'button.project-detail' |
+                            translate}}</button>
+                    </div>
+                </div>
+                <div class="project-description-one">
+                    <h2>{{ 'projects.join.id' | translate }}</h2>
+                    <p>{{ 'projects.join.descriptionOne' | translate }}</p>
+                </div>
+                <div class="project-btn-mobile d_none">
+                    <button class="btn-set" (click)="toggleProjectView('join')">{{ 'button.project-detail' |
+                        translate}}</button>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+
+        <!-- #region bottomRow -->
+        <div class="bottom-row">
+            <div class="project-main">
+                <div class="project-img">
+                    <img src="assets/ProjectsImg/28_Project thumbnails.png" alt="">
+                    <div class="project-btn">
+                        <button class="btn-set" (click)="toggleProjectView('pepe')">{{ 'button.project-detail' |
+                            translate}}</button>
+                    </div>
+
+                </div>
+
+                <div class="project-description-one">
+                    <h2>{{ 'projects.pepe.id' | translate}}</h2>
+                    <p>{{ 'projects.pepe.descriptionOne' | translate}}</p>
+                </div>
+                <div class="project-btn-mobile">
+                    <button class="btn-set" (click)="toggleProjectView('pepe')">{{ 'button.project-detail' |
+                        translate}}</button>
+                </div>
+            </div>
+
+            <div class="project-main">
+                <div class="project-img">
+                    <img class="project-one" src="assets/ProjectsImg/Component 30.png" alt="">
+                    <div class="project-btn">
+                        <button class="btn-set" (click)="toggleProjectView('pokeDex')">{{ 'button.project-detail' |
+                            translate}}</button>
+                    </div>
+                </div>
+                <div class="project-description-one">
+                    <h2>{{ 'projects.pokeDex.id' | translate}}</h2>
+                    <p>{{ 'projects.pokeDex.descriptionOne' | translate}}</p>
+                </div>
+                <div class="project-btn-mobile d_none">
+                    <button class="btn-set" (click)="toggleProjectView('pokeDex')">{{ 'button.project-detail' | translate}}</button>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+
+    </div>
+</section>
+
+<div class="overlay-container" *ngIf="showProjectView">
+    <app-project-view [currentProject]="selectedProject" (closeEvent)="closeProjectView($event)"></app-project-view>
+</div>

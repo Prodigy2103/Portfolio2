@@ -1,0 +1,40 @@
+<section>
+	<div class="content">
+		<div class="first-image">
+			<img src="assets/ProjectsImg/MePOl.png" alt="Marcus Portrait">
+			<p>Marcus 😊</p>
+		</div>
+
+		<div class="front-main-container">
+			<div class="first-row">
+				<app-hello-button></app-hello-button>
+
+				<p class="front-title">
+					@for (letter of frontLetters; track $index) {
+					<span class="letter" appHighlight>{{ letter }}</span>
+					}
+				</p>
+			</div>
+
+			<div class="second-row">
+				<p class="front-end">
+					@for (letter of devLetters; track $index) {
+					<span class="letter" appHighlight>{{ letter }}</span>
+					}
+				</p>
+
+				<button class="btn-set">
+					<a href="#contact">{{ 'button.getBtn' | translate }}</a>
+				</button>
+			</div>
+		</div>
+
+		<div class="nav-links">
+			@for (link of socialLinks; track link.url) {
+			<a [href]="link.url" [target]="link.external ? 'blank' : '_self'">
+				<img [src]="link.icon" [alt]="link.alt">
+			</a>
+			}
+		</div>
+	</div>
+</section>

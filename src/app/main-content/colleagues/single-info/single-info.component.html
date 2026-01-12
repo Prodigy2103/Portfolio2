@@ -1,0 +1,20 @@
+<div class="person-comment">
+    <p class="colleague-quote">{{ singleperson.person | translate }}</p>
+    
+    <div class="person-link"> 
+        
+        <div class="name-block"> 
+            <h3>{{singleperson.name}}</h3>
+            <span>{{singleperson.position}}</span>
+        </div>
+        
+        <div class="logo-link">
+            <span *ngIf="singleperson.logo === true"> 
+                <a href="{{singleperson.link}}" target="_blank">
+                    <img src="assets/Extras/icons8-linkedin-52.png" alt="link to LinkedIn profile">
+                    {{'colleagues.profile'|translate}}
+                </a>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,225 @@
+@use "../../../../public/styles/all_styles.scss" as all;
+@forward '../../../../public/styles/component-styles.scss';
+
+section {
+    background-image: url("./../../../../public/assets/01_Background/Design Size Relation@3x/01_Hero2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 130dvh;
+
+    @media(min-width: 2950px) {
+        height: auto;
+    }
+
+    @include all.tablet {
+        height: 90dvh;
+    }
+
+    .content {
+        height: 110dvh;
+        @include all.marpad($pad: 0 15rem);
+
+        @media(min-width: 2150px) {
+            height: 60dvh;
+        }
+
+        @media(max-width: 1125px) {
+            @include all.marpad($pad: 1rem);
+        }
+
+        @include all.tablet {
+            height: 85dvh;
+        }
+
+        //#region first-image
+        .first-image {
+            @include all.absolute($top: 10%, $right: 18%);
+            @include all.size($w: 18rem, $h: 21rem);
+            z-index: 20;
+            // transform: rotate(7.5deg);
+
+            &:hover {
+                filter: grayscale(2);
+            }
+
+            @media(min-width: 2150px) {
+                @include all.absolute($top: 20%, $right: 14%);
+            }
+
+            @media(max-width: 1440px) {
+                @include all.absolute($top: 8%, $right: 14%);
+            }
+
+            @media(max-width: 1125px) {
+                @include all.absolute($top: 50%, $bottom: 2rem, $left: 50%, $right: unset);
+                transform: translateX(-50%) rotate(7.5deg);
+            }
+
+            @include all.mobile {
+                @include all.size($w: 13rem, $h: 16rem);
+            }
+
+            img {
+                @include all.size($w: 100%, $h: 100%);
+                object-fit: cover;
+                transform: rotate(7.5deg);
+
+                @media(max-width: 1130px) {
+                    transform: none;
+                }
+            }
+
+            p {
+                @include all.absolute($bottom: 1rem, $left: 4.8rem);
+                font-size: 1.6rem;
+                font-weight: 700;
+                transform: rotate(7.5deg);
+
+                @media(max-width: 1130px) {
+                    transform: none;
+                }
+
+                @include all.mobile {
+                    @include all.absolute($bottom: 0.5rem, $left: 0);
+                    @include all.size($w: 100%);
+                    @include all.fl($jc: center);
+                }
+            }
+        }
+
+        //#endregion
+
+        //#region front-main-container
+        .front-main-container {
+            @include all.size($w: 100%);
+
+            @media(max-width: 1125px) {
+                @include all.marpad($mar: 0 0 20rem 0, $pad: 5rem);
+            }
+
+            @include all.tablet {
+                @include all.marpad($pad: 0);
+                bottom: 10rem;
+            }
+
+            .first-row {
+                @include all.size($w: 100%);
+                @include all.fl($flexdir: column, $gap: 1rem);
+                color: #f7f9fa;
+
+                .front-title {
+                    font-weight: 700;
+                    font-size: clamp(2.4rem, 8dvw, 12rem);
+                    text-align: start;
+                    transition: all 0.8s ease;
+
+                    @include all.mobile {
+                        @include all.marpad($mar: 0 0 0.5rem 0);
+                    }
+                }
+            }
+        }
+    }
+
+    .second-row {
+        @include all.size($w: 100%);
+        @include all.fl($flexdir: column, $alit: end, $gap: 0.5rem);
+        color: #f7f9fa;
+
+        .front-end {
+            font-weight: 700;
+            font-size: clamp(2.3rem, 8dvw, 12rem);
+            transition: all 0.8s ease;
+        }
+    }
+}
+
+//#endregion
+
+//#region letter and hover
+.letter {
+    @include all.fl($display: inline-block);
+    transition: transform 0.9s ease-in-out;
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+span {
+    @include all.fl($display: inline-block);
+    transition: transform 0.7s ease-in-out, color 0.7s ease-in-out;
+    color: white;
+}
+
+.isHover {
+    color: #FFD700;
+    transform: translateY(-0.5rem) scale(1.1);
+}
+
+.isHover .letter {
+    transform: translateY(-0.5rem);
+}
+
+.front-title,
+.front-end {
+    font-family: 'Orbitron', sans-serif;
+
+
+    .letter {
+        display: inline-block;
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.4s;
+        cursor: default;
+
+        &:hover {
+            color: #f7c518;
+            transform: translateY(-5px) scale(1.1);
+            text-transform: uppercase;
+        }
+    }
+}
+
+.front-end {
+    font-family: 'OrbitronBold', sans-serif; // Hier die neue Font eintragen
+
+    .letter {
+        font-family: inherit; // Stellt sicher, dass die Buchstaben die neue Font erben
+        
+        &:hover {
+            text-transform: lowercase;
+        }
+    }
+}
+
+.front-title .letter:first-child:hover {
+    text-transform: lowercase;
+}
+
+.front-end .letter:hover {
+    text-transform: lowercase;
+}
+
+//#endregion
+
+//#region nav-links
+.nav-links {
+    @include all.fl($flexdir: column, $gap: 1.5rem);
+    @include all.absolute($left: 2rem, $bottom: 8rem);
+
+    @include all.tablet {
+        @include all.fl($display: none);
+    }
+
+    img {
+        @include all.size($w: 3.5rem, $h: 3.5rem);
+        border: 2px solid #f7f9fa;
+        border-radius: 50%;
+        transition: background-color 0.4s ease;
+
+        &:hover {
+            background: #19a8b5;
+        }
+    }
+}
+
+//#endregion

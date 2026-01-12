@@ -1,0 +1,17 @@
+<section>
+	<div class="content">
+		<div class="arrow-main">
+			<div class="arrow">
+			</div>
+			<h3>{{ 'colleagues.intheirwords' | translate }}</h3>
+		</div>
+		<h2>{{ 'colleagues.thoughts' | translate }}</h2>
+		<div class="colleagues-main">
+			<div class="colleagues-main">
+				<app-single-info id="person1" *ngIf="person1" [singleperson]="person1"></app-single-info>
+				<app-single-info id="person2" *ngIf="person2" [singleperson]="person2"></app-single-info>
+				<app-single-info id="person3" *ngIf="person3" [singleperson]="person3"></app-single-info>
+			</div>
+		</div>
+	</div>
+</section>

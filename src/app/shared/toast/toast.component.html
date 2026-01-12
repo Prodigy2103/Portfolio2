@@ -1,0 +1,5 @@
+@for (toast of tms.toasts; track $index) {
+<div id="{{'toast-container_' + $index}}" class="toast {{toast.type}}">
+    <span class="toast-msg">{{ toast.message }}</span>
+</div>
+}

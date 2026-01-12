@@ -1,0 +1,36 @@
+<section id="about">
+	<div class="content">
+		<div class="about-basic">
+			@for (info of aboutInfo; track info.translationKey) {
+			<div [class]="info.class">
+				<img [src]="info.background" [alt]="info.alt">
+				<div [class]="info.containerClass">
+					<img [src]="info.icon" [alt]="info.iconAlt">
+					<p>{{ info.translationKey | translate }}</p>
+				</div>
+			</div>
+			}
+		</div>
+
+		<div class="about-info">
+			<div class="owner-info">
+				<p class="owner-paragraph">{{ 'about.title' | translate }}</p>
+				<div class="head">
+					<h1>{{ 'about.privacyline' | translate }}</h1>
+				</div>
+			</div>
+
+			<div class="desc-btn">
+				<div class="owner-description">
+					<p [innerHTML]="'about.description' | translate"></p>
+				</div>
+
+				<div class="talk-btn">
+					<button class="btn-default">
+						<a href="#contact">{{ 'button.talkBtn' | translate }}</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

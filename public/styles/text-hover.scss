@@ -1,0 +1,25 @@
+@mixin textSlideHover {
+	.start-text,
+	.dev-text {
+		position: absolute;
+		transition: opacity 0.4s ease;
+		white-space: nowrap;
+		font-size: 1.3rem;
+	}
+
+	.dev-text {
+		opacity: 0;
+	}
+
+	&:hover {
+		text-transform: uppercase;
+		background-position: right bottom;
+
+    .start-text {
+		opacity: 0;
+    }
+    .dev-text {
+		opacity: 1;
+		}
+	}
+}

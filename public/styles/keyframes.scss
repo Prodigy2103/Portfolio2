@@ -1,0 +1,139 @@
+@keyframes change-col {
+	0% {
+		background: orange;
+		transform: translateX(-10px)
+	}
+
+	;
+
+	100% {
+		background: purple;
+		transform: translateX(20px)
+	}
+
+	;
+}
+
+@mixin buttonEffect {
+	@keyframes slideIn {
+		0% {
+			width: 15rem;
+		}
+
+		100% {
+			width: 17rem;
+		}
+	}
+
+	@keyframes slideOut {
+		0% {
+			width: 18.7rem;
+		}
+
+		100% {
+			width: 12rem;
+		}
+	}
+
+	&:hover {
+		animation: slideIn 0.7s ease forwards;
+	}
+
+	&:not(:hover) {
+		animation: slideOut 0.7s ease forwards;
+	}
+}
+
+@mixin buttonEffectFooter {
+	@keyframes slideIn {
+		0% {
+			width: fit-content;
+		}
+
+		100% {
+			width: fit-content;
+		}
+	}
+
+	@keyframes slideOut {
+		0% {
+			width: fit-content;
+		}
+
+		100% {
+			width: fit-content;
+		}
+	}
+
+	&:hover {
+		animation: slideIn 0.7s ease forwards;
+	}
+
+	&:not(:hover) {
+		animation: slideOut 0.7s ease forwards;
+	}
+}
+
+@mixin waveRoll {
+	@keyframes roll-wave-in {
+		0% {
+			transform: translateX(0) rotate(0deg);
+		}
+
+		100% {
+			transform: translateX(2rem) rotate(360deg);
+		}
+	}
+
+	@keyframes roll-wave-out {
+		0% {
+			transform: translateX(1.2rem) rotate(360deg);
+		}
+
+		100% {
+			transform: translateX(0) rotate(0deg);
+		}
+	}
+}
+
+@mixin waveRollFooter {
+	@keyframes roll-wave-in {
+		0% {
+			transform: translateX(0) rotate(0deg);
+		}
+
+		100% {
+			transform: translateX(40px) rotate(360deg);
+		}
+	}
+
+	@keyframes roll-wave-out {
+		0% {
+			transform: translateX(40px) rotate(360deg);
+		}
+
+		100% {
+			transform: translateX(0) rotate(0deg);
+		}
+	}
+}
+
+@keyframes electric-zap {
+    0% {
+        box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, inset 0 0 2px #00f2ff;
+        border-color: #00f2ff;
+    }
+    20% {
+        box-shadow: 0 0 15px #00f2ff, 0 0 20px #ffffff, inset 0 0 8px #00f2ff;
+        border-color: #fff;
+    }
+    40% {
+        box-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, inset 0 0 2px #00f2ff;
+    }
+    50% {
+        box-shadow: 0 0 25px #00f2ff, 0 0 35px #08d9e3, inset 0 0 12px #00f2ff;
+    }
+    100% {
+        box-shadow: 0 0 8px #00f2ff, 0 0 12px #00f2ff, inset 0 0 4px #00f2ff;
+    }
+}

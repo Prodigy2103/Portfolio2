@@ -1,0 +1,217 @@
+@use "../../../../public/styles/all_styles.scss" as all;
+@forward '../../../../public/styles/component-styles.scss';
+
+section {
+
+	.content {
+		@include all.fl($flexdir: column, $gap: 5rem);
+		width: 100%;
+		padding: 10rem 10rem;
+
+		@include all.tablet {
+			padding: 5rem 1rem 01rem;
+		}
+	}
+
+	// #region top-row
+	.top-row {
+		@include all.fl($alit: center, $gap: 5rem);
+		width: 100%;
+
+		@include all.notebook {
+			@include all.fl($flexdir: column, $gap: 5rem);
+		}
+
+		.project {
+			@include all.fl($alit: start, $flexdir: column);
+			width: 100%;
+			padding: 5rem 0;
+
+			p {
+				font-size: 1.5rem;
+			}
+
+			@include all.tablet {
+				padding: 0;
+			}
+
+			.project-info {
+				@include all.fl($flexdir: column, $jc: start);
+				height: rem;
+				margin-bottom: 1rem;
+
+				@include all.tablet {
+					margin: 0;
+				}
+
+				.head-skill {
+					@include all.nav-link-base();
+					height: 11dvh;
+					font-size: clamp(16px, 15.5dvw, 64px);
+					cursor: pointer;
+
+					&:after {
+						content: "";
+						@include all.absolute($top: 50%, $left: 0);
+						@include all.size($w: 100%, $h: 3.5rem);
+						@include all.bg-setup();
+						padding-left: 0;
+						background-image: url('./../../../../public/assets/ProjectsImg/27_Line.png');
+						z-index: 3;
+						clip-path: inset(0 100% 0 0);
+						transition: clip-path 0.7s ease-out;
+					}
+
+					&:hover:after {
+						clip-path: inset(0 0 0 0);
+					}
+				}
+			}
+
+			.project-description {
+				p {
+					font-size: clamp(16px, 1.5dvw, 32px);
+					line-height: 1.6;
+				}
+			}
+		}
+
+		//#endregion
+	}
+
+	//#region project-main
+	.project-main {
+		width: 100%;
+		@include all.fl($flexdir: column);
+
+		.project-img {
+			@include all.size($w: 100%, $h: 0);
+			padding-bottom: 70%;
+			position: relative;
+			border-radius: 2rem;
+			cursor: pointer;
+			overflow: hidden;
+
+			&::before {
+				content: "";
+				@include all.absolute($top: 0, $left: 0);
+				@include all.size($w: 100%, $h: 100%);
+				background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+				border-radius: 2rem;
+				transition: opacity 0.3s ease-in-out;
+				opacity: 0;
+				z-index: 5;
+			}
+
+			&:hover::before {
+				opacity: 1;
+			}
+
+			img {
+				@include all.absolute($top: 0, $left: 0);
+				@include all.size($w: 100%, $h: 100%);
+				object-fit: cover;
+				border-radius: 1.8rem;
+				transition: transform 0.3s ease-in-out;
+				z-index: -1;
+			}
+
+			&:hover img {
+				transform: scale(1.1);
+			}
+
+			.project-btn {
+				@include all.absolute($bottom: 2.3rem, $right: 2.3rem);
+				transition: opacity 0.3s ease, visibility 0.3s ease;
+				opacity: 0;
+				visibility: hidden;
+				z-index: 10;
+				height: 2rem;
+
+				@include all.notebook {
+					display: none;
+				}
+			}
+
+			&:hover .project-btn {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			.btn-set {
+				background-color: transparent;
+
+				&:hover {
+					background: #f77a54;
+					box-shadow: none;
+				}
+			}
+		}
+
+	}
+
+	.project-description-one {
+		margin-top: 2rem;
+
+		h2{
+			font-size: 2.5rem;
+		}
+
+		p {
+			font-size: clamp(16px, 1.5dvw, 32px);
+			margin-top: 1rem;
+		}
+
+		//#endregion
+	}
+}
+
+//#region buttons
+.project-btn-mobile {
+	width: 100%;
+	display: none;
+	justify-content: end;
+
+	@include all.notebook {
+		display: flex;
+	}
+
+	.btn-set {
+		@include all.marpad($pad: 1rem 1.3rem, $mar: 2rem 0 0 0);
+		background-color: white;
+		color: black;
+		border: 0.1px solid rgb(3, 3, 3);
+		box-shadow: 4px 4px 4px black;
+		border-radius: 25px;
+		font-size: 1.3rem;
+		font-family: Arial, sans-serif;
+		cursor: pointer;
+		height: 2rem;
+	}
+
+	// #endregion
+}
+
+
+
+// #region bottom-row
+.bottom-row {
+	@include all.fl($jc: space-between, $alit: start, $gap: 5rem);
+	width: 100%;
+
+	@include all.notebook {
+		@include all.fl($flexdir: column, $gap: 2rem);
+	}
+}
+
+// #endregion
+
+.overlay-container {
+	@include all.fl($jc: center, $alit: center);
+	@include all.absolute($pos: fixed, $top: 0, $left: 0);
+	background: black;
+	background-repeat: no-repeat;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 50;
+}

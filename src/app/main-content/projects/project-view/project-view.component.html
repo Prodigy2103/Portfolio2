@@ -1,0 +1,109 @@
+<app-header (navigateTo)="handleHeaderNavigation($event)"></app-header>
+
+<div class="back-btn">
+
+	<a (click)="goBack()"><img src="assets/ProjectsImg/Back 1.png" alt="" />{{ 'button.backBtn' | translate}}</a>
+</div>
+
+<section id="project-detail">
+
+	<div class="content">
+
+		<!-- #region project-single-view -->
+		<div class="project-single-view">
+
+			<h1 class="head-projects">
+				@if (currentProject === 'join') {
+				{{ 'projects.join.id' | translate}}
+				} @else if (currentProject === 'pepe') {
+				{{ 'projects.pepe.id' | translate}}
+				} @else if (currentProject === 'pokeDex') {
+				{{ 'projects.pokeDex.id' | translate}}
+				}
+			</h1>
+
+			<h2>{{ ("projects." + currentProject + ".titleDesc") | translate }}</h2>
+			<p>{{ ("projects." + currentProject + ".descriptionOne") | translate }}</p>
+
+			<h2>{{ ("projects." + currentProject + ".titleDetails") | translate }}</h2>
+			<p>{{ ("projects." + currentProject + ".descriptionTwo") | translate }}</p>
+
+			<div class="duration">
+				<h3>{{ ("projects." + currentProject + ".titleDuration") | translate }}</h3>
+				<p>{{ ("projects." + currentProject + ".descriptionDuration") | translate }}</p>
+			</div>
+
+			<div class="skill-icons">
+				@if (currentProject === 'join') {
+				@for (skill of skillIconsJoin; track skill.name) {
+				<div class="skill-icon-box">
+					<img class="skill-icon color" [src]="skill.src" [alt]="skill.name" />
+					<span>{{ skill.name }}</span>
+				</div>
+				}
+				} @else if (currentProject === 'pepe') {
+				@for (skill of skillIconsPepe; track skill.name) {
+				<div class="skill-icon-box">
+					<img class="skill-icon color" [src]="skill.src" [alt]="skill.name" />
+					<span>{{ skill.name }}</span>
+				</div>
+				}
+				} @else if (currentProject === 'pokeDex') {
+				@for (skill of skillIconspokeDex; track skill.name) {
+				<div class="skill-icon-box">
+					<img class="skill-icon color" [src]="skill.src" [alt]="skill.name" />
+					<span>{{ skill.name }}</span>
+				</div>
+				}
+				}
+			</div>
+
+		</div>
+		<!-- #endregion -->
+
+		<!-- #region pepe-img -->
+		<div class="pepe-img">
+
+			@if (currentProject === 'join') {
+			<img src="assets/ProjectsImg/join.png" alt="Join Project Image" />
+			} @else if (currentProject === 'pepe') {
+			<img src="assets/ProjectsImg/Pepe30.png" alt="El Pollo Loco Project Image" />
+			} @else if (currentProject === 'pokeDex') {
+			<img src="assets/ProjectsImg/Component 30.png" alt="Da Bubble Project Image" />
+			}
+
+			<div class="pepe-btn">
+				<div class="link-btn">
+					@if (currentProject === 'join') {
+					<a href="https://github.com/Prodigy2103/join.git" target="_blank" class="btn-set">Github</a>
+					<a href="http://join.marcus-guehne.com/index.html"
+						target="_blank" class="btn-set">Live Test</a>
+					} @else if (currentProject === 'pepe') {
+					<a href="https://github.com/Prodigy2103/El-Pollo-Loco.git" target="_blank"
+						class="btn-set">Github</a>
+					<a href="http://elpolloloco.marcus-guehne.com/index.html" target="_blank"
+						class="btn-set">Live Test</a>
+					} @else if (currentProject === 'pokeDex') {
+					<a href="https://github.com/Prodigy2103/PokedexNeu.git" target="_blank" class="btn-set">Github</a>
+					<a href="https://pokedex.marcus-guehne.com/index.html" target="_blank"
+						class="btn-set">Live Test</a>
+					}
+				</div>
+				<div class="next-project-btn">
+					<div class="back-btn-mobile">
+						<a (click)="goBack()"><img
+								src="assets/00_Hand-drawn lines/03_Portfolio/Breadcrumbs/Breadcrumb arrow 2.png"
+								alt="" />{{ 'button.backBtn' | translate}}</a>
+					</div>
+					<div class="next-btn">
+						<a (click)="nextProject()">{{ 'button.nextBtn' | translate}}<img
+								src="assets/00_Hand-drawn lines/03_Portfolio/Breadcrumbs/Next project arrow 2.png"
+								alt="Next Project Arrow" /></a>
+					</div>
+				</div>
+			</div>
+			<!-- #endregion -->
+		</div>
+
+	</div>
+</section>
