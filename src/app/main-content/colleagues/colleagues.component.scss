@@ -1,5 +1,8 @@
 @use './../../../../public/styles/all_styles.scss' as all;
 
+$imbiss-orange: #5d117e;
+$white: black;
+
 section {
     height: auto;
     min-height: 40dvh;
@@ -30,12 +33,12 @@ section {
             padding: 1rem;
 
             @include all.notebook {
-                    margin-top: 3rem;
-                }
+                margin-top: 3rem;
+            }
 
-                @include all.mobile{
-                    margin-top: 1rem;
-                }
+            @include all.mobile {
+                margin-top: 1rem;
+            }
 
             #person1 {
                 position: absolute;
@@ -108,17 +111,53 @@ section {
         }
 
         h2 {
-            font-size: 3.5rem;
+            width: 100%;
+            text-decoration: none;
+            color: rgba($white, 0.9);
+            font-size: clamp(1rem, 8.5dvw, 3rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 5px 0; // Kleiner Puffer für den Strich
+            position: relative; // Wichtig für die Positionierung des Strichs
+            transition: color 0.3s ease;
+            padding-right: 0.5rem;
+            text-align: end;
 
-            @include all.notebook {
-                text-align: end;
-                font-size: 2.5rem;
+            // DER UNTERSTRICH (Cyber-Linie)
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 2px; // Startet bei 0 Breite
+                height: 0; // Etwas dicker für den Neon-Look
+                background: $imbiss-orange;
+                box-shadow: 0 0 8px $imbiss-orange; // Der Glow-Effekt
+                transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                @include all.notebook {
+                    bottom: 0rem;
+                }
+
+                @include all.mobile {
+                    bottom: 0.2rem;
+                }
+            }
+
+            &:hover {
+                color: $imbiss-orange; // Text wird heller beim Hover
+
+                &::after {
+                    height: 100%; // Strich fährt voll aus
+                }
             }
         }
 
         .arrow-main {
             display: flex;
-            width: 25%;
+            justify-content: end;
+            width: 100%;
             height: 3rem;
             padding: 0;
 
@@ -127,7 +166,6 @@ section {
             }
 
             @include all.tablet {
-                justify-content: space-between;
                 width: 45%;
             }
 
@@ -144,33 +182,6 @@ section {
                 width: 50%;
                 white-space: nowrap;
                 font-size: 1rem;
-            }
-
-            .arrow {
-                position: relative;
-                overflow: hidden;
-                width: 50%;
-
-                &:after {
-                    content: "";
-                    @include all.absolute($top: 0, $left: 0);
-                    @include all.size($w: 100%, $h: 2.8rem);
-                    @include all.bg-setup();
-                    background-image: url("../../../../public/assets/00_Hand-drawn lines/04_Testimonials/Color option 1.png");
-                    z-index: 1;
-                    clip-path: inset(0 0 0 100%);
-                    transition: clip-path 0.5s ease-out;
-                }
-
-                @include all.notebook {
-                    &:after {
-                        @include all.size($w: 100%, $h: 2.5rem);
-                    }
-                }
-
-                &:hover:after {
-                    clip-path: inset(0 0 0 0);
-                }
             }
         }
     }

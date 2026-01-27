@@ -12,12 +12,14 @@
 				</div>
 
 				<div class="contact-arrow">
-					</div>
+				</div>
 			</div>
 			<!-- #endregion -->
 
 			<!-- #region form -->
-			<form (ngSubmit)="onSubmit()">
+			<form (ngSubmit)="onSubmit()" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
+				style="position: relative; overflow: hidden;">
+				<div class="shine" [style.--mx.%]="current.mx" [style.--my.%]="current.my"></div>
 
 				<div class="formGroup">
 					<label for="name">{{ 'contactForm.name' | translate}}</label>
@@ -52,7 +54,8 @@
 					<input type="checkbox" id="privacyPolicy" name="privacy-policy" [(ngModel)]="isPrivacyAccepted"
 						(change)="validateFields()">
 					<label for="privacyPolicy">{{ 'contactForm.privacyPolice' | translate}} <a href="privacy"
-							class="privacy-link">{{ 'footer.privacyHead' | translate}}</a> {{ 'contactForm.privacyLink' | translate}}</label>
+							class="privacy-link">{{ 'footer.privacyHead' | translate}}</a> {{ 'contactForm.privacyLink'
+						| translate}}</label>
 					<span class="error-message">{{ 'contactForm.errorMessage' | translate}}</span>
 				</div>
 
@@ -64,10 +67,11 @@
 							translate}}</button>
 					</div>
 				</div>
-				<app-toast></app-toast>
+				
 			</form>
 			<!-- #endregion -->
-			
+			<app-toast></app-toast>
 		</div>
 	</div>
 </section>
+

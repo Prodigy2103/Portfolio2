@@ -1,8 +1,17 @@
 <section>
 	<div class="content">
-		<div class="first-image">
-			<img src="assets/ProjectsImg/MePOl.png" alt="Marcus Portrait">
-			<p>Marcus 😊</p>
+		<div class="logo-container-wrapper">
+			<div class="logo-container" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
+				[style.transform]="'rotateX(' + current.rx + 'deg) rotateY(' + current.ry + 'deg)'">
+
+				<div class="first-image">
+					<img src="assets/ProjectsImg/MePOl.png" alt="Marcus Portrait">
+					<p [style.transform]="'translateZ(30px) rotate(1deg)'">Marcus</p>
+					<div class="shine"
+						[style.background]="'radial-gradient(circle at ' + current.mx + '% ' + current.my + '%, rgba(255,255,255,0.2) 0%, transparent 80%)'">
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="front-main-container">

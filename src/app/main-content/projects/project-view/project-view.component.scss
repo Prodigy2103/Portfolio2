@@ -192,11 +192,12 @@ section {
 
 			.pepe-btn {
 				@include all.fl($flexdir: column, $alit: end);
-				width: 80%;
-				margin: 1rem 0;
+				width: 100%;
+				margin: 3rem 8rem 1rem 0;
 
 				@include all.notebook {
 					align-items: stretch;
+					margin: 1rem 0 0 0;
 					justify-content: space-evenly;
 				}
 
@@ -206,8 +207,9 @@ section {
 					gap: 3rem;
 
 					@include all.notebook {
+						width: 100%;
 						justify-content: space-evenly;
-						gap: 0;
+						gap: 1rem;
 					}
 				}
 

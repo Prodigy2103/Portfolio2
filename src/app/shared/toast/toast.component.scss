@@ -8,7 +8,8 @@
 
     @include all.mobile {
         @include all.marpad($mar: 2rem 0 0 0);
-        top: 25.5rem;
+        top: 47rem;
+        // bottom: 0;
         right: 4rem;
     }
 }
@@ -18,7 +19,7 @@
     @include all.size($w: 15rem, $h: 2rem);
     @include all.borRad();
     @include all.fl($jc: center, $alit: center);
-    z-index: 5;
+    z-index: 25;
     pointer-events: auto;
 
     @include all.mobile {

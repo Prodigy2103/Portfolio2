@@ -20,6 +20,10 @@ footer {
         gap: 0;
     }
 
+    @include all.mobile {
+        padding: 1rem;
+    }
+
     .myName {
         width: 20%;
         display: flex;
@@ -33,7 +37,7 @@ footer {
                 height: 4rem;
 
                 @include all.mobile {
-                    margin: 0;
+                    margin: 0 1rem;
                 }
             }
         }
@@ -51,12 +55,18 @@ footer {
             gap: 1rem;
 
             @include all.notebook {
-            align-items: end;
-            width: 100%;
-        }
+                align-items: end;
+                width: 100%;
+            }
+
+            @include all.mobile {
+                text-align: end;
+                padding: 0 1rem;
+            }
 
             p {
                 color: white;
+
             }
         }
     }
@@ -79,6 +89,7 @@ footer {
             @include all.tablet {
                 width: 50px;
                 height: 50px;
+                margin-left: -1rem;
             }
         }
 
@@ -162,17 +173,17 @@ footer {
                 @include all.fl($display: none);
             }
 
-                @include all.buttonEffectFooter();
-                @include all.waveRollFooter();
+            @include all.buttonEffectFooter();
+            @include all.waveRollFooter();
 
-                &:hover img {
-                    animation: roll-wave-in 1.2s forwards;
-                    @include all.fl();
-                }
+            &:hover img {
+                animation: roll-wave-in 1.2s forwards;
+                @include all.fl();
+            }
 
-                &:not(:hover) img {
-                    animation: roll-wave-out 0.5s forwards;
-                }
+            &:not(:hover) img {
+                animation: roll-wave-out 0.5s forwards;
+            }
 
             @include all.notebook {
                 width: 5rem;

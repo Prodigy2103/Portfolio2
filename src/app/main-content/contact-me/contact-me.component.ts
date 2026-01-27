@@ -124,6 +124,10 @@ private http = inject(HttpClient);
  */
 private apiUrl = 'https://marcus-guehne.com/mailing.php';
 
+private MAX_ROTATE = 10; // Etwas weniger Rotation für Formulare wirkt oft edler
+  public target = { rx: 0, ry: 0, mx: 50, my: 50 };
+  public current = { rx: 0, ry: 0, mx: 50, my: 50 };
+
 // #endregion
 
 // #region Validation
@@ -136,7 +140,31 @@ private apiUrl = 'https://marcus-guehne.com/mailing.php';
 ngOnInit(): void {
   this.loadInputFromSessionStorage();
   this.validateFields();
+  this.animate();
 }
+
+private lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+  private animate() {
+    this.current.mx = this.lerp(this.current.mx, this.target.mx, 0.12);
+    this.current.my = this.lerp(this.current.my, this.target.my, 0.12);
+
+    requestAnimationFrame(() => this.animate());
+  }
+
+  onMouseMove(e: MouseEvent) {
+    const el = e.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+
+    this.target.mx = ((e.clientX - rect.left) / rect.width) * 100;
+    this.target.my = ((e.clientY - rect.top) / rect.height) * 100;
+
+  }
+
+  onMouseLeave() {
+    this.target.mx = 50;
+    this.target.my = 50;
+  }
 
 /**
  * Validates all form fields and saves the current input to session storage.
