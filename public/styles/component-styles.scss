@@ -2,11 +2,11 @@
 
 // --- ZENTRALE GRAUSTUFEN VARIABLEN ---
 $color-darkest: #0e1013;
-$color-dark:    #1a1d22;
+$color-dark: #1a1d22;
 $color-grey-hover: #2d2f33;
 $color-grey-light: #575b63;
-$color-white:   #f7f9fa;
-$color-shadow:  #000000;
+$color-white: #f7f9fa;
+$color-shadow: #000000;
 
 .btn-set {
     @include all.marpad ($pad: 0.6rem);
@@ -28,7 +28,10 @@ $color-shadow:  #000000;
         0 8px 15px rgba(0, 0, 0, 0.4),
         inset 0 2px 3px rgba(255, 255, 255, 0.1);
 
-    a { color: inherit; text-decoration: none; }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 
     &:hover {
         background-color: $color-grey-hover;
@@ -64,7 +67,10 @@ $color-shadow:  #000000;
         0 6px 10px rgba(0, 0, 0, 0.15),
         inset 0 1px 1px rgba(255, 255, 255, 0.8);
 
-    a { color: inherit; text-decoration: none; }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 
     &:hover {
         background-color: #e2e8f0;
@@ -107,7 +113,10 @@ $color-shadow:  #000000;
         box-shadow: 0 1px 0 $color-shadow, inset 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
-    @media (max-width: 640px) { width: 10rem; height: auto; }
+    @media (max-width: 640px) {
+        width: 10rem;
+        height: auto;
+    }
 }
 
 .footer-btn {
@@ -135,7 +144,9 @@ $color-shadow:  #000000;
 }
 
 // Navigation Buttons (Back/Next)
-.back-btn, .back-btn-mobile, .next-btn {
+.back-btn,
+.back-btn-mobile,
+.next-btn {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -144,11 +155,48 @@ $color-shadow:  #000000;
     font-size: clamp(16px, 1dvw, 24px);
     transition: color 0.2s ease;
 
-    a { display: flex; align-items: center; gap: 0.2rem; color: inherit; text-decoration: none; }
-    &:hover a { color: $color-grey-light; }
-    img { width: 32px; height: 32px; }
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:hover a {
+        color: $color-grey-light;
+    }
+
+    img {
+        width: 32px;
+        height: 32px;
+    }
 }
 
-.back-btn { position: absolute; padding-left: 6rem; top: 8rem; @include all.notebook { display: none; } }
-.back-btn-mobile { display: none; padding-left: 2rem; @include all.notebook { display: flex; padding: 0; } }
-.next-btn { padding-left: 2rem; @include all.notebook { padding: 0; } }
+.back-btn {
+    position: absolute;
+    padding-left: 6rem;
+    top: 8rem;
+
+    @include all.notebook {
+        display: none;
+    }
+}
+
+.back-btn-mobile {
+    display: none;
+    padding-left: 2rem;
+
+    @include all.notebook {
+        display: flex;
+        padding: 0;
+    }
+}
+
+.next-btn {
+    padding-left: 2rem;
+
+    @include all.notebook {
+        padding: 0;
+    }
+}

@@ -1,51 +1,86 @@
 @use "./../../../public/styles/all_styles.scss" as all;
 
+// Variablen passend zum restlichen Design
+$neon-yellow: #d8eb10;
+$dark-bg: #000000;
+$font-cyber: 'Orbitron', sans-serif;
+
 section {
-	background-image: url('../../../public/assets/01_Background/12 Isolated Paper Rips copia3.png');
-	background-repeat: no-repeat;
-	min-height: 100dvh;
-	display: flex;
-	flex-direction: column;
+    background-color: $dark-bg; // Rein schwarzer Hintergrund
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    font-family: $font-cyber;
+    color: white;
 
-	.content {
-		align-items: start;
-		padding: 0 10% 10% 10%;
+    .content {
+        max-width: 1000px; // Etwas schmaler für bessere Lesbarkeit von Rechtstexten
+        margin: 0 auto;
+        padding: 8rem 2rem 5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-		h1 {
-			font-size: clamp(2.5rem, 6dvw, 4rem);
-			margin-top: 4rem;
-			color: white;
-			width: 100%;
-			margin-bottom: 10rem;
-		}
+        h1 {
+            font-size: clamp(2.5rem, 6dvw, 4rem);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 4rem;
+            border-left: 4px solid $neon-yellow; // Akzentstreifen links am Titel
+            padding-left: 1.5rem;
+        }
 
-		h2,
-		h3 {
-			color: #3355ff;
-			margin-top: 2rem;
-		}
+        h2, h3 {
+            color: $neon-yellow;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 3.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+        }
 
-		span {
-			cursor: none;
-		}
+        p, span {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.03em;
+            font-family: sans-serif; // Rechtstexte sind in Sans-Serif oft besser lesbar
+            
+            &.cyber-detail {
+                font-family: $font-cyber; // Nur für spezielle Details Orbitron nutzen
+            }
+        }
 
-		.back-btn {
-			display: flex;
-			align-items: center;
-			gap: 0.8rem;
+        .back-btn {
+            margin-top: 5rem;
+            
+            a {
+                color: white;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 0.85rem;
+                letter-spacing: 0.2em;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 12px 24px;
+                border: 1px solid rgba(216, 235, 16, 0.3); // Dezenter gelber Rahmen
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-			a {
-				color: black;
-				width: fit-content;
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-				cursor: pointer;
-			}
+                &:hover {
+                    color: $dark-bg;
+                    background-color: $neon-yellow; // Invertiert beim Hover
+                    box-shadow: 0 0 20px rgba(216, 235, 16, 0.5);
+                    transform: translateX(-8px);
+                }
 
-			&:hover {
-				color: #335cff;
-			}
-		}
-	}
+                &::before {
+                    content: '←';
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
 }

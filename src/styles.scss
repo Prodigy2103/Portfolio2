@@ -1,67 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+$font-cyber: 'Orbitron', sans-serif;
+$font-cyber-two: 'BriGro', sans-serif;
+
+* {
     position: relative;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     scroll-behavior: smooth;
-	list-style: none;
-    font-family: 'BriGro',sans-serif;
-}
+    list-style: none;
 
-header,
-section,
-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0 1rem;
-    
-
-    .content {
+    header,
+    section,
+    footer {
         width: 100%;
-        max-width: 1920px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        padding: 0 1rem;
+
+
+        .content {
+            width: 100%;
+            max-width: 1920px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
-}
 
-@font-face {
-    font-family: "BriGro";
-    src: url("../public/assets/fonts/BricolageGrotesque-Regular.ttf") format("truetype");
-}
+    @font-face {
+        font-family: "BriGro";
+        src: url("../public/assets/fonts/BricolageGrotesque-Regular.ttf") format("truetype");
+    }
 
-@font-face {
-    font-family: "Kalam";
-    src: url("../public/assets/fonts/Kalam-Regular.ttf") format("truetype");
-}
+    @font-face {
+        font-family: "Kalam";
+        src: url("../public/assets/fonts/Kalam-Regular.ttf") format("truetype");
+    }
 
-@font-face {
-    font-family: "Orbitron";
-    src: url("../public/assets/fonts/static/Orbitron-Medium.ttf") format("truetype");
-}
+    @font-face {
+        font-family: "Orbitron";
+        src: url("../public/assets/fonts/static/Orbitron-Medium.ttf") format("truetype");
+    }
 
-@font-face {
-    font-family: "OrbitronBold";
-    src: url("../public/assets/fonts/static/Orbitron-ExtraBold.ttf") format("truetype");
-}
+    @font-face {
+        font-family: "OrbitronBold";
+        src: url("../public/assets/fonts/static/Orbitron-ExtraBold.ttf") format("truetype");
+    }
 
-body.no-scroll {
-    overflow: hidden;
-}
+    body.no-scroll {
+        overflow: hidden;
+    }
 
-.d_none {
-    display: none;
-}
+    .d_none {
+        display: none;
+    }
 
-button, li, span {
-    color: #5672fc;
-    // cursor: pointer;
-}
+    button,
+    li,
+    span {
+        color: white;
+        // cursor: pointer;
+    }
 
-h1, h2 {
-    font-family: 'Orbitron', sans-serif;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: $font-cyber;
+    }
+
+    p,
+    a,
+    span,
+    li,
+    label {
+        font-family: $font-cyber-two;
+    }
 }

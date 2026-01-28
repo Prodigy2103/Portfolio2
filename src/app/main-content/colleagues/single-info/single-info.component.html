@@ -1,20 +1,19 @@
-<div class="person-comment">
-    <p class="colleague-quote">{{ singleperson.person | translate }}</p>
-    
-    <div class="person-link"> 
-        
-        <div class="name-block"> 
-            <h3>{{singleperson.name}}</h3>
-            <span>{{singleperson.position}}</span>
+<div class="card-body">
+    <p class="quote">
+        "{{ singleperson.person | translate }}"
+    </p>
+
+    <div class="profile-footer">
+        <div class="meta">
+            <h3>{{ singleperson.name }}</h3>
+            <span class="position">{{ singleperson.position }}</span>
         </div>
-        
-        <div class="logo-link">
-            <span *ngIf="singleperson.logo === true"> 
-                <a href="{{singleperson.link}}" target="_blank">
-                    <img src="assets/Extras/icons8-linkedin-52.png" alt="link to LinkedIn profile">
-                    {{'colleagues.profile'|translate}}
-                </a>
-            </span>
+
+        <div class="linkedin-box" *ngIf="singleperson.logo">
+            <a [href]="singleperson.link" target="_blank" class="linkedin-link">
+                <img src="assets/Extras/icons8-linkedin-52.png" alt="LinkedIn">
+                <span>{{ 'colleagues.profile' | translate }}</span>
+            </a>
         </div>
     </div>
 </div>

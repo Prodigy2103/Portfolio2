@@ -1,38 +1,54 @@
-<header>
-    <div class="content">
-        <div class="logo">
-            <img src="assets/Extras/LOGONEU.png" alt="Logo">
+<header [class.bg-transparent]="!isScrolled()" [class.bg-black]="isScrolled()" class="fixed top-0 left-0 right-0 z-50">
+    <div class="content-wrapper">
+        <div class="logo-container" (click)="handleNavigation('#home')">
+            <img src="assets/Extras/LOGONEU.png" alt="Logo" class="header-logo" />
         </div>
+        <nav>
+            @for (item of navItems; track item.anchor) {
+            <a (click)="handleNavigation(item.anchor)" class="nav-link">
+                {{ item.translationKey | translate }}
+            </a>
+            }
+        </nav>
+
+        @if (!isMenuOpen()) {
+        <div class="languageBtn hidden md:flex">
+            @for (lang of languages; track lang.code) {
+            <button (click)="useLanguage(lang.code)" [class.active]="currentLanguage() === lang.code">
+                {{ lang.code | uppercase }}
+            </button>
+            }
+        </div>
+        }
 
         <button class="burgerBtn" (click)="toggleMenu()" [class.open]="isMenuOpen()">
             <span></span>
             <span></span>
             <span></span>
         </button>
+    </div>
 
-        <nav [class.open]="isMenuOpen()">
-            <ul>
-                @for (item of navItems; track item.anchor) {
-                <li [class]="item.class">
-                    <a (click)="handleNavigation(item.anchor)">
-                        {{ item.translationKey | translate }}
-                    </a>
-                </li>
-                }
-            </ul>
+    <div class="mobile-nav-overlay" [class.closed]="!isMenuOpen()">
+        <nav class="mobile-flex">
+            @for (item of navItems; track item.anchor) {
+            <a (click)="handleNavigation(item.anchor)" class="mobile-link">
+                {{ item.translationKey | translate }}
+            </a>
+            }
 
-            <div class="languageBtn">
+            <div class="languageBtn flex mt-8">
                 @for (lang of languages; track lang.code) {
-                <button (click)="useLanguage(lang.code)">
-                    <img [src]="getLanguageIcon(lang)" [alt]="lang.alt">
+                <button (click)="useLanguage(lang.code)" [class.active]="currentLanguage() === lang.code">
+                    {{ lang.code | uppercase }}
                 </button>
                 }
             </div>
 
-            <div class="navLinks">
+            <div class="mobile-socials flex mt-12 gap-8">
                 @for (link of socialLinks; track link.url) {
-                <a [href]="link.url" [target]="link.external ? 'blank' : '_self'">
-                    <img [src]="link.icon" [alt]="link.alt">
+                <a [href]="link.url" [target]="link.external ? '_blank' : '_self'" class="social-icon">
+                    <img [src]="link.icon" [alt]="link.alt"
+                        class="w-8 h-8 invert opacity-70 hover:opacity-100 transition-opacity" />
                 </a>
                 }
             </div>

@@ -1,24 +1,40 @@
-// Importe bleiben unverändert
 @use "../../../../public/styles/all_styles.scss" as all;
 @forward '../../../../public/styles/component-styles.scss';
+
 
 .hello-btn {
     @include all.buttonEffect();
     @include all.textSlideHover();
-    @include all.waveRoll();
 
-    img {
-        @include all.marpad($pad: 1rem);
-        @include all.absolute($bottom: 2.5rem, $right: 0);
-        @include all.fl($display: none);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.6rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    color: #ffffff;
+
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: visible; 
+    margin-bottom: 2rem;
+    
+    // Verhindert, dass Padding die Breite sprengt
+    box-sizing: border-box; 
+    max-width: 90vw; // Sicherheit: Button niemals breiter als 90% des Screens
+
+    &:hover {
+        border-color: #d4ff00;
+        color: #d4ff00;
+        box-shadow: 0 0 15px rgba(212, 255, 0, 0.3);
     }
 
-    &.is-waving img {
-        animation: roll-wave-in 1.2s forwards;
-        @include all.fl(); 
-    }
-
-    &:not(.is-waving) img {
-        animation: roll-wave-out 0.5s forwards; 
+    @media (max-width: 1125px) {
+        margin-left: auto;
+        margin-right: auto; // Zentrierung auf Mobile
     }
 }

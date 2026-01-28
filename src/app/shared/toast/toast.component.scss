@@ -1,48 +1,58 @@
 @use '../../../../public/styles/all_styles.scss' as all;
 
+$font-cyber: 'Orbitron', sans-serif;
+
 :host {
     position: absolute;
-    top: 30rem;
-    right: 25rem;
-    z-index: 10;
+    // Positioniert den Toast direkt an die obere Kante des Formulars
+    bottom: -4rem; 
+    right: 1.8rem;
+    z-index: 100;
+    pointer-events: none; // Klicks gehen durch den Host hindurch zum Formular
 
     @include all.mobile {
-        @include all.marpad($mar: 2rem 0 0 0);
-        top: 47rem;
-        // bottom: 0;
-        right: 4rem;
+        bottom: -6rem; // Auf Mobile über das Formular schieben
+        right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
 .toast {
     @include all.slightInFromRightAnimation();
-    @include all.size($w: 15rem, $h: 2rem);
-    @include all.borRad();
-    @include all.fl($jc: center, $alit: center);
-    z-index: 25;
-    pointer-events: auto;
+    pointer-events: auto; // Nur der Toast selbst ist klickbar
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: rgba(14, 13, 13, 0.95);
+    border: 1px solid #d4ff00;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    min-width: 200px;
 
     @include all.mobile {
-        width: 50%;
-        height: 3rem;
+        width: 90%;
+        min-width: unset;
     }
 
     span {
-        color: white;
-        font-size: 1rem;
-
-        @include all.mobile {
-            font-size: 1rem;
-        }
+        color: #d4ff00;
+        font-family: $font-cyber;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 }
 
 .success {
-    width: 11dvw;
-    border: 2px solid green;
-
+    // Falls du verschiedene Farben willst, hier für Success:
+    border-color: #d4ff00;
+    
     @include all.tablet {
-        height: 2rem;
-        width: 56dvw;
+        width: auto; // Verhindert das 56dvw Problem
     }
 }

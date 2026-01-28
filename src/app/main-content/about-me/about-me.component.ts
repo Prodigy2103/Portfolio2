@@ -19,34 +19,11 @@ interface AboutInfo {
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.scss'
 })
+
 export class AboutMeComponent {
-  aboutInfo: AboutInfo[] = [
-    {
-      class: 'yellow-pic',
-      background: 'assets/02_Ripped Paper/Option 1/Yellowsmall.png',
-      alt: 'Yellow paper background',
-      icon: 'assets/Extras/Location.png',
-      iconAlt: 'Location icon',
-      containerClass: 'location-container',
-      translationKey: 'about.location'
-    },
-    {
-      class: 'blue-pic',
-      background: 'assets/02_Ripped Paper/Option 1/2 Bluesmall.png',
-      alt: 'Blue paper background',
-      icon: 'assets/Extras/Relocation.png',
-      iconAlt: 'Relocation icon',
-      containerClass: 'relocation-container',
-      translationKey: 'about.relocation'
-    },
-    {
-      class: 'orange-pic',
-      background: 'assets/02_Ripped Paper/Option 1/3 Orangesmall.png',
-      alt: 'Orange paper background',
-      icon: 'assets/Extras/Remote.png',
-      iconAlt: 'Remote work icon',
-      containerClass: 'remote-container',
-      translationKey: 'about.remote'
-    }
+  aboutInfo = [
+    { title: 'Based in Oschatz/Saxony', icon: 'bi bi-geo-alt', colorClass: 'neon', translationKey: 'about.location' },
+    { title: 'Open to new projects', icon: 'bi bi-briefcase', colorClass: 'blue', translationKey: 'about.relocation' },
+    { title: 'Open to work remote', icon: 'bi bi-globe', colorClass: 'orange', translationKey: 'about.remote' }
   ];
 }

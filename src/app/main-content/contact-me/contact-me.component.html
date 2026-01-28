@@ -1,77 +1,84 @@
-<section>
-	<div class="content">
-		<img class="contact-logo" src="assets/Extras/LOGONEU.png" alt="">
-		<div class="topContent">
-			<!-- #region contactMe -->
-			<div class="contactMe">
-				<p>{{ 'contact.description' | translate}}</p>
-				<h1 [innerHTML]="'contact.privacyline' | translate"></h1>
+<section id="contact" class="contact-section">
+	<div class="bg-decoration"></div>
 
-				<div class="contactDescription">
-					<p [innerHTML]="'contact.descriptionTwo' | translate"></p>
+	<div class="max-container">
+		<div class="contact-grid">
+
+			<div class="contact-info">
+				<div class="header-group">
+					<p class="overline">{{ 'contact.description' | translate }}</p>
+					<h2 class="main-heading" [innerHTML]="'contact.privacyline' | translate"></h2>
 				</div>
 
-				<div class="contact-arrow">
+				<p class="description-text" [innerHTML]="'contact.descriptionTwo' | translate"></p>
+
+				<div class="status-badge">
+					<span class="pulse-dot"></span>
+					<p>Available for new projects</p>
 				</div>
 			</div>
-			<!-- #endregion -->
 
-			<!-- #region form -->
-			<form (ngSubmit)="onSubmit()" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
-				style="position: relative; overflow: hidden;">
-				<div class="shine" [style.--mx.%]="current.mx" [style.--my.%]="current.my"></div>
+			<div class="form-container glass-effect">
+				<form (ngSubmit)="onSubmit()" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
+					<div class="shine" [style.--mx.%]="current.mx" [style.--my.%]="current.my"></div>
 
-				<div class="formGroup">
-					<label for="name">{{ 'contactForm.name' | translate}}</label>
-					<input type="text" id="name" name="name" [(ngModel)]="name" (ngModelChange)="validateFields()"
-						placeholder="{{ 'contactForm.nameHolder' | translate}}" (blur)="markAsTouched('name')">
-					<div class="err-message" *ngIf="nameTouched && !nameValid">
-						<p>{{ 'contactForm.errorName' | translate}}</p>
+					<div class="form-group">
+						<label for="name">{{ 'contactForm.name' | translate }}</label>
+						<input type="text" id="name" name="name" [(ngModel)]="name" (ngModelChange)="validateFields()"
+							placeholder="{{ 'contactForm.nameHolder' | translate }}" (blur)="markAsTouched('name')"
+							[class.error-border]="nameTouched && !nameValid">
+
+						<div class="err-message" *ngIf="nameTouched && !nameValid">
+							<span>{{ 'contactForm.errorName' | translate }}</span>
+						</div>
 					</div>
-				</div>
 
-				<div class="formGroup">
-					<label for="email">{{ 'contactForm.email' | translate}}</label>
-					<input type="email" id="email" name="email" [(ngModel)]="email" (ngModelChange)="validateFields()"
-						placeholder="{{ 'contactForm.emailHolder' | translate}}" (blur)="markAsTouched('email')">
-					<div class="err-message" *ngIf="emailTouched && !emailValid">
-						<p>{{ 'contactForm.errorEmail' | translate}}</p>
+					<div class="form-group">
+						<label for="email">{{ 'contactForm.email' | translate }}</label>
+						<input type="email" id="email" name="email" [(ngModel)]="email"
+							(ngModelChange)="validateFields()" placeholder="{{ 'contactForm.emailHolder' | translate }}"
+							(blur)="markAsTouched('email')" [class.error-border]="emailTouched && !emailValid">
+
+						<div class="err-message" *ngIf="emailTouched && !emailValid">
+							<span>{{ 'contactForm.errorEmail' | translate }}</span>
+						</div>
 					</div>
-				</div>
 
-				<div class="formGroup">
-					<label for="message">{{ 'contactForm.message' | translate}}</label>
-					<textarea id="message" name="message" [(ngModel)]="message" (ngModelChange)="validateFields()"
-						placeholder="{{ 'contactForm.messageHolder' | translate}}"
-						(blur)="markAsTouched('message')"></textarea>
-					<div class="err-message" *ngIf="messageTouched && !messageValid">
-						<p>{{ 'contactForm.errorMessage' | translate}}</p>
+					<div class="form-group">
+						<label for="message">{{ 'contactForm.message' | translate }}</label>
+						<textarea id="message" name="message" [(ngModel)]="message" (ngModelChange)="validateFields()"
+							placeholder="{{ 'contactForm.messageHolder' | translate }}" rows="4"
+							(blur)="markAsTouched('message')"
+							[class.error-border]="messageTouched && !messageValid"></textarea>
+
+						<div class="err-message" *ngIf="messageTouched && !messageValid">
+							<span>{{ 'contactForm.errorMessage' | translate }}</span>
+						</div>
 					</div>
-				</div>
 
-
-				<div class="checkboxGroup">
-					<input type="checkbox" id="privacyPolicy" name="privacy-policy" [(ngModel)]="isPrivacyAccepted"
-						(change)="validateFields()">
-					<label for="privacyPolicy">{{ 'contactForm.privacyPolice' | translate}} <a href="privacy"
-							class="privacy-link">{{ 'footer.privacyHead' | translate}}</a> {{ 'contactForm.privacyLink'
-						| translate}}</label>
-					<span class="error-message">{{ 'contactForm.errorMessage' | translate}}</span>
-				</div>
-
-				<div class="send-arrow">
-					<div class="contact-arrow-mobile">
+					<div class="privacy-group">
+						<label class="custom-checkbox">
+							<input type="checkbox" name="privacy" [(ngModel)]="isPrivacyAccepted"
+								(change)="validateFields()">
+							<span class="checkmark"></span>
+							<span class="label-text">
+								{{ 'contactForm.privacyPolice' | translate }}
+								<a href="/privacy" class="accent-link">{{ 'footer.privacyHead' | translate }}</a>
+								{{ 'contactForm.privacyLink' | translate }}
+							</span>
+						</label>
 					</div>
-					<div class="btn-default">
-						<button type="submit" [disabled]="!isFormValid()">{{ 'contactForm.sendButton' |
-							translate}}</button>
+
+					<div class="submit-area">
+						<button type="submit" [disabled]="!isFormValid()" class="submit-btn">
+							<span>{{ 'contactForm.sendButton' | translate }}</span>
+							<div class="btn-glow"></div>
+						</button>
 					</div>
-				</div>
-				
-			</form>
-			<!-- #endregion -->
+				</form>
+			</div>
 			<app-toast></app-toast>
 		</div>
 	</div>
-</section>
 
+</section>

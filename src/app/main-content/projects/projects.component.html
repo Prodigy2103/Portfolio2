@@ -1,82 +1,80 @@
-<section>
-    <div class="content">
+<section id="projects" class="projects-section" *ngIf="!showProjectView">
+    <div class="max-container">
+        <div class="projects-grid">
 
-        <!-- #region topRow -->
-        <div class="top-row">
-            <div class="project">
+            <div class="header-card">
+                <p class="overline">MY CRAFT</p>
+                <h2 class="main-heading">PROJECTS</h2>
+                <p class="description">
+                    {{ 'projects.info.description' | translate }}
+                </p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-box" (click)="toggleProjectView('join')">
+                    <img src="assets/ProjectsImg/join.png" alt="Join">
+                </div>
                 <div class="project-info">
-                    <p>{{ 'projects.info.title' | translate}}</p>
-                    <h1 class="head-skill">{{ 'projects.info.privacyline' | translate}}</h1>
-                </div>
-                <div class="project-description">
-                    <p>{{ 'projects.info.description' | translate}}</p>
-                </div>
-            </div>
-
-            <div class="project-main">
-                <div class="project-img">
-                    <img class="project-one" src="assets/ProjectsImg/join.png" alt="">
-                    <div class="project-btn">
-                        <button class="btn-set" (click)="toggleProjectView('join')">{{ 'button.project-detail' |
-                            translate}}</button>
-                    </div>
-                </div>
-                <div class="project-description-one">
-                    <h2>{{ 'projects.join.id' | translate }}</h2>
+                    <h3 (click)="toggleProjectView('join')">Join</h3>
                     <p>{{ 'projects.join.descriptionOne' | translate }}</p>
-                </div>
-                <div class="project-btn-mobile d_none">
-                    <button class="btn-set" (click)="toggleProjectView('join')">{{ 'button.project-detail' |
-                        translate}}</button>
-                </div>
-            </div>
-        </div>
-        <!-- #endregion -->
-
-        <!-- #region bottomRow -->
-        <div class="bottom-row">
-            <div class="project-main">
-                <div class="project-img">
-                    <img src="assets/ProjectsImg/28_Project thumbnails.png" alt="">
-                    <div class="project-btn">
-                        <button class="btn-set" (click)="toggleProjectView('pepe')">{{ 'button.project-detail' |
-                            translate}}</button>
+                    <div class="tech-tags">
+                        <span class="tag">JavaScript</span><span class="tag">Firebase</span><span
+                            class="tag">HTML</span><span class="tag">CSS</span>
                     </div>
-
-                </div>
-
-                <div class="project-description-one">
-                    <h2>{{ 'projects.pepe.id' | translate}}</h2>
-                    <p>{{ 'projects.pepe.descriptionOne' | translate}}</p>
-                </div>
-                <div class="project-btn-mobile">
-                    <button class="btn-set" (click)="toggleProjectView('pepe')">{{ 'button.project-detail' |
-                        translate}}</button>
-                </div>
-            </div>
-
-            <div class="project-main">
-                <div class="project-img">
-                    <img class="project-one" src="assets/ProjectsImg/Component 30.png" alt="">
-                    <div class="project-btn">
-                        <button class="btn-set" (click)="toggleProjectView('pokeDex')">{{ 'button.project-detail' |
-                            translate}}</button>
+                    <div class="project-links">
+                        <a href="https://github.com/Prodigy2103/join.git" target="_blank" class="btn-link">GitHub</a>
+                        <a href="http://join.marcus-guehne.com/index.html" target="_blank" class="btn-link">Live</a>
                     </div>
                 </div>
-                <div class="project-description-one">
-                    <h2>{{ 'projects.pokeDex.id' | translate}}</h2>
-                    <p>{{ 'projects.pokeDex.descriptionOne' | translate}}</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-box" (click)="toggleProjectView('pepe')">
+                    <img src="assets/ProjectsImg/Pepe30.png" alt="Pepe">
                 </div>
-                <div class="project-btn-mobile d_none">
-                    <button class="btn-set" (click)="toggleProjectView('pokeDex')">{{ 'button.project-detail' | translate}}</button>
+                <div class="project-info">
+                    <h3 (click)="toggleProjectView('pepe')">El Pollo Loco</h3>
+                    <p>{{ 'projects.pepe.descriptionOne' | translate }}</p>
+                    <div class="tech-tags">
+                        <span class="tag">JavaScript</span><span class="tag">Canvas</span><span class="tag">OOP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Prodigy2103/El-Pollo-Loco.git" target="_blank"
+                            class="btn-link">GitHub</a>
+                        <a href="http://elpolloloco.marcus-guehne.com/index.html" target="_blank"
+                            class="btn-link">Live</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- #endregion -->
 
+            <div class="project-card">
+                <div class="project-image-box" (click)="toggleProjectView('pokeDex')">
+                    <img src="assets/ProjectsImg/Component 30.png" alt="Pokedex">
+                </div>
+                <div class="project-info">
+                    <h3 (click)="toggleProjectView('pokeDex')">Pokédex</h3>
+                    <p>{{ 'projects.pokeDex.descriptionOne' | translate }}</p>
+                    <div class="tech-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">REST-API</span>
+                        <span class="tag">HTML</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Prodigy2103/PokedexNeu.git" target="_blank"
+                            class="btn-link">GitHub</a>
+                        <a href="https://pokedex.marcus-guehne.com/index.html" target="_blank" class="btn-link">Live</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
-<div class="overlay-container" *ngIf="showProjectView">
-    <app-project-view [currentProject]="selectedProject" (closeEvent)="closeProjectView($event)"></app-project-view>
+<div class="modal-backdrop" *ngIf="showProjectView" (click)="closeProjectView()">
+    <div class="modal-wrapper" (click)="$event.stopPropagation()">
+        <button class="modal-close-x" (click)="closeProjectView()">✕</button>
+        <app-project-view [currentProject]="selectedProject" (closeEvent)="closeProjectView($event)">
+        </app-project-view>
+    </div>
 </div>

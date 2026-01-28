@@ -1,243 +1,177 @@
-@use "./../../../../../public/styles/all_styles.scss" as all;
-@forward '../../../../../public/styles/component-styles.scss';
+@use "../../../../../public/styles/all_styles.scss" as all;
 
-section {
-	@include all.size($w: 100dvw, $h: 100dvh);
-	display: flex;
-	flex-direction: column;
-	background: black;
-	background-image: url("./../../../../../public/assets/01_Background/Img Original Size/Note book paper2.png");
-	background-repeat: no-repeat;
-	background-size: cover;
+$font-cyber: 'Orbitron', sans-serif;
+$font-cyber-two: 'BriGro', sans-serif;
 
-	overflow-y: auto;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
+:host {
+	display: block;
+	width: 100%;
+}
 
+.modal-inner {
+	padding: 2rem 1rem; // Weniger Padding auf Mobile
+	color: #fff;
+	height: 100%;
+
+	// Scrollbar überall verstecken
 	&::-webkit-scrollbar {
 		display: none;
 	}
 
-	@include all.notebook {
-		background-image: url("./../../../../../public/assets/01_Background/Design Size Relation@3x/Note book paperdraw1.png");
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	@media (min-width: 768px) {
+		padding: 3.5rem;
+	}
+}
+
+.nav-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+
+	.back-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
+		 // Blau wie in deinem Design
+		text-decoration: none;
+		font-family: $font-cyber;
+
+		span {
+			color: #ffffff;
+			font-family: $font-cyber-two;
+		}
+	}
+}
+
+.project-detail-grid {
+	display: grid;
+	grid-template-columns: 1fr; // Standard: Einspaltig für Mobile
+	gap: 2rem;
+
+	// Erst ab Tablet/Desktop zweispaltig
+	@media (min-width: 1024px) {
+		grid-template-columns: 0.9fr 1.1fr;
+		gap: 5rem;
+	}
+}
+
+.info-column {
+	.project-id {
+		font-size: 2.5rem; // Kleiner auf Mobile
+		font-weight: 900;
+		margin-bottom: 1.5rem;
+		word-break: break-word; // Verhindert Überlaufen bei langen Titeln
+
+		@media (min-width: 768px) {
+			font-size: 3.5rem;
+		}
 	}
 
-	.content {
+	.text-section {
+		margin-bottom: 2rem;
+
+		h2 {
+			font-size: 1.2rem;
+			margin-bottom: 0.5rem;
+		}
+
+		p {
+			color: #ccc;
+			line-height: 1.5;
+			font-size: 1rem;
+		}
+	}
+}
+
+.skills-vertical {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+	margin-top: 2rem;
+
+	.skill-row {
 		display: flex;
-		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
 
-		@include all.notebook {
-			flex-direction: column;
-			margin-top: 10rem;
+		img {
+			width: 35px;
+			height: 35px;
+			object-fit: contain;
 		}
 
-		//#region project-single-view
-		.project-single-view {
+		.skill-name {
+			color: #4b6fff;
+			font-size: 1rem;
+			font-weight: 600;
+		}
+	}
+}
+
+.visual-column {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+
+	.image-container {
+		width: 100%;
+		border-radius: 16px;
+		overflow: hidden;
+		background: #1e293b;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+
+		img {
 			width: 100%;
-			height: 50dvh;
-			padding: 0 10rem;
-
-			@media(max-width: 1300px) {
-				padding: 1rem 1rem 0 1rem;
-				height: 35dvh;
-			}
-
-			@include all.notebook {
-				padding: 0 5rem;
-				height: auto;
-			}
-
-			@include all.mobile {
-				padding: 1rem 1rem 0 1rem;
-			}
-
-			.head-projects {
-				position: relative;
-				display: block;
-				width: fit-content;
-				overflow: visible;
-				font-size: 4rem;
-				height: 7rem;
-				white-space: nowrap;
-				z-index: 1;
-
-				&:after {
-					content: "";
-					@include all.absolute($top: 57%, $left: 0);
-					@include all.size($w: 100%, $h: 2.8rem);
-					@include all.bg-setup();
-					background-image: url("../../../../../public/assets/00_Hand-drawn lines/01_About me/Color option 3.png");
-					clip-path: inset(0 100% 0 0);
-					transition: clip-path 0.5s ease-out;
-				}
-
-				@include all.notebook {
-					font-size: 2.5rem;
-					height: 4rem;
-
-					&:after {
-						@include all.size($w: 100%, $h: 2rem);
-					}
-				}
-
-				&:hover:after {
-					clip-path: inset(0 0 0 0);
-				}
-			}
-
-			h2 {
-				margin-bottom: 1rem;
-				font-size: 1.5rem;
-
-				@include all.notebook {
-					margin: 0 0 0.2rem 0;
-				}
-			}
-
-			p {
-				margin-bottom: 0.8rem;
-				font-size: 1rem;
-			}
-
-			.duration {
-				display: flex;
-				align-items: center;
-				gap: 20px;
-				margin-bottom: 2rem;
-
-				@include all.notebook {
-					margin: 0.5rem 0;
-				}
-
-				h3 {
-					font-size: clamp(16px, 1.4dvw, 32px);
-				}
-
-				p {
-					margin: 0;
-					font-size: clamp(16px, 1.4dvw, 24px);
-				}
-			}
-
-			.skill-icons {
-				width: 100%;
-				display: flex;
-				justify-content: space-between;
-				flex-wrap: wrap;
-				height: 2.5rem;
-
-				.skill-icon-box {
-					display: flex;
-					align-items: center;
-					gap: 0.5rem;
-
-					@include all.notebook {
-						margin-bottom: 1rem;
-					}
-
-					img {
-						width: 48px;
-						height: 48px;
-
-						@include all.tablet {
-							width: 24px;
-							height: 24px;
-						}
-					}
-
-					span {
-						font-size: clamp(16px, 1dvw, 24px);
-					}
-				}
-			}
+			height: auto;
+			display: block;
 		}
+	}
 
-		//#endregion
+	.action-bar {
+		display: flex;
+		flex-direction: column; // Untereinander auf Mobile
+		gap: 1.5rem;
 
-		//#region pepe-img
-		.pepe-img {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
+		@media (min-width: 480px) {
+			flex-direction: row;
+			justify-content: space-between;
 			align-items: center;
-			width: 100%;
-			height: 50dvh;
+		}
 
-			@include all.notebook {
-				padding: 0.3rem;
-			}
+		.links-left {
+			display: flex;
+			gap: 1rem;
 
-			@include all.mobile {
-				width: 80%;
-			}
+			.btn-outline {
+				padding: 0.6rem 1.2rem;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 10px;
+				color: #fff;
+				font-family: $font-cyber;
+				font-size: 0.8rem;
+				text-decoration: none;
+				white-space: nowrap;
 
-			@media(max-width: 420px) {
-				margin-bottom: 2rem;
-				width: 100%;
-			}
-
-			img {
-				width: 80%;
-				border-radius: 1.3rem;
-
-				@include all.notebook {
-					width: 40%;
-				}
-
-				@include all.mobile {
-					width: 70%;
-					border-radius: 0.7rem;
-				}
-			}
-
-			.pepe-btn {
-				@include all.fl($flexdir: column, $alit: end);
-				width: 100%;
-				margin: 3rem 8rem 1rem 0;
-
-				@include all.notebook {
-					align-items: stretch;
-					margin: 1rem 0 0 0;
-					justify-content: space-evenly;
-				}
-
-				.link-btn {
-					display: flex;
-					justify-content: flex-end;
-					gap: 3rem;
-
-					@include all.notebook {
-						width: 100%;
-						justify-content: space-evenly;
-						gap: 1rem;
-					}
-				}
-
-				.next-project-btn {
-					display: flex;
-					color: white;
-					align-items: center;
-					justify-content: flex-end;
-					width: 100%;
-					height: 5rem;
-					font-size: clamp(16px, 1dvw, 24px);
-
-					@include all.notebook {
-						justify-content: space-around;
-						height: 2.5rem;
-						padding: 0;
-						gap: 1rem;
-						margin-top: 1rem;
-					}
-
-					img {
-						width: 32px;
-						height: 32px;
-					}
+				&:hover {
+					background: #fff;
+					color: #000;
 				}
 			}
 		}
 
-		//#endregion
+		.next-link {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-family: $font-cyber;
+			cursor: pointer;
+			font-size: 0.9rem;
+			color: #fff;
+		}
 	}
 }

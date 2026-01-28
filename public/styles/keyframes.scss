@@ -14,34 +14,41 @@
 	;
 }
 
+@keyframes fadeInLetter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @mixin buttonEffect {
-	@keyframes slideIn {
-		0% {
-			width: 15rem;
-		}
+    // Standardbreite für Desktop
+    width: 12rem; 
 
-		100% {
-			width: 17rem;
-		}
-	}
+    @keyframes slideIn {
+        0% { width: 12rem; }
+        100% { width: 16rem; } // Etwas kleiner als 16rem, um sicherer zu sein
+    }
 
-	@keyframes slideOut {
-		0% {
-			width: 18.7rem;
-		}
+    @keyframes slideOut {
+        0% { width: 15rem; }
+        100% { width: 12rem; }
+    }
 
-		100% {
-			width: 12rem;
-		}
-	}
+    &:hover {
+        animation: slideIn 0.7s ease forwards;
+    }
 
-	&:hover {
-		animation: slideIn 0.7s ease forwards;
-	}
+    &:not(:hover) {
+        animation: slideOut 0.7s ease forwards;
+    }
 
-	&:not(:hover) {
-		animation: slideOut 0.7s ease forwards;
-	}
+    // MOBILE FIX: Auf kleinen Screens schalten wir die feste Breite aus
+    @media (max-width: 480px) {
+        width: fit-content !important;
+        min-width: 15rem;
+        animation: none !important; // Verhindert das "Herauslaufen" durch Animation
+    }
 }
 
 @mixin buttonEffectFooter {

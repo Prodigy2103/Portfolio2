@@ -1,374 +1,224 @@
-@use "./../../../../public/styles/all_styles.scss" as all;
+@use "../../../../public/styles/all_styles.scss" as all;
 
-$imbiss-orange: #0ea532;
-$white: white;
+$font-cyber: 'Orbitron', sans-serif;
 
-section {
-    background: url("./../../../../public/assets/01_Background/Img Original Size/Skills BGsmall.png");
-    @include all.bg-setup($bg-size: cover);
+.skills-section {
+    min-height: 100vh;
+    background: #0e0d0d;
+    padding: 6rem 2rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 
-    @media(min-width: 2150px) {
-        height: auto;
+    .max-container {
+        width: 100%;
+        max-width: 1100px; // Etwas schmaler für den kompakten Look
+        margin: 0 auto;
+    }
+}
+
+.skill-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+    .overline {
+        text-transform: uppercase;
+        color: #888;
+        letter-spacing: 0.15rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
     }
 
-    .content {
-        @include all.fl($flexdir: column, $alit: center);
-        padding: 8rem;
-        width: 100%;
-        min-height: 100dvh;
-        height: auto;
+    .main-heading {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        color: #fff;
+        font-weight: 900;
+        margin: 0.5rem 0;
+        letter-spacing: 2px;
+    }
 
-        @media(min-width: 2150px) {
-            padding-top: 15rem;
-        }
+    .accent-line {
+        width: 45px;
+        height: 3px;
+        background: #10b981; // Das Grün aus deinem Screenshot
+        margin: 0.5rem auto 0;
+    }
+}
 
-        @include all.notebook {
-            padding: 2rem;
-        }
+// SKILLS GRID - Wie im Screenshot (Dunkle Boxen)
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 4 Spalten auf Desktop
+    gap: 1.25rem;
+    margin-bottom: 4rem;
 
-        @include all.tablet {
-            min-height: 170dvh;
-            padding-top: 5rem;
-        }
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-        @include all.mobile {
-            padding-top: 5rem;
-        }
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 
-        // #region skillInfo
-        .skill-info {
-            width: 100%;
-            @include all.fl($alit: center);
+    .skill-card {
+        background: #161616; // Sehr dunkles Grau/Schwarz
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        padding: 1.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        filter: grayscale(1);
 
-            @include all.tablet {
-                @include all.fl($flexdir: column, $alit: center, $jc: center);
-            }
-
-            .skill-title {
-                width: fit-content;
-                min-width: 22dvw;
-                @include all.fl($alit: flex-end, $jc: center, $flexdir: column);
-                color: #f7f9fa;
-
-                @include all.tablet {
-                    width: 100%;
-                }
-
-                p {
-                    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
-                    padding: 0;
-                    text-align: center;
-
-                    @include all.tablet {
-                        text-align: end;
-                    }
-                }
-
-                .skill-set {
-                    width: 100%;
-                    text-decoration: none;
-                    color: rgba($white, 0.9);
-                    font-size: clamp(2rem, 3dvw, 6rem);
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 1.5px;
-                    padding: 5px 0; // Kleiner Puffer für den Strich
-                    position: relative; // Wichtig für die Positionierung des Strichs
-                    transition: color 0.3s ease;
-                    text-align: end;
-
-                    // DER UNTERSTRICH (Cyber-Linie)
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        // top: 0.85rem;
-                        top: 0.3rem;
-                        right: 0;
-                        width: 0; // Startet bei 0 Breite
-                        height: 2px; // Etwas dicker für den Neon-Look
-                        background: $imbiss-orange;
-                        box-shadow: 0 0 8px $imbiss-orange; // Der Glow-Effekt
-                        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-                        @include all.notebook {
-                            bottom: 0rem;
-                        }
-
-                        @include all.mobile {
-                            bottom: 0.2rem;
-                        }
-                    }
-
-                    &:hover {
-                        color: $imbiss-orange; // Text wird heller beim Hover
-
-                        &::after {
-                            width: 100%; // Strich fährt voll aus
-                        }
-                    }
-                }
-            }
-        }
-
-        .skill-description {
-            width: 60%;
-            min-height: 20dvh;
-            background-image: url("./../../../../public/assets/02_Ripped Paper/1.Skills description.png");
-            @include all.bg-setup($bg-pos: center);
-            padding: 4rem 6rem;
-            font-size: clamp(1rem, 1.2vw, 1.2rem);
-            white-space: normal;
-            overflow-wrap: break-word;
-            display: flex;
-            align-items: center;
-            margin-left: 1.5rem;
-
-            @include all.notebook {
-                padding: 2rem 3rem;
-            }
-
-            @include all.tablet {
-                width: 70%;
-                min-height: 30dvh;
-                text-align: center;
-                background-image: url("../../../../public/assets/02_Ripped Paper/1B.Mobile.png");
-                padding: 1rem;
-                flex-shrink: 0;
-                margin-left: 0;
-            }
-
-            @media (max-width: 420px) {
-                width: 100%;
-            }
-        }
-
-        // #endregion
-
-        // #region skillPeel
-        .skill-main-container {
-            @include all.fl($alit: center, $jc: end);
-            width: 90dvw;
-            margin-top: 3rem;
-
-            @media(min-width: 1920px) {
-                width: 50dvw;
-            }
-
-            @include all.tablet {
-                margin-top: 0.5rem;
-            }
-
-            .skill-peel {
-                width: 50%;
-                @include all.fl($flexdir: row, $jc: center, $alit: flex-start);
-                margin-top: 3rem;
-
-                @media (max-width: 1250px) {
-                    width: 60%;
-                }
-
-                @include all.tablet {
-                    width: 100%;
-                }
-
-                .skill-icons {
-                    width: 100%;
-                    @include all.fl($flexdir: row, $jc: start, $alit: center, $gap: 1rem);
-                    flex-wrap: wrap;
-                    gap: 1rem;
-
-                    @media(min-width: 1920px) {
-                        flex-wrap: wrap;
-                        width: 100%;
-                    }
-
-                    @include all.tablet {
-                        width: 100%;
-                        gap: 0.5rem;
-                    }
-
-                    .skill-icon-box {
-                        position: relative;
-                        width: 30%;
-                        @include all.fl($flexdir: column, $jc: center, $alit: center, $gap: 1rem);
-                        max-width: 100px;
-                        transition: transform 0.3s ease-in-out;
-                        cursor: pointer;
-                        margin-bottom: 1.4rem;
-
-                        @include all.tablet {
-                            @include all.fl($flexdir: column, $jc: start, $alit: center);
-                            max-width: unset;
-                            gap: 0.5rem;
-                        }
-
-                        img {
-                            @include all.size($w: 4.5rem, $h: 4.5rem);
-
-                            @include all.tablet {
-                                @include all.size($w: 3rem, $h: 3rem);
-                            }
-                        }
-
-                        span {
-                            margin-top: 5px;
-                            font-size: clamp(0.7rem, 1vw, 1.2rem);
-                            color: white;
-                            text-align: center;
-                        }
-                    }
-                }
-            }
+        &:hover {
+            background: #1f1f1f;
+            transform: scale(1.03);
+            border-color: rgba(255, 255, 255, 0.1);
+            filter: grayscale(0);
 
             .skill-icon {
-                width: 60%;
+                transform: translateY(-3px);
+            }
+        }
+
+        .icon-wrapper {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .skill-icon {
+                max-width: 100%;
+                max-height: 100%;
                 object-fit: contain;
-                transition: opacity 0.4s ease-in-out;
+                transition: transform 0.3s ease;
+            }
+        }
 
-                &.color {
-                    filter: grayscale(1);
-                    opacity: 1;
-                    transform: scale(1.2);
-                    transition: all 0.4s ease-in-out;
+        .skill-name {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+    }
+}
 
-                    &:hover {
-                        filter: none;
-                        opacity: 1;
-                        transform: scale(1);
-                    }
+// DESCRIPTION BOX
+.description-box {
+    background: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #9ca3af; // Helles Grau
+    margin-bottom: 4rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
 
-                    @include all.tablet {
-                        filter: none;
-                    }
-                }
+// PEEL SECTION - Exakt wie im Bild
+.peel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+    padding-bottom: 5rem;
+}
+
+.sticker-container {
+    position: relative;
+    width: 250px; // Feste Breite verhindert das Ausdehnen
+    height: 250px; // Feste Höhe macht es quadratisch
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.sticker-cover,
+.sticker-reveal {
+    position: absolute;
+    inset: 0; // Füllt exakt die 250x250px aus
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// DER GELBE STICKER
+.sticker-cover {
+    background-color: #d4ff00;
+    z-index: 2;
+    transform: rotate(12deg); // Die Drehung aus Screenshot 1
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+
+    .peel-label {
+        color: #000;
+        font-family: $font-cyber;
+        font-weight: 900;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .finger-emoji {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+    }
+
+    &.peeled {
+        // Schiebt den Sticker elegant aus dem Bild statt ihn zu strecken
+        transform: rotate(45deg) translate(300%, -150%);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+// DER INHALT DARUNTER
+.sticker-reveal {
+    background-color: #1a1a1a; // Dunkel wie die Skill-Cards
+    border: 1px solid #d4ff00;
+    z-index: 1;
+    opacity: 0;
+    transform: rotate(12deg) scale(0.9);
+
+    &.active {
+        opacity: 1;
+        transform: rotate(12deg) scale(1);
+    }
+
+    .reveal-title {
+        color: #fff;
+        font-family:$font-cyber;
+        font-size: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .reveal-icons-row {
+        display: flex;
+        gap: 1.5rem;
+
+        .reveal-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0.3rem;
             }
 
-            // #region peelContainer
-            .peel-container {
-                position: relative;
-                width: 18dvw;
-                @include all.fl($alit: center, $jc: center);
-                transform: rotate(10deg);
-                min-width: 280px;
-
-                @include all.tablet {
-                    @include all.absolute($top: 23rem, $left: 60%);
-                    transform: translate(-50%) rotate(10deg);
-                }
-
-                @include all.mobile {
-                    width: 60%;
-                    min-width: unset;
-                    transform: translate(-50%) rotate(10deg);
-                }
-
-                img {
-                    width: 100%;
-                    z-index: 1;
-
-                    @media(min-width: 2150px) {
-                        width: 70%;
-                    }
-
-                    @include all.mobile {
-                        width: 100%;
-                        display: block;
-                    }
-                }
-
-                .peel-arrow {
-                    z-index: 5;
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 1.5rem;
-
-                    @media (max-width: 450px) {
-                        gap: 0.5rem;
-                    }
-
-                    img {
-                        width: 100px;
-                        height: 50px;
-                    }
-
-                    span {
-                        // width: 70%;
-                        // height: 100%;
-                        color: white;
-                        font-size: 3rem;
-                        text-align: center;
-                        font-family: "Kalam";
-
-                        @media (max-width: 450px) {
-                            font-size: 2rem;
-                        }
-                    }
-                }
-
-                p {
-                    @include all.absolute($top: 20%);
-                    color: white;
-                    z-index: 10;
-
-                    @include all.mobile {
-                        @include all.absolute($top: 10%, $left: 5%);
-                        width: 90%;
-                        text-align: center;
-                    }
-                }
-
-                .peel-img {
-                    @include all.absolute($top: 40%);
-                    @include all.fl($jc: center);
-                    gap: 1rem;
-                    width: 85%;
-                    height: 30%;
-                    z-index: 10;
-
-                    .peel-icon-box {
-                        width: 100%;
-                        height: 100%;
-                        @include all.fl($flexdir: column, $alit: center);
-                        gap: 0.8rem;
-
-                        @include all.tablet {
-                            gap: 0.2rem;
-                        }
-
-                        img {
-                            width: 100%;
-                            max-width: 4rem;
-                        }
-
-                        span {
-                            color: white;
-                        }
-                    }
-                }
+            span {
+                color: #fff;
+                font-size: 0.7rem;
+                font-weight: bold;
             }
-
-            .peel-container-cover {
-                @include all.absolute($top: 0, $left: 0);
-                @include all.size($w: 100%, $h: 100%);
-                z-index: 10;
-                cursor: pointer;
-                @include all.fl($alit: center, $jc: center);
-
-                @media(min-width: 2150px) {
-                    width: 100%;
-                }
-
-                img {
-                    @include all.size($w: 100%, $h: 100%);
-                }
-            }
-
-            // #endregion
         }
     }
 }

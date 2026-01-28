@@ -1,281 +1,116 @@
-@use "../../../../public/styles/all_styles.scss" as all;
-@forward "../../../../public/styles/component-styles.scss";
+$color-neon: #d4ff00; // Das gelb-grün
+$color-blue: #3b82f6; // Das Blau
+$color-orange: #f97316; // Das Orange
 
-$imbiss-orange: #107eeb;
-$white: #070101;
+.about-section {
+    background-color: #000;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
 
-section {
-    @include all.size($h: 80dvh);
-    padding: 5rem;
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex; // Erzwingt Flex-Row
+        flex-direction: row;
+        align-items: center;
+        gap: 60px;
 
-    @media(min-width: 2150px) {
-        height: auto;
-    }
-
-    @include all.notebook {
-        padding: 1rem;
-    }
-
-    @include all.tablet {
-        @include all.size($h: auto);
-    }
-
-    .content {
-        @include all.size($h: 100%);
-        @include all.fl($alit: center, $gap: 2rem);
-        cursor: pointer;
-
-        @include all.tablet {
-            @include all.fl($flexdir: column-reverse);
-            padding: 0;
-        }
-
-        // #region aboutBasics
-        .about-basic {
-            @include all.size($w: 100%, $h: 40dvh);
-            @include all.fl($flexdir: column);
-
-            @include all.tablet {
-                padding-left: 2.3rem;
-                padding-top: 0;
-            }
-
-            @include all.mobile {
-                padding-left: 0;
-                margin-top: 0;
-            }
-
-            .yellow-pic {
-                position: relative;
-                @include all.fl($jc: center, $alit: center);
-                @include all.size($w: 100%, $h: 20dvh);
-                transform: rotate(-4deg);
-                z-index: 2;
-
-                &>img:first-child {
-                    @include all.absolute($top: 0, $right: 0.5rem);
-                    @include all.size($w: 100%, $h: 20dvh);
-                    @include all.fl($jc: center, $alit: center);
-                    transform: translate(10px, 10px);
-
-                    @include all.mobile {
-                        height: 15dvh;
-                        transform: translate(0px, 25px);
-                    }
-                }
-            }
-
-            .location-container {
-                @include all.fl($jc: center, $alit: center, $gap: 1rem);
-                margin-top: 2.5rem;
-                z-index: 20;
-
-                @include all.mobile {
-                    gap: 0;
-                    margin-top: 2rem;
-                    margin-left: 0rem;
-                }
-
-                .location-img {
-                    display: block;
-
-                    img {
-                        @include all.size($w: 2rem, $h: 2rem);
-                    }
-                }
-            }
-
-            .blue-pic {
-                position: relative;
-                @include all.fl($jc: center, $alit: center);
-                @include all.size($w: 100%, $h: 16dvh);
-                z-index: 1;
-
-                &>img:first-child {
-                    @include all.absolute($top: 0, $left: 0);
-                    @include all.size($w: 100%, $h: 16dvh);
-
-                    @include all.mobile {
-                        margin-top: -1rem;
-                        height: 13dvh;
-                    }
-                }
-
-                .relocation-container {
-                    @include all.fl($jc: center, $alit: center, $gap: 1rem);
-                    margin-top: 1.2rem;
-                    z-index: 20;
-
-
-                    @include all.mobile {
-                        margin-top: -1rem;
-                        gap: 0;
-                    }
-                }
-
-                .relocation-img {
-                    display: block;
-
-                    img {
-                        @include all.size($w: 2rem, $h: 2rem);
-                    }
-                }
-            }
-
-            .orange-pic {
-                position: relative;
-                @include all.fl($jc: center, $alit: center);
-                @include all.size($w: 100%, $h: 20dvh);
-                transform: rotate(3deg);
-
-                &>img:first-child {
-                    @include all.absolute($top: 0, $left: 0);
-                    @include all.size($w: 100%, $h: 16dvh);
-
-                    @include all.mobile {
-                        margin-top: -2rem;
-                        height: 13dvh;
-                    }
-                }
-
-                .remote-container {
-                    @include all.fl($jc: center, $alit: center, $gap: 1rem);
-                    margin-bottom: -0.5rem;
-                    transform: rotate(5deg);
-
-                    @include all.mobile {
-                        margin-top: -6rem;
-                        gap: 0;
-                    }
-                }
-
-                .remote-img {
-                    display: block;
-
-                    img {
-                        @include all.size($w: 2rem, $h: 2rem);
-                    }
-                }
-            }
-
-            p {
-                color: white;
-                font-size: clamp(1rem, 2dvw, 2rem);
-            }
+        @media (max-width: 992px) {
+            flex-direction: column; // Stapelt auf Mobile
         }
     }
 
-    // #endregion
+    // Linke Spalte
+    .cards-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
-    // #region aboutInfo
-    .about-info {
-        @include all.size($w: 100%, $h: 50dvh);
-        @include all.marpad($mar: 1.5rem 0 0 0);
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            border-radius: 12px;
+            color: #000;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
 
-        @include all.bigscreen {
-            padding-top: 0;
-            height: 40dvh;
-        }
-
-        @include all.tablet {
-            padding: 2rem 1rem;
-        }
-
-        .owner-info {
-            @include all.size($w: 60%, $h: 18dvh);
-            flex-direction: column; 
-
-            @media(max-width: 1545px) {
-                width: 100%;
-            }
-
-            @include all.tablet {
-                width: 100%;
-                height: 10dvh;
-            }
-
-            .owner-paragraph {
-                width: 100%;
-                font-size: 1.5rem;
+            span {
                 color: black;
             }
 
-            h1 {
-                width: 100%;
-                font-size: 4rem;
-                z-index: 0;
-
-                @include all.notebook {
-                    font-size: 3rem;
-                }
-
-                @include all.tablet {
-                    font-size: 2rem;
-                }
-            }
-        }
-
-        .desc-btn {
-            height: auto;
-            margin-bottom: 1rem;
-
-            .owner-description {
-                height: 15dvh;
+            &:hover {
+                transform: rotate(-1deg);
             }
 
-            .talk-btn {
-                display: flex;
-                justify-content: end;
-                top: 3rem;
-                z-index: 20;
+            // Farben aus dem Bild
+            &.neon {
+                background-color: #d4ff00;
+            }
 
-                @include all.tablet {
-                    top: 8rem;
-                }
+            &.blue {
+                background-color: #3b82f6;
+            }
+
+            &.orange {
+                background-color: #f97316;
             }
         }
     }
 
-    .head {
-        text-decoration: none;
-        color: rgba($white, 0.9);
-        font-size: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        padding: 5px 0; // Kleiner Puffer für den Strich
-        position: relative; // Wichtig für die Positionierung des Strichs
-        transition: color 0.3s ease;
+    // Rechte Spalte
+    .text-side {
+        flex: 1;
 
-        // DER UNTERSTRICH (Cyber-Linie)
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0.85rem;
-            right: 0;
-            width: 0; // Startet bei 0 Breite
-            height: 2px; // Etwas dicker für den Neon-Look
-            background: $imbiss-orange;
-            box-shadow: 0 0 8px $imbiss-orange; // Der Glow-Effekt
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-            @include all.notebook {
-                bottom: 0rem;
-            }
-
-            @include all.mobile {
-                bottom: 0.2rem;
-            }
+        .subtitle {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
         }
 
-        &:hover {
-            color: $imbiss-orange; // Text wird heller beim Hover
+        .title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
 
-            &::after {
-                width: 100%; // Strich fährt voll aus
+        .divider {
+            height: 5px;
+            width: 50px;
+            background-color: #d4ff00;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .btn-talk {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 2px solid #d4ff00;
+            color: #d4ff00;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: #d4ff00;
+                color: #000;
             }
         }
     }
 }
-
-// #endregion

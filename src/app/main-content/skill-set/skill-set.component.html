@@ -1,55 +1,46 @@
-<section>
-    <div class="content">
+<section id="skills" class="skills-section">
+    <div class="max-container">
 
-        <!-- #region skillInfo -->
-        <div class="skill-info">
-
-            <div class="skill-title">
-                <p>My Stack</p>
-                <h1 class="skill-set">{{ "skills.privacyline" | translate }}</h1>
-            </div>
-
-            <div class="skill-description">
-                <p [innerHTML]="'skills.description' | translate"></p>
-            </div>
-
+        <div class="skill-header">
+            <p class="overline">{{ 'skills.title' | translate }}</p>
+            <h2 class="main-heading">{{ 'skills.privacyline' | translate }}</h2>
+            <div class="accent-line"></div>
         </div>
-        <!-- #endregion -->
 
-        <!-- #region allPeel -->
-        <div class="skill-main-container">
-
-            <div class="skill-peel">
-
-                <div class="skill-icons">
-                    <div class="skill-icon-box" *ngFor="let skill of skillIcons; let i = index">
-                        <img class="skill-icon color" [src]="skillIcons[i].src" [alt]="skillIcons[i].name" />
-                        <span>{{ skill.name }}</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="peel-container" (click)="isCoverVisible = true">
-                <img src="assets/03_Stickers/01_Skills - Peel off/Finalsmall.png" alt="">
-                <p>{{ "skills.interested" | translate }}</p>
-                <div class="peel-img">
-                    <div class="peel-icon-box" *ngFor="let peel of peelIcons; let i = index">
-                        <img class="peel-icon color" [src]="peelIcons[i].src" [alt]="peelIcons[i].name" />
-                        <span>{{ peel.name }}</span>
-                    </div>
-                </div>
-                <div class="peel-container-cover" *ngIf="isCoverVisible"
-                    (click)="isCoverVisible = false; $event.stopPropagation()">
-                    <img src="assets/03_Stickers/01_Skills - Peel off/Defaultsmall.png" alt="">
-                    <div class="peel-arrow">
-                        <img src="assets/03_Stickers/Arrow.png" alt="">
-                        <span>{{ "skills.peelAni" | translate }}</span>
-                    </div>
-                </div>
-            </div>
-
+        <div class="description-box">
+            <p [innerHTML]="'skills.description' | translate"></p>
         </div>
-        <!-- #endregion -->
+
+        <div class="skills-grid">
+            <div class="skill-card" *ngFor="let skill of skillIcons">
+                <div class="icon-wrapper">
+                    <img [src]="skill.src" [alt]="skill.name" />
+                </div>
+                <span class="skill-name">{{ skill.name }}</span>
+            </div>
+        </div>
+
+        <div class="peel-wrapper">
+            <div class="sticker-container" (click)="isCoverVisible = !isCoverVisible">
+
+                <div class="sticker-reveal" [class.active]="!isCoverVisible">
+                    <p class="reveal-title" [innerHTML]="'skills.interested' | translate"></p>
+                    <div class="reveal-icons-row">
+                        <div class="reveal-item" *ngFor="let peel of peelIcons">
+                            <img [src]="peel.src" [alt]="peel.name" />
+                            <span>{{ peel.name }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sticker-cover" [class.peeled]="!isCoverVisible">
+                    <p class="peel-label" [innerHTML]="'skills.peelAni' | translate"></p>
+                    <span class="finger-emoji">👉</span>
+                </div>
+
+            </div>
+            <!-- <p class="mobile-hint">Tap the sticker above to see more skills</p> -->
+        </div>
+
     </div>
 </section>

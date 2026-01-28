@@ -1,49 +1,37 @@
-<section>
-	<div class="content">
-		<div class="logo-container-wrapper">
-			<div class="logo-container" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
-				[style.transform]="'rotateX(' + current.rx + 'deg) rotateY(' + current.ry + 'deg)'">
+<section id="hero" class="hero-section">
+	<div class="main-content-wrapper">
 
-				<div class="first-image">
-					<img src="assets/ProjectsImg/MePOl.png" alt="Marcus Portrait">
-					<p [style.transform]="'translateZ(30px) rotate(1deg)'">Marcus</p>
-					<div class="shine"
-						[style.background]="'radial-gradient(circle at ' + current.mx + '% ' + current.my + '%, rgba(255,255,255,0.2) 0%, transparent 80%)'">
-					</div>
+		<div class="text-content">
+			<div class="hello-world-badge">
+				<app-hello-button></app-hello-button>
+			</div>
+
+			<h1 class="main-title">
+				<span *ngFor="let letter of frontLetters" class="letter">{{ letter }}</span>
+			</h1>
+
+			<div class="subtitle-wrapper">
+				<h2 class="main-subtitle">
+					<span *ngFor="let letter of devLetters" class="letter">{{ letter }}</span>
+				</h2>
+				<div class="cta-container">
+					<a href="#contact" class="get-in-touch-btn">{{ 'button.getBtn' | translate }}</a>
 				</div>
 			</div>
 		</div>
 
-		<div class="front-main-container">
-			<div class="first-row">
-				<app-hello-button></app-hello-button>
-
-				<p class="front-title">
-					@for (letter of frontLetters; track $index) {
-					<span class="letter" appHighlight>{{ letter }}</span>
-					}
-				</p>
-			</div>
-
-			<div class="second-row">
-				<p class="front-end">
-					@for (letter of devLetters; track $index) {
-					<span class="letter" appHighlight>{{ letter }}</span>
-					}
-				</p>
-
-				<button class="btn-set">
-					<a href="#contact">{{ 'button.getBtn' | translate }}</a>
-				</button>
+		<div class="portrait-container">
+			<div class="polaroid-frame" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
+				[style.transform]="'perspective(1000px) rotateX(' + current.rx + 'deg) rotateY(' + current.ry + 'deg)'">
+				<img src="assets/ProjectsImg/portImg.jpg" alt="Marcus">
 			</div>
 		</div>
 
-		<div class="nav-links">
-			@for (link of socialLinks; track link.url) {
-			<a [href]="link.url" [target]="link.external ? 'blank' : '_self'">
+		<div class="social-sidebar">
+			<a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" class="social-icon">
 				<img [src]="link.icon" [alt]="link.alt">
 			</a>
-			}
 		</div>
+
 	</div>
 </section>
