@@ -3,7 +3,9 @@ $color-blue: #3b82f6; // Das Blau
 $color-orange: #f97316; // Das Orange
 
 .about-section {
-    background-color: #000;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
     color: white;
     min-height: 100vh;
     display: flex;
@@ -24,7 +26,6 @@ $color-orange: #f97316; // Das Orange
         }
     }
 
-    // Linke Spalte
     .cards-side {
         flex: 1;
         display: flex;
@@ -37,30 +38,58 @@ $color-orange: #f97316; // Das Orange
             gap: 15px;
             padding: 20px 30px;
             border-radius: 12px;
-            color: #000;
             font-weight: 800;
             font-size: 1.1rem;
-            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-            span {
-                color: black;
-            }
+            // --- Glassmorphism Core ---
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            // Der Inset Shadow: Oben-Links hell, Unten-Rechts dunkel
+            box-shadow:
+                inset 2px 2px 5px rgba(255, 255, 255, 0.4), // "Highlights" an der Glaskante
+                inset -2px -2px 10px rgba(0, 0, 0, 0.1), // Sanfte Tiefe
+                0 8px 20px rgba(0, 0, 0, 0.15); // Schatten nach außen
 
             &:hover {
-                transform: rotate(-1deg);
+                transform: rotate(-1deg) scale(1.02);
+                box-shadow:
+                    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+                    0 12px 25px rgba(0, 0, 0, 0.2);
             }
 
-            // Farben aus dem Bild
+            // --- Farbspezifische Anpassungen ---
             &.neon {
-                background-color: #d4ff00;
+                background-color: rgba($color-neon, 0.6);
+                border: 1px solid rgba($color-neon, 0.5);
+                color: #000;
+
+                span {
+                    color: #000;
+                }
             }
 
             &.blue {
-                background-color: #3b82f6;
+                background-color: rgba($color-blue, 0.6);
+                border: 1px solid rgba($color-blue, 0.4);
+                color: #000;
+
+                span {
+                    color: #000;
+                }
             }
 
             &.orange {
-                background-color: #f97316;
+                background-color: rgba($color-orange, 0.6);
+                border: 1px solid rgba($color-orange, 0.4);
+                color: #000;
+
+                span {
+                    color: #000;
+                }
             }
         }
     }
@@ -70,10 +99,9 @@ $color-orange: #f97316; // Das Orange
         flex: 1;
 
         .subtitle {
-            color: #888;
+            color: white;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-size: 0.8rem;
             margin-bottom: 10px;
         }
 
@@ -91,7 +119,7 @@ $color-orange: #f97316; // Das Orange
         }
 
         .description {
-            color: #ccc;
+            color: white;
             line-height: 1.6;
             font-size: 1.1rem;
             margin-bottom: 40px;

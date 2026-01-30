@@ -1,12 +1,13 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-RewriteCond %{REQUEST_FILENAME} -s [OR]
+  # 1. Wenn die Datei (robots.txt, sitemap.xml, Bilder) physisch existiert, liefere sie aus
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-
-RewriteCond %{REQUEST_FILENAME} -d
-
-RewriteRule ^.*$ - [NC,L]
-
-
-RewriteRule ^(.*) /index.html [NC,L]
+  # 2. Alles andere an die index.html von Angular weiterleiten
+  # WICHTIG: Kein Slash vor index.html, damit es relativ bleibt
+  RewriteRule ^ index.html [L]
+</IfModule>

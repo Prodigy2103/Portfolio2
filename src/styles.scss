@@ -1,6 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 $font-cyber: 'Orbitron', sans-serif;
 $font-cyber-two: 'BriGro', sans-serif;
+$font-cyber-bold: 'OrbitronBold', sans-serif;
+$font-cyber-semi: 'OrbitronSemi', sans-serif;
 
 * {
     position: relative;
@@ -36,11 +37,6 @@ $font-cyber-two: 'BriGro', sans-serif;
     }
 
     @font-face {
-        font-family: "Kalam";
-        src: url("../public/assets/fonts/Kalam-Regular.ttf") format("truetype");
-    }
-
-    @font-face {
         font-family: "Orbitron";
         src: url("../public/assets/fonts/static/Orbitron-Medium.ttf") format("truetype");
     }
@@ -48,6 +44,11 @@ $font-cyber-two: 'BriGro', sans-serif;
     @font-face {
         font-family: "OrbitronBold";
         src: url("../public/assets/fonts/static/Orbitron-ExtraBold.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: 'OrbitronSemi';
+        src: url("../public/assets/fonts/static/Orbitron-SemiBold.ttf") format("truetype");
     }
 
     body.no-scroll {
@@ -80,5 +81,43 @@ $font-cyber-two: 'BriGro', sans-serif;
     li,
     label {
         font-family: $font-cyber-two;
+        font-size: 1rem;
+    }
+
+    body {
+        background: linear-gradient(135deg, #8a8a8a 0%, #6e6e6e 50%, #4a4a4a 100%);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(212, 255, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+    }
+
+    .skip-link {
+        position: absolute;
+        top: -100px;
+        /* Standardmäßig außerhalb des Sichtfelds */
+        left: 0;
+        background: #ffaa00;
+        /* Nutze deine Akzentfarbe */
+        color: #000;
+        padding: 15px 25px;
+        z-index: 10000;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 0 0 10px 0;
+        transition: top 0.3s ease;
+
+        /* Wird nur sichtbar, wenn der Nutzer die Tab-Taste nutzt */
+        &:focus {
+            top: 0;
+            outline: 3px solid #fff;
+        }
     }
 }

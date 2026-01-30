@@ -8,6 +8,7 @@ interface NavItem {
   anchor: string;
   translationKey: string;
   class: string;
+  titleKey: string;
 }
 
 interface Language {
@@ -63,11 +64,11 @@ export class HeaderComponent {
   currentLanguage: Signal<string> = this.languageService.currentLanguage;
 
   navItems: NavItem[] = [
-    { anchor: '#about', translationKey: 'header.about', class: 'about' },
-    { anchor: '#skill', translationKey: 'header.skills', class: 'skills' },
-    { anchor: '#projects', translationKey: 'header.projects', class: 'projects' },
-    { anchor: '#contact', translationKey: 'header.contact', class: 'contact' }
-  ];
+  { anchor: '#about', translationKey: 'header.about', titleKey: 'header.aboutTitle', class: 'about' },
+  { anchor: '#skill', translationKey: 'header.skills', titleKey: 'header.skillsTitle', class: 'skills' },
+  { anchor: '#projects', translationKey: 'header.projects', titleKey: 'header.projectsTitle', class: 'projects' },
+  { anchor: '#contact', translationKey: 'header.contact', titleKey: 'header.contactTitle', class: 'contact' }
+];
 
   languages: Language[] = [
     {
@@ -85,7 +86,7 @@ export class HeaderComponent {
   ];
 
   socialLinks: SocialLink[] = [
-    { url: 'https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/', icon: 'assets/Extras/Indeed.png', alt: 'Indeed Profil', external: true },
+    { url: 'https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/', icon: 'assets/Extras/icons8-linkedin-52.png', alt: 'Indeed Profil', external: true },
     { url: 'https://github.com/Prodigy2103', icon: 'assets/Extras/Github.png', alt: 'Github Profil', external: true },
     { url: 'mailto:marcusghne@gmx.de', icon: 'assets/Extras/Contact.png', alt: 'E-Mail Versand', external: false }
   ];

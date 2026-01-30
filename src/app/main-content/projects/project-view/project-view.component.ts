@@ -44,4 +44,10 @@ export class ProjectViewComponent {
     this.currentProject = this.projects[(idx + 1) % this.projects.length];
     document.querySelector('.modal-wrapper')?.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  prevProject() {
+    const idx = this.projects.indexOf(this.currentProject);
+    this.currentProject = this.projects[(idx - 1 + this.projects.length) % this.projects.length];
+    document.querySelector('.modal-wrapper')?.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

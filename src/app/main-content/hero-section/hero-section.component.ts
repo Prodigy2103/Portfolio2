@@ -1,10 +1,10 @@
-import { 
-  ChangeDetectionStrategy, 
-  Component, 
-  NgZone, 
-  ChangeDetectorRef, 
-  OnInit, 
-  OnDestroy 
+import {
+  ChangeDetectionStrategy,
+  Component,
+  NgZone,
+  ChangeDetectorRef,
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,6 +14,7 @@ interface SocialLink {
   url: string;
   icon: string;
   alt: string;
+  title: string;
   external: boolean;
 }
 
@@ -33,21 +34,24 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   // Social Media Links
   public socialLinks: SocialLink[] = [
     {
-      url: 'https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/',
-      icon: 'assets/Extras/Indeed.png',
+      url: 'https://www.linkedin.com/in/...',
+      icon: 'assets/Extras/icons8-linkedin-52.png',
       alt: 'LinkedIn Profil',
+      title: 'Besuchen Sie mein Profil auf LinkedIn', // Das wird beim Hovern angezeigt
       external: true
     },
     {
       url: 'https://github.com/Prodigy2103',
       icon: 'assets/Extras/Github.png',
       alt: 'Github Profil',
+      title: 'Meinen Code auf GitHub ansehen',
       external: true
     },
     {
       url: 'mailto:marcusghne@gmx.de',
       icon: 'assets/Extras/Contact.png',
       alt: 'E-Mail Versand',
+      title: 'Eine E-Mail an Marcus Gühne schreiben',
       external: false
     }
   ];
@@ -58,14 +62,14 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
   // Zielwerte für die Animation (Mausposition/Rotation)
   public target = { rx: 0, ry: 0, mx: 50, my: 50 };
-  
+
   // Aktuelle interpolierte Werte für das Template
   public current = { rx: 0, ry: 0, mx: 50, my: 50 };
 
   constructor(
-    private ngZone: NgZone, 
+    private ngZone: NgZone,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Animation außerhalb von Angular starten für bessere Performance
@@ -97,7 +101,7 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   onMouseMove(e: MouseEvent): void {
     const el = e.currentTarget as HTMLElement;
     const rect = el.getBoundingClientRect();
-    
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 

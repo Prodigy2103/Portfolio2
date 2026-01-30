@@ -1,7 +1,7 @@
 <section id="projects" class="projects-section" *ngIf="!showProjectView">
     <div class="max-container">
         <div class="projects-grid">
-
+            
             <div class="header-card">
                 <p class="overline">MY CRAFT</p>
                 <h2 class="main-heading">PROJECTS</h2>
@@ -11,58 +11,53 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image-box" (click)="toggleProjectView('join')">
-                    <img src="assets/ProjectsImg/join.png" alt="Join">
+                <div class="project-image-box" (click)="toggleProjectView('join')" title="View project details for Join">
+                    <img src="assets/ProjectsImg/join.png" alt="Project Join Screenshot">
                 </div>
                 <div class="project-info">
-                    <h3 (click)="toggleProjectView('join')">Join</h3>
+                    <h3 (click)="toggleProjectView('join')" title="View project details for Join">Join</h3>
                     <p>{{ 'projects.join.descriptionOne' | translate }}</p>
                     <div class="tech-tags">
-                        <span class="tag">JavaScript</span><span class="tag">Firebase</span><span
-                            class="tag">HTML</span><span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span><span class="tag">Firebase</span>
+                        <span class="tag">HTML</span><span class="tag">CSS</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/Prodigy2103/join.git" target="_blank" class="btn-link">GitHub</a>
-                        <a href="http://join.marcus-guehne.com/index.html" target="_blank" class="btn-link">Live</a>
+                        <a href="https://github.com/Prodigy2103/join.git" target="_blank" class="btn-link" title="View Join source code on GitHub">GitHub</a>
+                        <a href="http://join.marcus-guehne.com/index.html" target="_blank" class="btn-link" title="Open Join live demo">Live</a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-image-box" (click)="toggleProjectView('pepe')">
-                    <img src="assets/ProjectsImg/Pepe30.png" alt="Pepe">
+                <div class="project-image-box" (click)="toggleProjectView('pepe')" title="View project details for El Pollo Loco">
+                    <img src="assets/ProjectsImg/Pepe30.png" alt="Project El Pollo Loco Screenshot">
                 </div>
                 <div class="project-info">
-                    <h3 (click)="toggleProjectView('pepe')">El Pollo Loco</h3>
+                    <h3 (click)="toggleProjectView('pepe')" title="View project details for El Pollo Loco">El Pollo Loco</h3>
                     <p>{{ 'projects.pepe.descriptionOne' | translate }}</p>
                     <div class="tech-tags">
                         <span class="tag">JavaScript</span><span class="tag">Canvas</span><span class="tag">OOP</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/Prodigy2103/El-Pollo-Loco.git" target="_blank"
-                            class="btn-link">GitHub</a>
-                        <a href="http://elpolloloco.marcus-guehne.com/index.html" target="_blank"
-                            class="btn-link">Live</a>
+                        <a href="https://github.com/Prodigy2103/El-Pollo-Loco.git" target="_blank" class="btn-link" title="View El Pollo Loco source code on GitHub">GitHub</a>
+                        <a href="http://elpolloloco.marcus-guehne.com/index.html" target="_blank" class="btn-link" title="Open El Pollo Loco live demo">Live</a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-image-box" (click)="toggleProjectView('pokeDex')">
-                    <img src="assets/ProjectsImg/Component 30.png" alt="Pokedex">
+                <div class="project-image-box" (click)="toggleProjectView('pokeDex')" title="View project details for Pokedex">
+                    <img src="assets/ProjectsImg/Component 30.png" alt="Project Pokedex Screenshot">
                 </div>
                 <div class="project-info">
-                    <h3 (click)="toggleProjectView('pokeDex')">Pokédex</h3>
+                    <h3 (click)="toggleProjectView('pokeDex')" title="View project details for Pokedex">Pokédex</h3>
                     <p>{{ 'projects.pokeDex.descriptionOne' | translate }}</p>
                     <div class="tech-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">REST-API</span>
-                        <span class="tag">HTML</span>
+                        <span class="tag">JavaScript</span><span class="tag">REST-API</span><span class="tag">HTML</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/Prodigy2103/PokedexNeu.git" target="_blank"
-                            class="btn-link">GitHub</a>
-                        <a href="https://pokedex.marcus-guehne.com/index.html" target="_blank" class="btn-link">Live</a>
+                        <a href="https://github.com/Prodigy2103/PokedexNeu.git" target="_blank" class="btn-link" title="View Pokedex source code on GitHub">GitHub</a>
+                        <a href="https://pokedex.marcus-guehne.com/index.html" target="_blank" class="btn-link" title="Open Pokedex live demo">Live</a>
                     </div>
                 </div>
             </div>
@@ -71,9 +66,8 @@
     </div>
 </section>
 
-<div class="modal-backdrop" *ngIf="showProjectView" (click)="closeProjectView()">
+<div class="modal-backdrop" *ngIf="showProjectView" (click)="$event.stopPropagation()">
     <div class="modal-wrapper" (click)="$event.stopPropagation()">
-        <button class="modal-close-x" (click)="closeProjectView()">✕</button>
         <app-project-view [currentProject]="selectedProject" (closeEvent)="closeProjectView($event)">
         </app-project-view>
     </div>

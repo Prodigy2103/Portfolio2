@@ -1,41 +1,40 @@
 <footer class="main-footer">
-	<div class="footer-container">
+    <div class="footer-container">
+        <div class="footer-logo-section">
+            <div class="logo-wrapper">
+                <img src="assets/Extras/LOGONEU.png" alt="Marcus Gühne Logo">
+            </div>
+            <p class="copyright-text">&copy; Marcus Gühne 2026</p>
+        </div>
 
-		<div class="footer-logo-section">
-			<div class="logo-wrapper">
-				<img src="assets/Extras/LOGONEU.png" alt="Logo">
-			</div>
-			<p class="copyright-text">&copy; Marcus Gühne 2026</p>
-		</div>
+        <div class="footer-content-section">
+            <div class="info-top">
+                <a routerLink="/imprint" class="legal-link" [title]="'footer.footerHead' | translate">
+                    {{ 'footer.footerHead' | translate }}
+                </a>
+                <span class="separator">|</span>
+                <a routerLink="/privacy" class="legal-link" [title]="'footer.privacyHead' | translate">
+                    {{ 'footer.privacyHead' | translate }}
+                </a>
+            </div>
 
-		<div class="footer-content-section">
+            <nav class="social-bottom" [attr.aria-label]="'footer.socialNavLabel' | translate">
+                <a href="https://github.com/Prodigy2103" target="_blank" class="social-item" title="Visit my GitHub profile">
+                    <img src="assets/Extras/Github.png" alt="GitHub Icon" class="social-icon">
+                    <span>Github</span>
+                </a>
 
-			<div class="info-top">
-				
-				<a href="imprint" target="_blank" class="legal-link">
-					{{ 'footer.footerHead' | translate }}
-				</a>
-				<span class="divider">|</span>
-			</div>
+                <a href="https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/" target="_blank"
+                    class="social-item" title="Visit my LinkedIn profile">
+                    <img src="assets/Extras/icons8-linkedin-52.png" alt="LinkedIn Icon" class="social-icon">
+                    <span>LinkedIn</span>
+                </a>
 
-			<nav class="social-bottom">
-				<a href="https://github.com/Prodigy2103" target="_blank" class="social-item">
-					<img src="assets/Extras/Github.png" alt="" class="social-icon">
-					<span>Github</span>
-				</a>
-
-				<a href="https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/" target="_blank"
-					class="social-item">
-					<img src="assets/Extras/icons8-linkedin-52.png" alt="" class="social-icon">
-					<span>LinkedIn</span>
-				</a>
-
-				<a href="mailto:marcusghne@gmx.de" class="social-item">
-					<img src="assets/Extras/Contact.png" alt="" class="social-icon">
-					<span>Email</span>
-				</a>
-			</nav>
-
-		</div>
-	</div>
+                <a href="mailto:anfrage@marcus-guehne.com" class="social-item" title="Send me an email">
+                    <img src="assets/Extras/Contact.png" alt="Email Icon" class="social-icon">
+                    <span>Email</span>
+                </a>
+            </nav>
+        </div>
+    </div>
 </footer>

@@ -1,18 +1,26 @@
 {
 	"header": {
-		"about": "About me",
+		"navLabel": "Main Navigation",
+		"mobileLabel": "Mobile Navigation",
+		"about": "About Me",
+		"aboutTitle": "Learn more about my professional background and experience",
 		"skills": "Skills",
+		"skillsTitle": "Discover my technical stack and the tools I use",
 		"projects": "Projects",
-		"contact": "Contact"
+		"projectsTitle": "View my portfolio of recent web development projects",
+		"contact": "Contact",
+		"contactTitle": "Get in touch for collaborations or inquiries"
 	},
 	"button": {
 		"getBtn": "Get in Touch",
-		"talkBtn": "Let's talk",
-		"project-detail": "Project details",
-		"helloBtn" : "Hello World",
-		"waveRoll" : "I´m Marcus Gühne",
-		"backBtn" : "Go Back",
-		"nextBtn" : "Next Project"
+		"getBtnTitle": "Click here to open the contact form",
+		"talkBtn": "Let's Talk",
+		"project-detail": "Project Details",
+		"helloBtn": "Hello World",
+		"waveRoll": "I'm Marcus Gühne",
+		"backBtn": "Back",
+		"nextBtn": "Next",
+		"prevBtn": "Previous"
 	},
 	"about": {
 		"title": "Who is Marcus?",
@@ -26,8 +34,8 @@
 		"title": "My Stack",
 		"privacyline": "Skill set",
 		"description": "My training at the Developer Academy focused on developing these core competencies and tools:",
-		"peelAni" : "Pull to peel",
-		"interested" : "I want to delve deeper"
+		"peelAni": "Pull to peel",
+		"interested": "I want to delve deeper"
 	},
 	"projects": {
 		"info": {
@@ -37,29 +45,29 @@
 		},
 		"join": {
 			"id": "Join",
-			"titleDesc": "Description",
-			"titleDetails": "Implementation Details",
-			"titleDuration": "Duration: ",
-			"descriptionOne": "Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories.",
-			"descriptionTwo": "As part of a 3-person team, we worked with HTML/CSS/JS and Firebase. With my focus being on developing the contact and board functionalities.",
+			"titleDesc": "Project Description",
+			"titleDetails": "Technical Implementation",
+			"titleDuration": "Project Duration: ",
+			"descriptionOne": "Join is a sophisticated task management application inspired by the Kanban system. It streamlines team productivity by allowing users to create, organize, and track tasks via intuitive drag-and-drop mechanics, detailed category assignments, and collaborative user management.",
+			"descriptionTwo": "Developed within an agile 3-person team, this project utilizes a modern frontend architecture with JavaScript and Firebase as a real-time Cloud Backend. My core responsibilities included engineering the Kanban board logic, contact management systems, and ensuring seamless cross-browser compatibility and responsiveness.",
 			"descriptionDuration": "5 Weeks"
 		},
 		"pepe": {
 			"id": "El Pollo Loco",
-			"titleDesc": "Description",
-			"titleDetails": "Implementation Details",
-			"titleDuration": "Duration: ",
-			"descriptionOne": "Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and tabasco salsa to fight against the crazy hen.",
-			"descriptionTwo": "The game was developed entirely as a solo JavaScript project to deepen my OOP skills and adhere to clean code principles.",
+			"titleDesc": "Game Description",
+			"titleDetails": "Development Details",
+			"titleDuration": "Timeline: ",
+			"descriptionOne": "El Pollo Loco is a dynamic 2D side-scrolling platformer. Players control Pepe as he navigates a desert landscape, collecting coins and spicy salsa bottles to prepare for an ultimate showdown against the 'Crazy Hen' boss.",
+			"descriptionTwo": "Built entirely as a solo project, this game focuses on Object-Oriented Programming (OOP) in JavaScript. By leveraging the HTML5 Canvas API, I implemented complex game mechanics, including physics-based jumping, collision detection, and modular state management while strictly following Clean Code principles.",
 			"descriptionDuration": "3 Weeks"
 		},
 		"pokeDex": {
 			"id": "Pokédex",
-			"titleDesc": "Description",
-			"titleDetails": "Implementation Details",
+			"titleDesc": "App Scope",
+			"titleDetails": "Technical Stack",
 			"titleDuration": "Duration: ",
-			"descriptionOne": "This app is a register for all Pokémon trainers! It is based on data from the Pokémon API and displays character, special attacks, and statistics.",
-			"descriptionTwo": "The goal of this solo project was to implement an API integration and handle asynchronous communication. The web design focused on combining creative design with a clear and intuitive user interface structure.",
+			"descriptionOne": "This Pokédex app serves as a comprehensive digital encyclopedia for Pokémon trainers. It fetches live data from the PokeAPI to provide an extensive library of characters, detailed combat statistics, base experience values, and unique special attacks.",
+			"descriptionTwo": "The primary objective of this solo project was the expert implementation of asynchronous communication (REST API integration) using the Fetch API. The UI/UX design emphasizes a clean, intuitive interface combined with optimized data loading strategies to ensure a fast and engaging user experience.",
 			"descriptionDuration": "4 Weeks"
 		}
 	},
@@ -78,7 +86,8 @@
 	"contact": {
 		"privacyline": "Ready to work<br> together?",
 		"description": "CONTACT ME",
-		"descriptionTwo": "I look forward to hearing from you!<br><br>Convinced? Let's talk about how my expertise and passion for professional development can help you achieve your goals.<br><br>Contact me to discuss your plans!"
+		"descriptionTwo": "I look forward to hearing from you!<br><br>Convinced? Let's talk about how my expertise and passion for professional development can help you achieve your goals.<br><br>Contact me to discuss your plans!",
+		"ParagraphOne": "Available for new projects and collaborations."
 	},
 	"contactForm": {
 		"name": "Enter your name",
@@ -168,7 +177,11 @@
 		"privacyFiveParaA": "This site uses Font Awesome for the uniform display of fonts. Font Awesome is installed locally. A connection to Fonticons, Inc. servers does not take place. Further information on Font Awesome can be found in the privacy policy for Font Awesome at: https://fontawesome.com/privacy."
 	},
 	"footer": {
+		"socialNavLabel": "Social Media and Contact",
 		"footerHead": "Legal Notice",
 		"privacyHead": "Privacy Policy"
+	},
+	"accessibility": {
+		"skipToContent": "Skip to main content"
 	}
 }

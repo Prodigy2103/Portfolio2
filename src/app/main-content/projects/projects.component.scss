@@ -1,9 +1,13 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
 $font-cyber: 'Orbitron', sans-serif;
+$font-cyber-bold: 'OrbitronBold', sans-serif;
+$font-cyber-semi: 'OrbitronSemi', sans-serif;
 // 1. HAUPT-SEKTION & GRID
 .projects-section {
-	background: #000;
+	background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 	padding: 8rem 2rem;
 	min-height: 100vh;
 	color: #fff;
@@ -34,8 +38,7 @@ $font-cyber: 'Orbitron', sans-serif;
 	margin-bottom: 2rem;
 
 	.overline {
-		color: #888;
-		font-size: 0.8rem;
+		color: white;
 		letter-spacing: 2px;
 	}
 
@@ -47,7 +50,7 @@ $font-cyber: 'Orbitron', sans-serif;
 
 	.description {
 		max-width: 600px;
-		color: #ccc;
+		color: white;
 		line-height: 1.6;
 	}
 }
@@ -122,27 +125,29 @@ $font-cyber: 'Orbitron', sans-serif;
 	}
 
 	p {
-		color: #9ca3af;
-		font-size: 0.9rem;
+		color: white;
 		margin-bottom: 1rem;
 		min-height: 2.7rem;
+		height: 15dvh;
 	}
 }
 
 .tech-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    height: 10dvh;
+    align-items: flex-start;
 
-	.tag {
-		background: rgba(212, 255, 0, 0.1);
-		color: #d4ff00;
-		padding: 0.2rem 0.8rem;
-		border-radius: 20px;
-		font-size: 0.75rem;
-		font-weight: 600;
-	}
+    .tag {
+        background: rgba(212, 255, 0, 0.1);
+        color: #d4ff00;
+        padding: 0.2rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 600;
+        height: auto;
+    }
 }
 
 .project-links {
@@ -159,7 +164,6 @@ $font-cyber: 'Orbitron', sans-serif;
 		border-radius: 8px;
 		text-decoration: none;
 		font-family: $font-cyber;
-		font-size: 0.8rem;
 		transition: all 0.2s;
 
 		&:hover {
@@ -173,8 +177,9 @@ $font-cyber: 'Orbitron', sans-serif;
 .modal-backdrop {
 	position: fixed;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.85);
-	backdrop-filter: blur(8px);
+	background: rgba(20, 19, 19, 0.3);
+    backdrop-filter: blur(15px);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 	z-index: 2000;
 	display: flex;
 	align-items: center;
@@ -185,7 +190,9 @@ $font-cyber: 'Orbitron', sans-serif;
 
 .modal-wrapper {
 	position: relative;
-	background: #0b0b0b;
+	background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 	width: 95vw; // Fast volle Breite auf Mobile
 	max-width: 1250px;
 	height: auto;

@@ -7,15 +7,19 @@
 			</div>
 
 			<h1 class="main-title">
-				<span *ngFor="let letter of frontLetters" class="letter">{{ letter }}</span>
+				<span *ngFor="let letter of frontLetters; let i = index" class="letter" [style.--i]="i">{{ letter === '
+					' ? '&nbsp;' : letter }}</span>
 			</h1>
 
 			<div class="subtitle-wrapper">
 				<h2 class="main-subtitle">
-					<span *ngFor="let letter of devLetters" class="letter">{{ letter }}</span>
+					<span *ngFor="let letter of devLetters; let i = index" class="letter" [style.--i]="i">{{ letter ===
+						' ' ? '&nbsp;' : letter }}</span>
 				</h2>
 				<div class="cta-container">
-					<a href="#contact" class="get-in-touch-btn">{{ 'button.getBtn' | translate }}</a>
+					<a href="#contact" class="get-in-touch-btn" [title]="'button.getBtnTitle' | translate">
+						{{ 'button.getBtn' | translate }}
+					</a>
 				</div>
 			</div>
 		</div>
@@ -28,7 +32,8 @@
 		</div>
 
 		<div class="social-sidebar">
-			<a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" class="social-icon">
+			<a *ngFor="let link of socialLinks" [href]="link.url" [title]="link.title" target="_blank"
+				class="social-icon">
 				<img [src]="link.icon" [alt]="link.alt">
 			</a>
 		</div>

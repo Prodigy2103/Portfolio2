@@ -4,7 +4,9 @@ $font-cyber-two: 'BriGro', sans-serif;
 
 .contact-section {
     min-height: 80vh;
-    background-color: #0e0d0d;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -48,7 +50,7 @@ $font-cyber-two: 'BriGro', sans-serif;
     .overline {
         text-transform: uppercase;
         letter-spacing: 0.2rem;
-        color: #888;
+        color: white;
         font-size: 1rem;
         margin-bottom: 1rem;
     }
@@ -73,6 +75,7 @@ $font-cyber-two: 'BriGro', sans-serif;
 .glass-effect {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 2rem;
     padding: 3rem;
@@ -102,20 +105,28 @@ $font-cyber-two: 'BriGro', sans-serif;
         background: rgba(255, 255, 255, 0.05);
         border: none;
         border-bottom: 2px solid rgba(212, 255, 0, 0.3);
-        padding: 0.8rem 0;
-        color: #fff;
+        padding: 0.8rem 1rem; // Links etwas Padding hinzugefügt (1rem)
+        color: #ffffff; // Erzwingt Weiß
         font-size: 1rem;
+        font-family: $font-cyber-two; // Nutzt deine Projekt-Schriftart
         transition: all 0.3s ease;
+
+        // FIX: Den Placeholder lesbar machen
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.975); // Ein helles Grau/Weiß
+            font-weight: 300;
+        }
 
         &:focus {
             outline: none;
             border-bottom-color: #d4ff00;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1); // Etwas heller bei Fokus
+            color: #ffffff;
         }
     }
 
     .error-border {
-        border-bottom-color: #ff4444 !important;
+        border-bottom-color: #ff4444;
     }
 }
 

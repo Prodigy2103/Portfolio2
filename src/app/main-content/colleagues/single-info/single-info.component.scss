@@ -3,17 +3,31 @@
 	height: 100%;
 }
 
+$orange-glass: rgba(255, 140, 0, 0.25); // Ein sattes Orange mit 25% Deckkraft
+$glass-border: rgba(255, 255, 255, 0.6); // Helle Kante für den Glanz-Effekt
+
 .card-body {
-	background-color: var(--card-bg);
-	border-radius: 2rem; // rounded-3xl
-	padding: 2rem; // p-8
-	min-height: 24rem; // min-h-96
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	cursor: pointer;
-	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); // shadow-xl
-	transition: transform 0.3s ease;
+	flex: 1 1 auto;
+	background-color: $orange-glass;
+	backdrop-filter: blur(50px);
+	-webkit-backdrop-filter: blur(50px);
+	border: 1px solid $glass-border;
+	border-radius: 16px;
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+	padding: 1.5rem;
+	color: #ffffff;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: inherit;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+		pointer-events: none;
+	}
 
 	&:hover {
 		// Dreht die Karte leicht nach links (wie im Tailwind-Code: -rotate-2)
@@ -24,7 +38,6 @@
 
 .quote {
 	color: #000000;
-	font-size: 0.875rem;
 	line-height: 1.625; // leading-relaxed
 	font-weight: 500;
 }
@@ -43,7 +56,6 @@
 
 	.position {
 		color: rgba(0, 0, 0, 0.7); // text-black/70
-		font-size: 0.875rem;
 		margin-bottom: 1rem;
 	}
 }

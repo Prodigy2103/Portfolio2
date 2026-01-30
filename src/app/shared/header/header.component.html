@@ -1,57 +1,80 @@
-<header [class.bg-transparent]="!isScrolled()" [class.bg-black]="isScrolled()" class="fixed top-0 left-0 right-0 z-50">
+<header [class.bg-transparent]="!isScrolled()" [class.bg-black]="isScrolled()">
     <div class="content-wrapper">
-        <div class="logo-container" (click)="handleNavigation('#home')">
-            <img src="assets/Extras/LOGONEU.png" alt="Logo" class="header-logo" />
-        </div>
-        <nav>
-            @for (item of navItems; track item.anchor) {
-            <a (click)="handleNavigation(item.anchor)" class="nav-link">
-                {{ item.translationKey | translate }}
+
+        <div class="logo-container" (click)="handleNavigation('#home')" role="banner" tabindex="0">
+            <a href="#home" (click)="handleNavigation('#home'); $event.preventDefault()" class="logo-container"
+                role="banner">
+                <div class="logo-wrapper">
+                    <img src="assets/Extras/LOGONEU.png" alt="Marcus Gühne - Home" class="header-logo">
+                </div>
             </a>
-            }
+        </div>
+
+        <nav class="desktop-nav" [attr.aria-label]="'header.navLabel' | translate">
+            <ul role="list" class="nav-list flex list-none m-0 p-0">
+                @for (item of navItems; track item.anchor) {
+                <li>
+                    <a (click)="handleNavigation(item.anchor); $event.preventDefault()" [href]="item.anchor"
+                        class="nav-link cursor-pointer" [title]="item.titleKey | translate">
+                        {{ item.translationKey | translate }}
+                    </a>
+                </li>
+                }
+            </ul>
+
+            <div class="languageBtn flex gap-2" role="group" [attr.aria-label]="'header.langSelect' | translate">
+                @for (lang of languages; track lang.code) {
+                <button (click)="useLanguage(lang.code)" [class.active]="currentLanguage() === lang.code"
+                    [attr.aria-pressed]="currentLanguage() === lang.code" class="cursor-pointer">
+                    {{ lang.code | uppercase }}
+                </button>
+                }
+            </div>
         </nav>
 
-        @if (!isMenuOpen()) {
-        <div class="languageBtn hidden md:flex">
-            @for (lang of languages; track lang.code) {
-            <button (click)="useLanguage(lang.code)" [class.active]="currentLanguage() === lang.code">
-                {{ lang.code | uppercase }}
-            </button>
-            }
-        </div>
-        }
-
-        <button class="burgerBtn" (click)="toggleMenu()" [class.open]="isMenuOpen()">
+        <button class="burgerBtn" [class.open]="isMenuOpen()" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()"
+            [attr.aria-label]="'header.menuButton' | translate" aria-controls="mobile-menu-overlay">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
     </div>
 
-    <div class="mobile-nav-overlay" [class.closed]="!isMenuOpen()">
-        <nav class="mobile-flex">
-            @for (item of navItems; track item.anchor) {
-            <a (click)="handleNavigation(item.anchor)" class="mobile-link">
-                {{ item.translationKey | translate }}
-            </a>
-            }
+    <nav id="mobile-menu-overlay" class="mobile-nav-overlay" [class.closed]="!isMenuOpen()"
+        [attr.aria-label]="'header.mobileMenuDescription' | translate" [attr.aria-hidden]="!isMenuOpen()">
 
-            <div class="languageBtn flex mt-8">
+        <div class="mobile-flex">
+            <ul role="list" class="mobile-nav-list list-none m-0 p-0 text-center">
+                @for (item of navItems; track item.anchor) {
+                <li class="mb-4">
+                    <a (click)="handleNavigation(item.anchor); $event.preventDefault()" [href]="item.anchor"
+                        class="mobile-link cursor-pointer" [tabindex]="isMenuOpen() ? 0 : -1"
+                        [attr.title]="item.titleKey | translate">
+                        {{ item.translationKey | translate }}
+                    </a>
+                </li>
+                }
+            </ul>
+
+            <div class="languageBtn flex mt-8" role="group" [attr.aria-label]="'header.langSelect' | translate">
                 @for (lang of languages; track lang.code) {
-                <button (click)="useLanguage(lang.code)" [class.active]="currentLanguage() === lang.code">
+                <button (click)="useLanguage(lang.code)" [class.active]="currentLanguage() === lang.code"
+                    [tabindex]="isMenuOpen() ? 0 : -1" class="cursor-pointer px-4 py-2">
                     {{ lang.code | uppercase }}
                 </button>
                 }
             </div>
 
-            <div class="mobile-socials flex mt-12 gap-8">
+            <div class="mobile-socials flex mt-12 gap-8" role="group" aria-label="Social Media">
                 @for (link of socialLinks; track link.url) {
-                <a [href]="link.url" [target]="link.external ? '_blank' : '_self'" class="social-icon">
+                <a [href]="link.url" [target]="link.external ? '_blank' : '_self'" class="social-icon"
+                    [tabindex]="isMenuOpen() ? 0 : -1" [attr.title]="link.alt">
                     <img [src]="link.icon" [alt]="link.alt"
                         class="w-8 h-8 invert opacity-70 hover:opacity-100 transition-opacity" />
                 </a>
                 }
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </header>

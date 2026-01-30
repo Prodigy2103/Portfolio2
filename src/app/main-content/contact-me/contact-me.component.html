@@ -1,84 +1,88 @@
 <section id="contact" class="contact-section">
-	<div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
 
-	<div class="max-container">
-		<div class="contact-grid">
+    <div class="max-container">
+        <div class="contact-grid">
 
-			<div class="contact-info">
-				<div class="header-group">
-					<p class="overline">{{ 'contact.description' | translate }}</p>
-					<h2 class="main-heading" [innerHTML]="'contact.privacyline' | translate"></h2>
-				</div>
+            <div class="contact-info">
+                <div class="header-group">
+                    <p class="overline">{{ 'contact.description' | translate }}</p>
+                    <h2 class="main-heading" [innerHTML]="'contact.privacyline' | translate"></h2>
+                </div>
 
-				<p class="description-text" [innerHTML]="'contact.descriptionTwo' | translate"></p>
+                <p class="description-text" [innerHTML]="'contact.descriptionTwo' | translate"></p><br>
+                <p class="description-text" [innerHTML]="'contact.ParagraphOne' | translate"></p>
+            </div>
 
-				<div class="status-badge">
-					<span class="pulse-dot"></span>
-					<p>Available for new projects</p>
-				</div>
-			</div>
+            <div class="form-container glass-effect">
+                <form (ngSubmit)="onSubmit()" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
+                    <div class="shine" [style.--mx.%]="current.mx" [style.--my.%]="current.my"></div>
 
-			<div class="form-container glass-effect">
-				<form (ngSubmit)="onSubmit()" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
-					<div class="shine" [style.--mx.%]="current.mx" [style.--my.%]="current.my"></div>
+                    <div class="form-group">
+                        <label for="name">{{ 'contactForm.name' | translate }}</label>
+                        <input type="text" id="name" name="name" [(ngModel)]="name" 
+                            (ngModelChange)="validateFields()"
+                            placeholder="{{ 'contactForm.nameHolder' | translate }}" 
+                            (blur)="markAsTouched('name')"
+                            autocomplete="name"
+                            [class.error-border]="nameTouched && !nameValid">
 
-					<div class="form-group">
-						<label for="name">{{ 'contactForm.name' | translate }}</label>
-						<input type="text" id="name" name="name" [(ngModel)]="name" (ngModelChange)="validateFields()"
-							placeholder="{{ 'contactForm.nameHolder' | translate }}" (blur)="markAsTouched('name')"
-							[class.error-border]="nameTouched && !nameValid">
+                        <div class="err-message" *ngIf="nameTouched && !nameValid">
+                            <span>{{ 'contactForm.errorName' | translate }}</span>
+                        </div>
+                    </div>
 
-						<div class="err-message" *ngIf="nameTouched && !nameValid">
-							<span>{{ 'contactForm.errorName' | translate }}</span>
-						</div>
-					</div>
+                    <div class="form-group">
+                        <label for="email">{{ 'contactForm.email' | translate }}</label>
+                        <input type="email" id="email" name="email" [(ngModel)]="email"
+                            (ngModelChange)="validateFields()" 
+                            placeholder="{{ 'contactForm.emailHolder' | translate }}"
+                            (blur)="markAsTouched('email')" 
+                            autocomplete="email"
+                            [class.error-border]="emailTouched && !emailValid">
 
-					<div class="form-group">
-						<label for="email">{{ 'contactForm.email' | translate }}</label>
-						<input type="email" id="email" name="email" [(ngModel)]="email"
-							(ngModelChange)="validateFields()" placeholder="{{ 'contactForm.emailHolder' | translate }}"
-							(blur)="markAsTouched('email')" [class.error-border]="emailTouched && !emailValid">
+                        <div class="err-message" *ngIf="emailTouched && !emailValid">
+                            <span>{{ 'contactForm.errorEmail' | translate }}</span>
+                        </div>
+                    </div>
 
-						<div class="err-message" *ngIf="emailTouched && !emailValid">
-							<span>{{ 'contactForm.errorEmail' | translate }}</span>
-						</div>
-					</div>
+                    <div class="form-group">
+                        <label for="message">{{ 'contactForm.message' | translate }}</label>
+                        <textarea id="message" name="message" [(ngModel)]="message" 
+                            (ngModelChange)="validateFields()"
+                            placeholder="{{ 'contactForm.messageHolder' | translate }}" 
+                            rows="4"
+                            (blur)="markAsTouched('message')"
+                            autocomplete="off"
+                            [class.error-border]="messageTouched && !messageValid"></textarea>
 
-					<div class="form-group">
-						<label for="message">{{ 'contactForm.message' | translate }}</label>
-						<textarea id="message" name="message" [(ngModel)]="message" (ngModelChange)="validateFields()"
-							placeholder="{{ 'contactForm.messageHolder' | translate }}" rows="4"
-							(blur)="markAsTouched('message')"
-							[class.error-border]="messageTouched && !messageValid"></textarea>
+                        <div class="err-message" *ngIf="messageTouched && !messageValid">
+                            <span>{{ 'contactForm.errorMessage' | translate }}</span>
+                        </div>
+                    </div>
 
-						<div class="err-message" *ngIf="messageTouched && !messageValid">
-							<span>{{ 'contactForm.errorMessage' | translate }}</span>
-						</div>
-					</div>
+                    <div class="privacy-group">
+                        <label class="custom-checkbox" for="privacy">
+                            <input type="checkbox" id="privacy" name="privacy" [(ngModel)]="isPrivacyAccepted"
+                                (change)="validateFields()">
+                            <span class="checkmark"></span>
+                            <span class="label-text">
+                                {{ 'contactForm.privacyPolice' | translate }}
+                                <a href="/privacy" target="_blank" class="accent-link">{{ 'footer.privacyHead' | translate }}</a>
+                                {{ 'contactForm.privacyLink' | translate }}
+                            </span>
+                        </label>
+                    </div>
 
-					<div class="privacy-group">
-						<label class="custom-checkbox">
-							<input type="checkbox" name="privacy" [(ngModel)]="isPrivacyAccepted"
-								(change)="validateFields()">
-							<span class="checkmark"></span>
-							<span class="label-text">
-								{{ 'contactForm.privacyPolice' | translate }}
-								<a href="/privacy" class="accent-link">{{ 'footer.privacyHead' | translate }}</a>
-								{{ 'contactForm.privacyLink' | translate }}
-							</span>
-						</label>
-					</div>
-
-					<div class="submit-area">
-						<button type="submit" [disabled]="!isFormValid()" class="submit-btn">
-							<span>{{ 'contactForm.sendButton' | translate }}</span>
-							<div class="btn-glow"></div>
-						</button>
-					</div>
-				</form>
-			</div>
-			<app-toast></app-toast>
-		</div>
-	</div>
-
+                    <div class="submit-area">
+                        <button type="submit" [disabled]="!isFormValid()" class="submit-btn">
+                            <span>{{ 'contactForm.sendButton' | translate }}</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <app-toast></app-toast>
+        </div>
+    </div>
 </section>

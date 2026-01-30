@@ -1,7 +1,7 @@
 .testimonials-section {
     padding: 8rem 1rem; // py-32 & px-4
-    background: #0d0d0d; // bg-gradient-dark Ersatz
-    min-height: 100vh;
+    background: #6b6a6a; // bg-gradient-dark Ersatz
+    min-height: 80dvh;
     display: flex;
     align-items: center;
 
@@ -17,8 +17,7 @@
     margin-bottom: 4rem; // mb-16
 
     .overline {
-        color: #9ca3af; // text-gray-400
-        font-size: 0.875rem; // text-sm
+        color: white; // text-gray-400
         text-transform: uppercase;
         letter-spacing: 0.05em; // tracking-wider
         margin-bottom: 1rem; // mb-4
@@ -54,17 +53,10 @@
 
 // Karten-Farben (Orange-Töne aus Bild 2)
 .testimonial-card {
-    &.color-1 {
-        --card-bg: #ff8c33;
-    }
-
-    &.color-2 {
-        --card-bg: #f97316;
-    }
-
-    &.color-3 {
-        --card-bg: #fb923c;
-    }
+    display: flex;
+    flex-direction: column;
+    height: 100%; // Streckt die Card auf die volle Höhe des Containers
+    background: transparent;
 }
 
 .mobile-note {

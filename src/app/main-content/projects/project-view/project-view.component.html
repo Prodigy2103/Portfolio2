@@ -33,6 +33,9 @@
 			</div>
 
 			<div class="action-bar">
+				<a (click)="prevProject()" class="next-link">
+					{{ 'button.prevBtn' | translate }}
+				</a>
 				<div class="links-left">
 					<a [href]="getGithubLink()" target="_blank" class="btn-outline">Github</a>
 					<a [href]="getLiveLink()" target="_blank" class="btn-outline">Live Test</a>

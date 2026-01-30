@@ -6,19 +6,18 @@
     display: flex;
     align-items: center;
     position: relative;
-    background-color: #0e0d0d;
-    overflow: hidden; // Verhindert Scrollbars durch schräge Elemente
+    overflow: hidden;
+    
 
     .main-content-wrapper {
-        width: 80%;
+        width: 100%;
         max-width: 1440px;
         margin: 0 auto;
         position: relative;
         display: flex;
         min-height: 100vh;
-        @include all.marpad($pad: 0 5rem);
+        padding: 0 5rem;
 
-        // --- DESKTOP ---
         @media (min-width: 1126px) {
             flex-direction: row;
             align-items: center;
@@ -26,15 +25,29 @@
             .text-content {
                 flex: 1;
                 z-index: 10;
-                margin-top: 5rem; // Schiebt Text etwas runter für Platz oben
+                margin-top: 5rem;
             }
 
             .portrait-container {
                 position: absolute;
-                top: 8%; // Geändert von negativ auf positiv, damit es sichtbar ist
+                top: 8%;
                 right: 5%;
                 z-index: 20;
-                display: block !important;
+                display: block;
+                animation: fadeInPortrait 1s ease-out 0.8s forwards;
+                opacity: 0;
+            }
+
+            @keyframes fadeInPortrait {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9) rotate(0deg);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: scale(1) rotate(4deg);
+                }
             }
 
             .subtitle-wrapper {
@@ -45,12 +58,11 @@
             }
         }
 
-        // --- MOBILE ---
         @media (max-width: 1125px) {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            @include all.marpad($pad: 6rem 1.5rem);
+            padding: 6rem 1.5rem;
             gap: 4rem;
 
             .text-content {
@@ -111,7 +123,6 @@
     }
 }
 
-// Typography & Effects
 .main-title {
     font-size: clamp(2rem, 10vw, 7rem);
     color: #fff;
@@ -127,13 +138,12 @@
 
 .letter {
     display: inline-block;
-    opacity: 0; // Startet unsichtbar
-    transform: translateY(20px); // Startet etwas tiefer
+    opacity: 0;
+    transform: translateY(20px);
     animation: fadeInLetter 0.5s ease forwards;
     color: #fff;
-    
-    // Stagger-Effekt: Jeder Buchstabe wartet etwas länger
-    // Wir nutzen eine Loop für bis zu 20 Buchstaben
+    font-size: clamp(2.7rem, 8vw, 8rem);
+
     @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
             animation-delay: #{$i * 0.05}s;
@@ -141,8 +151,8 @@
     }
 
     &:hover {
-        color: #d4ff00 !important;
-        transform: translateY(-8px) scale(1.1) !important;
+        color: #d4ff00;
+        transform: scale(1.5);
         transition: all 0.3s ease;
     }
 }
@@ -156,6 +166,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    z-index: 30;
 
     @media (max-width: 1125px) {
         display: none;
@@ -170,15 +181,21 @@
         align-items: center;
         justify-content: center;
 
+        opacity: 0;
+        animation: slideInSocial 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                animation-delay: calc(0.8s + (#{$i} * 0.15s));
+            }
+        }
+
         img {
-        width: 22px; 
-        height: 22px;
-        
-        // Dieser Filter macht ein schwarzes Icon komplett weiß:
-        filter: brightness(0) invert(1); 
-        
-        transition: filter 0.3s ease;
-    }
+            width: 22px;
+            height: 22px;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
 
         &:hover {
             background: #d4ff00;
@@ -192,15 +209,17 @@
 
 .get-in-touch-btn {
     display: inline-block;
-    margin-top: 2rem;
-    padding: 0.8rem 1.6rem;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 25px;
-    color: #fff;
+    padding: 12px 35px;
+    border: 2px solid #d4ff00;
+    color: #d4ff00;
     text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s;
+    margin-top: 2rem;
 
     &:hover {
-        border-color: #d4ff00;
-        color: #d4ff00;
+        background-color: #d4ff00;
+        color: #000;
     }
 }

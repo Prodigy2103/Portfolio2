@@ -45,9 +45,9 @@
 
     // MOBILE FIX: Auf kleinen Screens schalten wir die feste Breite aus
     @media (max-width: 480px) {
-        width: fit-content !important;
+        width: fit-content ;
         min-width: 15rem;
-        animation: none !important; // Verhindert das "Herauslaufen" durch Animation
+        animation: none ; // Verhindert das "Herauslaufen" durch Animation
     }
 }
 
@@ -123,4 +123,15 @@
 			transform: translateX(0) rotate(0deg);
 		}
 	}
+}
+
+@keyframes slideInSocial {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

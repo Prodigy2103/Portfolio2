@@ -1,40 +1,50 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 @forward '../../../../public/styles/component-styles.scss';
 
-
 .hello-btn {
+    // 1. Deine Mixins für die Effekte
     @include all.buttonEffect();
     @include all.textSlideHover();
 
+    // 2. Grundlegendes Layout (angepasst an dein neues Snippet)
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem 1.6rem;
+    
+    // Mix aus beiden: Padding vom neuen, Border-Radius vom alten (25px wirkt moderner)
+    padding: 12px 35px; 
     background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid #d4ff00; // Farbe vom neuen Snippet übernommen
     border-radius: 25px;
+    
+    // 3. Typografie & Farben
     color: #ffffff;
-
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: bold; // Entspricht font-weight: 700
+    text-decoration: none;
     cursor: pointer;
+    
+    // 4. Positionierung & Verhalten
     transition: all 0.3s ease;
     position: relative;
     overflow: visible; 
-    margin-bottom: 2rem;
+    margin-top: 2rem;    // Vom neuen Snippet
+    margin-bottom: 2rem; // Vom alten Snippet beibehalten
     
-    // Verhindert, dass Padding die Breite sprengt
     box-sizing: border-box; 
-    max-width: 90vw; // Sicherheit: Button niemals breiter als 90% des Screens
+    max-width: 90vw; 
 
+    // 5. Der korrigierte Hover-Zustand (Invertierung wie im neuen Snippet)
     &:hover {
+        background-color: #d4ff00; // Button wird komplett gelb
+        color: #000000;            // Schrift wird schwarz
         border-color: #d4ff00;
-        color: #d4ff00;
-        box-shadow: 0 0 15px rgba(212, 255, 0, 0.3);
+        box-shadow: 0 0 20px rgba(212, 255, 0, 0.5); // Etwas stärkerer Glow
     }
 
+    // 6. Mobile Zentrierung
     @media (max-width: 1125px) {
         margin-left: auto;
-        margin-right: auto; // Zentrierung auf Mobile
+        margin-right: auto;
     }
 }

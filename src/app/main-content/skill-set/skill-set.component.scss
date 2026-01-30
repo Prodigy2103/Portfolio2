@@ -4,7 +4,7 @@ $font-cyber: 'Orbitron', sans-serif;
 
 .skills-section {
     min-height: 100vh;
-    background: #0e0d0d;
+    background: transparent;
     padding: 6rem 2rem;
     display: flex;
     align-items: center;
@@ -23,9 +23,8 @@ $font-cyber: 'Orbitron', sans-serif;
 
     .overline {
         text-transform: uppercase;
-        color: #888;
+        color: white;
         letter-spacing: 0.15rem;
-        font-size: 0.85rem;
         margin-bottom: 0.5rem;
     }
 
@@ -61,7 +60,9 @@ $font-cyber: 'Orbitron', sans-serif;
     }
 
     .skill-card {
-        background: #161616; // Sehr dunkles Grau/Schwarz
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(15px);
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.03);
         border-radius: 8px;
         padding: 1.75rem 1rem;
@@ -103,7 +104,6 @@ $font-cyber: 'Orbitron', sans-serif;
         .skill-name {
             color: #fff;
             font-weight: 700;
-            font-size: 0.85rem;
             letter-spacing: 0.5px;
         }
     }
@@ -111,12 +111,12 @@ $font-cyber: 'Orbitron', sans-serif;
 
 // DESCRIPTION BOX
 .description-box {
-    background: #161616;
+    background: #4b4b4b;
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 2.5rem;
     border-radius: 12px;
     text-align: center;
-    color: #9ca3af; // Helles Grau
+    color: white; // Helles Grau
     margin-bottom: 4rem;
     line-height: 1.6;
     font-size: 0.95rem;
@@ -194,7 +194,7 @@ $font-cyber: 'Orbitron', sans-serif;
 
     .reveal-title {
         color: #fff;
-        font-family:$font-cyber;
+        font-family: $font-cyber;
         font-size: 0.8rem;
         margin-bottom: 1.5rem;
     }
@@ -216,7 +216,6 @@ $font-cyber: 'Orbitron', sans-serif;
 
             span {
                 color: #fff;
-                font-size: 0.7rem;
                 font-weight: bold;
             }
         }
