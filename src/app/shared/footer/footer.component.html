@@ -2,7 +2,8 @@
     <div class="footer-container">
         <div class="footer-logo-section">
             <div class="logo-wrapper">
-                <img src="assets/Extras/LOGONEU.png" alt="Marcus Gühne Logo">
+                <img [ngSrc]="'assets/ProjectsImg/LOGONEU2 1.webp'" alt="Footer Logo" width="65" height="38"
+                    class="footer-logo-img" priority>
             </div>
             <p class="copyright-text">&copy; Marcus Gühne 2026</p>
         </div>
@@ -19,19 +20,21 @@
             </div>
 
             <nav class="social-bottom" [attr.aria-label]="'footer.socialNavLabel' | translate">
-                <a href="https://github.com/Prodigy2103" target="_blank" class="social-item" title="Visit my GitHub profile">
-                    <img src="assets/Extras/Github.png" alt="GitHub Icon" class="social-icon">
+                <a href="https://github.com/Prodigy2103" target="_blank" class="social-item"
+                    title="Visit my GitHub profile">
+                    <img src="assets/Extras/Github.png" alt="GitHub Icon" class="social-icon" width="32" height="32">
                     <span>Github</span>
                 </a>
 
-                <a href="https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/" target="_blank"
-                    class="social-item" title="Visit my LinkedIn profile">
-                    <img src="assets/Extras/icons8-linkedin-52.png" alt="LinkedIn Icon" class="social-icon">
+                <a href="https://www.linkedin.com/in/robert-marcus-gühne-a53a63385/" target="_blank" class="social-item"
+                    title="Visit my LinkedIn profile">
+                    <img src="assets/Extras/icons8-linkedin-52.png" alt="LinkedIn Icon" class="social-icon" width="32"
+                        height="32">
                     <span>LinkedIn</span>
                 </a>
 
                 <a href="mailto:anfrage@marcus-guehne.com" class="social-item" title="Send me an email">
-                    <img src="assets/Extras/Contact.png" alt="Email Icon" class="social-icon">
+                    <img src="assets/Extras/Contact.png" alt="Email Icon" class="social-icon" width="32" height="32">
                     <span>Email</span>
                 </a>
             </nav>

@@ -21,12 +21,13 @@
 		"prevBtn": "Vorheriges"
 	},
 	"about": {
-		"title": "Wer ist Marcus?",
-		"privacyline": "Über mich",
-		"description": "Hallo ich bin Marcus, seit etwa zwei Jahren in der IT-Welt unterwegs. Aktuell mache ich eine Weiterbildung zum Frontend-Developer bei der Developer Akademie.<br><br> Meine Leidenschaft ist das Programmieren, weil ich gerne Ideen in funktionierende Anwendungen umsetze. Die ständige Weiterentwicklung der Technologie inspiriert mich, meine Fähigkeiten zu verbessern.",
-		"location": "Sitz in Oschatz/Sachsen",
-		"relocation": "Offen für neue Projekte",
-		"remote": "Offen für Remote-Arbeit"
+		"privacyline": "Lokal vernetzt – Digital ganz vorn",
+		"title": "Ihr Business verdient eine Website, die arbeitet – nicht nur existiert.",
+		"headlineHighlight": "Hol dir Web-Tech von morgen.",
+		"description": "Hi, ich bin <strong>Marcus Gühne</strong>. Ich baue keine Standard-Seiten – ich entwickle digitale Erlebnisse. Als Frontend Developer nutze ich <strong>Angular</strong>, um Webanwendungen zu kreieren, die flüssig laufen, top aussehen und deine Kunden begeistern.<br><br>Von Oschatz aus in die Cloud: Ich bringe dein Business online, egal ob du einen Traditionsbetrieb führst oder ein junges Start-up bist. Lass uns deine Vision ins Netz bringen – smart, schnell und ready for the future.",
+		"location": "Base: Oschatz, Sachsen",
+		"relocation": "Status: Ready für neue Projekte",
+		"remote": "Setup: Full Remote & Hybrid möglich"
 	},
 	"skills": {
 		"title": "Meine",

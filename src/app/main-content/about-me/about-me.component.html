@@ -2,23 +2,28 @@
 	<div class="container">
 
 		<div class="cards-side">
-			<div *ngFor="let info of aboutInfo" [class]="'info-card ' + info.colorClass">
-				<i [class]="info.icon"></i>
+			@for (info of aboutInfo; track $index) {
+			<div class="info-card" [ngClass]="info.colorClass" [class.show]="isVisible">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"
+					aria-hidden="true">
+					<path [attr.d]="info.svgPath"></path>
+				</svg>
 				<span>{{ info.translationKey | translate }}</span>
 			</div>
+			}
 		</div>
 
-		<div class="text-side">
-			<p class="subtitle">{{ 'about.title' | translate }}</p>
-			<h2 class="title">{{ 'about.privacyline' | translate }}</h2>
+		<div class="text-side" [class.show]="isVisible">
+			<p class="subtitle">{{ 'about.privacyline' | translate }}</p>
+			<h2 class="title">{{ 'about.title' | translate }}</h2>
 			<div class="divider"></div>
+			<p class="description" [innerHTML]="'about.description' | translate"></p>
 
-			<p class="description"  [innerHTML]="'about.description' | translate">
-			</p>
-
-			<a href="#contact" class="btn-talk">
-				{{ 'button.talkBtn' | translate }}
-			</a>
+			<div class="cta-container">
+				<a href="#contact" class="btn-talk">
+					{{ 'button.talkBtn' | translate }}
+				</a>
+			</div>
 		</div>
 
 	</div>

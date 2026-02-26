@@ -5,8 +5,8 @@
 		<h1>{{ 'legalNotice.mainHead' | translate}}</h1>
 
 		<div class="back-btn">
-			<a href="#contact">{{ 'button.backBtn' | translate}}</a>
-		</div>
+            <a [routerLink]="['/']" fragment="contact">{{ 'button.backBtn' | translate }}</a>
+        </div>
 
 		<h2>{{ 'legalNotice.headOne' | translate}}</h2>
 		<ol>

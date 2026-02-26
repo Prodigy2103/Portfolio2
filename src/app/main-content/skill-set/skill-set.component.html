@@ -1,4 +1,4 @@
-<section id="skills" class="skills-section">
+<section id="skill" class="skills-section">
     <div class="max-container">
 
         <div class="skill-header">
@@ -14,7 +14,7 @@
         <div class="skills-grid">
             <div class="skill-card" *ngFor="let skill of skillIcons">
                 <div class="icon-wrapper">
-                    <img [src]="skill.src" [alt]="skill.name" />
+                    <img [ngSrc]="skill.src" [alt]="skill.name" width="40" height="44" />
                 </div>
                 <span class="skill-name">{{ skill.name }}</span>
             </div>
@@ -27,7 +27,7 @@
                     <p class="reveal-title" [innerHTML]="'skills.interested' | translate"></p>
                     <div class="reveal-icons-row">
                         <div class="reveal-item" *ngFor="let peel of peelIcons">
-                            <img [src]="peel.src" [alt]="peel.name" />
+                            <img [src]="peel.src" [alt]="peel.name" [attr.width]="peel.w" [attr.height]="peel.h" />
                             <span>{{ peel.name }}</span>
                         </div>
                     </div>
@@ -39,7 +39,6 @@
                 </div>
 
             </div>
-            <!-- <p class="mobile-hint">Tap the sticker above to see more skills</p> -->
         </div>
 
     </div>

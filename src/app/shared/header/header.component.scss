@@ -11,20 +11,21 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 20; // Erhöht, um sicher über allem zu liegen
+    width: 100%;
+    z-index: 5000; // Extrem hoch, damit der Header über ALLEM bleibt
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: $font-cyber;
 
     &.bg-transparent {
         background-color: transparent;
-        padding: 1.5rem 0;
+        padding: 1.2rem 0;
     }
 
     &.bg-black {
-        background-color: rgba(14, 13, 13, 0.9); 
+        background-color: rgba(14, 13, 13, 0.95); // Etwas deckender
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        padding: 0.8rem 0;
+        padding: 0.6rem 0;
         border-bottom: 1px solid rgba(212, 255, 0, 0.2);
     }
 
@@ -32,46 +33,25 @@ header {
         width: 100%;
         max-width: 1440px;
         margin: 0 auto;
-        padding: 0 10%;
+        padding: 0 5%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: relative;
     }
 }
 
-.logo-container {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    z-index: 2100;
-    flex-shrink: 0;
-
-    .header-logo {
-        height: 50px; 
-        width: auto;
-        transition: all 0.3s ease;
-
-        &:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 8px rgba(212, 255, 0, 0.3));
-        }
-    }
-}
-
-// --- Desktop Navigation ---
 .desktop-nav {
-    display: none; // Mobil ausblenden
+    display: none; // Standardmäßig IMMER ausblenden (Mobile First)
 
     @media (min-width: 1126px) {
-        display: flex;
+        display: flex; // Nur ab 1126px einblenden
         align-items: center;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
     .nav-list {
         display: flex;
-        gap: 2.5rem;
+        gap: 2rem;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -79,35 +59,19 @@ header {
         .nav-link {
             color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.85rem;
             letter-spacing: 0.15em;
             text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background: $neon-yellow;
-                transition: width 0.3s ease;
-                box-shadow: 0 0 10px $neon-yellow;
-            }
+            transition: 0.3s;
+            white-space: nowrap; // Verhindert Zeilenumbruch im Header
 
             &:hover {
-                color: $white;
-                &::after { width: 100%; }
+                color: $neon-yellow;
             }
         }
     }
 }
 
-// --- Gemeinsame Button Styles für Sprache ---
 .languageBtn {
     display: flex;
     align-items: center;
@@ -124,6 +88,7 @@ header {
         padding: 4px 8px;
         transition: all 0.2s ease;
         border-radius: 4px;
+        text-transform: uppercase;
 
         &.active {
             color: $neon-yellow;
@@ -138,62 +103,37 @@ header {
     }
 }
 
-// --- Burger Button ---
-.burgerBtn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 2100;
-
-    @media (min-width: 1126px) { display: none; }
-
-    span {
-        display: block;
-        height: 2px;
-        width: 100%;
-        background-color: $white;
-        border-radius: 2px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    &.open span {
-        background-color: $neon-yellow;
-        box-shadow: 0 0 10px $neon-yellow;
-
-        &:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        &:nth-child(2) { opacity: 0; transform: translateX(-10px); }
-        &:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    }
-}
-
-// --- Mobile Navigation Overlay ---
+// --- Mobile Navigation Overlay (DER FIX) ---
 .mobile-nav-overlay {
     position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(15px);
-    z-index: 1500;
+    top: 0;
+    left: 0;
+    width: 100vw; // Volle Breite
+    height: 100vh; // Volle Höhe
+    background: #0a0a0a; // Volle Deckkraft statt rgba, falls der Background "verschwindet"
+    z-index: 4000; // Direkt unter dem Header-Inhalt (Logo/Burger), aber über den Sektionen
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+
+    // Verhindert, dass man hinter dem Menü scrollt
+    overflow: hidden;
 
     &.closed {
         transform: translateX(100%);
+    }
+
+    // Glassmorphism nur anwenden, wenn unterstützt
+    @supports (backdrop-filter: blur(20px)) {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
     }
 
     .mobile-flex {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
         width: 100%;
     }
 
@@ -201,7 +141,6 @@ header {
         list-style: none;
         padding: 0;
         margin: 0;
-        text-align: center;
 
         .mobile-link {
             display: block;
@@ -209,36 +148,107 @@ header {
             font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
+            padding: 1.5rem;
             text-decoration: none;
             font-weight: 800;
-            padding: 1rem;
-            transition: all 0.3s;
+            transition: 0.3s;
 
             &:hover {
                 color: $neon-yellow;
-                text-shadow: 0 0 15px $neon-yellow;
                 transform: scale(1.1);
             }
         }
     }
+}
 
-    .mobile-socials {
+// --- Logo & Burger (Müssen sichtbar bleiben) ---
+.logo-container,
+.burgerBtn {
+    position: relative;
+    z-index: 5100; // Über dem Overlay!
+}
+
+.logo-container .header-logo {
+    height: 50px;
+    width: auto !important;
+    aspect-ratio: 110 / 65;
+    object-fit: contain;
+
+    @media (max-width: 768px) {
+        height: 38px;
+    }
+}
+
+.burgerBtn {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    @media (min-width: 1126px) {
+        display: none;
+    }
+
+    span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: $white;
+        transition: 0.3s;
+    }
+
+    &.open span {
+        background-color: $neon-yellow;
+
+        &:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+            opacity: 0;
+        }
+
+        &:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+    }
+}
+
+// Social Icons Fix für Lighthouse
+// --- Mobile Social Icons Korrektur ---
+.mobile-socials {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    z-index: 4100; // Sicherstellen, dass sie klickbar sind
+
+    .social-icon {
         display: flex;
+        align-items: center;
         justify-content: center;
-        gap: 2rem;
+        text-decoration: none;
 
-        .social-icon {
-            text-decoration: none;
-            img {
-                filter: brightness(0) invert(1);
-                width: 35px;
-                transition: all 0.3s;
-            }
+        img {
+            width: 32px;
+            height: auto !important;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            // Start-Zustand: Weiß
+            filter: brightness(0) invert(1); 
+            opacity: 0.7;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-            &:hover img {
-                transform: translateY(-5px);
-                filter: drop-shadow(0 0 8px $neon-yellow) invert(78%) sepia(85%) saturate(457%) hue-rotate(18deg);
-            }
+        // Der Hover muss auf dem Link oder dem Icon liegen
+        &:hover img {
+            opacity: 1;
+            transform: translateY(-5px);
+            // Spezial-Filter für Neon-Gelb (#d4ff00) + Glow
+            filter: invert(85%) sepia(85%) saturate(1500%) hue-rotate(20deg) brightness(100%) contrast(110%) drop-shadow(0 0 8px $neon-yellow);
         }
     }
 }

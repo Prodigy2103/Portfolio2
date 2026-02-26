@@ -1,22 +1,63 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
+// --- Variablen ---
 $font-cyber: 'Orbitron', sans-serif;
+$neon-green: #10b981;
+$neon-yellow: #d4ff00;
+$bg-dark: #0d0d0d;
+$card-bg: rgba(255, 255, 255, 0.03);
 
 .skills-section {
+    position: relative;
     min-height: 100vh;
-    background: transparent;
+    background: $bg-dark;
     padding: 6rem 2rem;
     display: flex;
     align-items: center;
     overflow: hidden;
 
+    // Hintergrund-Glow (Animationen)
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        filter: blur(100px);
+        z-index: 0;
+        opacity: 0.12;
+        animation: rotateGlow 15s infinite linear;
+    }
+
+    &::before {
+        background: #007bff;
+        top: -10%;
+        right: -5%;
+    }
+
+    &::after {
+        background: #00ff88;
+        bottom: -10%;
+        left: -5%;
+        animation-direction: reverse;
+        animation-duration: 20s;
+    }
+
     .max-container {
         width: 100%;
-        max-width: 1100px; // Etwas schmaler für den kompakten Look
+        max-width: 1100px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
     }
 }
 
+@keyframes rotateGlow {
+    from { transform: rotate(0deg) translate(50px) rotate(0deg); }
+    to { transform: rotate(360deg) translate(50px) rotate(-360deg); }
+}
+
+// --- Skill Header ---
 .skill-header {
     text-align: center;
     margin-bottom: 3.5rem;
@@ -26,6 +67,7 @@ $font-cyber: 'Orbitron', sans-serif;
         color: white;
         letter-spacing: 0.15rem;
         margin-bottom: 0.5rem;
+        font-family: $font-cyber;
     }
 
     .main-heading {
@@ -34,36 +76,32 @@ $font-cyber: 'Orbitron', sans-serif;
         font-weight: 900;
         margin: 0.5rem 0;
         letter-spacing: 2px;
+        font-family: $font-cyber;
     }
 
     .accent-line {
         width: 45px;
         height: 3px;
-        background: #10b981; // Das Grün aus deinem Screenshot
+        background: $neon-green;
         margin: 0.5rem auto 0;
     }
 }
 
-// SKILLS GRID - Wie im Screenshot (Dunkle Boxen)
+// --- Skills Grid (Karten) ---
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // 4 Spalten auf Desktop
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
     margin-bottom: 4rem;
 
-    @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr;
-    }
+    @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 480px) { grid-template-columns: 1fr; }
 
     .skill-card {
-        background: rgba(255, 255, 255, 0.03);
+        background: $card-bg;
         backdrop-filter: blur(15px);
         box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 8px;
         padding: 1.75rem 1rem;
         display: flex;
@@ -77,27 +115,32 @@ $font-cyber: 'Orbitron', sans-serif;
 
         &:hover {
             background: #1f1f1f;
-            transform: scale(1.03);
+            transform: translateY(-5px) scale(1.03);
             border-color: rgba(255, 255, 255, 0.1);
             filter: grayscale(0);
 
-            .skill-icon {
+            .icon-wrapper img {
                 transform: translateY(-3px);
             }
         }
 
         .icon-wrapper {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
 
-            .skill-icon {
-                max-width: 100%;
+            img {
+                // FIX: Verhindert Quetschen & behebt Lighthouse Warnung
+                width: 100%;
+                height: auto !important; 
                 max-height: 100%;
                 object-fit: contain;
                 transition: transform 0.3s ease;
+                
+                // Wirkt CLS entgegen durch Seitenverhältnis-Vorgabe
+                aspect-ratio: 1 / 1; 
             }
         }
 
@@ -105,118 +148,106 @@ $font-cyber: 'Orbitron', sans-serif;
             color: #fff;
             font-weight: 700;
             letter-spacing: 0.5px;
+            font-family: $font-cyber;
         }
     }
 }
 
-// DESCRIPTION BOX
+// --- Description Box ---
 .description-box {
-    background: #4b4b4b;
+    background: #1a1a1a; // Dunkler als vorher für bessere Grid-Trennung
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 2.5rem;
     border-radius: 12px;
     text-align: center;
-    color: white; // Helles Grau
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 4rem;
     line-height: 1.6;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
-// PEEL SECTION - Exakt wie im Bild
+// --- Peel Section ---
 .peel-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 4rem;
-    padding-bottom: 5rem;
 }
 
 .sticker-container {
     position: relative;
-    width: 250px; // Feste Breite verhindert das Ausdehnen
-    height: 250px; // Feste Höhe macht es quadratisch
-    cursor: pointer;
+    width: 250px;
+    height: 250px;
     perspective: 1000px;
-}
+    cursor: pointer;
 
-.sticker-cover,
-.sticker-reveal {
-    position: absolute;
-    inset: 0; // Füllt exakt die 250x250px aus
-    border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-// DER GELBE STICKER
-.sticker-cover {
-    background-color: #d4ff00;
-    z-index: 2;
-    transform: rotate(12deg); // Die Drehung aus Screenshot 1
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
-
-    .peel-label {
-        color: #000;
-        font-family: $font-cyber;
-        font-weight: 900;
-        font-size: 1.1rem;
-        margin: 0;
-    }
-
-    .finger-emoji {
-        font-size: 2rem;
-        margin-top: 0.5rem;
-    }
-
-    &.peeled {
-        // Schiebt den Sticker elegant aus dem Bild statt ihn zu strecken
-        transform: rotate(45deg) translate(300%, -150%);
-        opacity: 0;
-        pointer-events: none;
-    }
-}
-
-// DER INHALT DARUNTER
-.sticker-reveal {
-    background-color: #1a1a1a; // Dunkel wie die Skill-Cards
-    border: 1px solid #d4ff00;
-    z-index: 1;
-    opacity: 0;
-    transform: rotate(12deg) scale(0.9);
-
-    &.active {
-        opacity: 1;
-        transform: rotate(12deg) scale(1);
-    }
-
-    .reveal-title {
-        color: #fff;
-        font-family: $font-cyber;
-        font-size: 0.8rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .reveal-icons-row {
+    .sticker-cover,
+    .sticker-reveal {
+        position: absolute;
+        inset: 0;
+        border-radius: 1.5rem;
         display: flex;
-        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .reveal-item {
+    .sticker-cover {
+        background-color: $neon-yellow;
+        z-index: 2;
+        transform: rotate(12deg);
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+
+        .peel-label {
+            color: #000;
+            font-family: $font-cyber;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        &.peeled {
+            transform: rotate(45deg) translate(300%, -150%);
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .sticker-reveal {
+        background-color: #1a1a1a;
+        border: 1px solid $neon-yellow;
+        z-index: 1;
+        opacity: 0;
+        transform: rotate(12deg) scale(0.9);
+
+        &.active {
+            opacity: 1;
+            transform: rotate(12deg) scale(1);
+        }
+
+        .reveal-icons-row {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 1.5rem;
 
-            img {
-                width: 40px;
-                height: 40px;
-                margin-bottom: 0.3rem;
-            }
+            .reveal-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-            span {
-                color: #fff;
-                font-weight: bold;
+                img {
+                    // FIX: Auch hier Aspect Ratio Fix für React/Vue Icons
+                    width: 45px;
+                    height: auto !important;
+                    aspect-ratio: 1 / 1;
+                    object-fit: contain;
+                    margin-bottom: 0.5rem;
+                }
+
+                span {
+                    color: #fff;
+                    font-weight: bold;
+                    font-size: 0.8rem;
+                }
             }
         }
     }

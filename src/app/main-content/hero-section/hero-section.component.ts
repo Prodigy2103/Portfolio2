@@ -6,7 +6,7 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { HelloButtonComponent } from "../../shared/hello-button/hello-button.component";
 
@@ -16,13 +16,15 @@ interface SocialLink {
   alt: string;
   title: string;
   external: boolean;
+  w: number; // Hinzufügen
+  h: number;
 }
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TranslateModule, HelloButtonComponent],
+  imports: [CommonModule, TranslateModule, HelloButtonComponent, NgOptimizedImage],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss'
 })
@@ -33,28 +35,31 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
   // Social Media Links
   public socialLinks: SocialLink[] = [
-    {
-      url: 'https://www.linkedin.com/in/...',
-      icon: 'assets/Extras/icons8-linkedin-52.png',
-      alt: 'LinkedIn Profil',
-      title: 'Besuchen Sie mein Profil auf LinkedIn', // Das wird beim Hovern angezeigt
-      external: true
-    },
-    {
-      url: 'https://github.com/Prodigy2103',
-      icon: 'assets/Extras/Github.png',
-      alt: 'Github Profil',
-      title: 'Meinen Code auf GitHub ansehen',
-      external: true
-    },
-    {
-      url: 'mailto:marcusghne@gmx.de',
-      icon: 'assets/Extras/Contact.png',
-      alt: 'E-Mail Versand',
-      title: 'Eine E-Mail an Marcus Gühne schreiben',
-      external: false
-    }
-  ];
+  {
+    url: 'https://www.linkedin.com/...',
+    icon: 'assets/Extras/icons8-linkedin-52.png',
+    alt: 'LinkedIn Profil',
+    title: 'Besuchen Sie mein Profil auf LinkedIn',
+    external: true,
+    w: 32, h: 32
+  },
+  {
+    url: 'https://github.com/Prodigy2103',
+    icon: 'assets/Extras/Github.png',
+    alt: 'Github Profil',
+    title: 'Meinen Code auf GitHub ansehen',
+    external: true,
+    w: 32, h: 32
+  },
+  {
+    url: 'mailto:marcusghne@gmx.de',
+    icon: 'assets/Extras/Contact.png',
+    alt: 'E-Mail Versand',
+    title: 'Eine E-Mail an Marcus Gühne schreiben',
+    external: false,
+    w: 32, h: 32
+  }
+];
 
   // Tilt-Animation State
   private readonly MAX_ROTATE = 15;

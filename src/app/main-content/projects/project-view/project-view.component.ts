@@ -12,28 +12,29 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ProjectViewComponent {
   @Output() closeEvent = new EventEmitter<void | string>();
   @Input() currentProject: string = '';
-  projects = ['join', 'pepe', 'pokeDex'];
+  projects = ['join', 'pepe', 'pokeDex', 'wasiri'];
 
   skillIcons: any = {
     join: [{ name: 'Angular', src: 'assets/Extras/icons/Angular.png' }, { name: 'Firebase', src: 'assets/Extras/icons/Firebase.png' }, { name: 'TypeScript', src: 'assets/Extras/icons/TS.png' }],
     pepe: [{ name: 'JavaScript', src: 'assets/Extras/icons/JS.png' }, { name: 'HTML', src: 'assets/Extras/icons/HTML.png' }, { name: 'CSS', src: 'assets/Extras/icons/CSS.png' }],
-    pokeDex: [{ name: 'JavaScript', src: 'assets/Extras/icons/JS.png' }, { name: 'Rest-API', src: 'assets/Extras/icons/HTML.png' }]
+    pokeDex: [{ name: 'JavaScript', src: 'assets/Extras/icons/JS.png' }, { name: 'Rest-API', src: 'assets/Extras/icons/HTML.png' }],
+    wasiri: [{ name: 'Typescript', src: 'assets/Extras/icons/TS.png' }, { name: 'Angular', src: 'assets/Extras/icons/Angular.png' }, { name: 'Firebase', src: 'assets/Extras/icons/Firebase.png' }]
   };
 
   get currentSkills() { return this.skillIcons[this.currentProject] || []; }
   
   get currentImg() {
-    const imgs: any = { join: 'assets/ProjectsImg/join.png', pepe: 'assets/ProjectsImg/Pepe30.png', pokeDex: 'assets/ProjectsImg/Component 30.png' };
+    const imgs: any = { join: 'assets/ProjectsImg/join.webp', pepe: 'assets/ProjectsImg/Pepe30.webp', pokeDex: 'assets/ProjectsImg/Component 30.webp', wasiri: 'assets/ProjectsImg/WasiriProject2.webp' };
     return imgs[this.currentProject];
   }
 
   getGithubLink() {
-    const links: any = { 'join': 'https://github.com/Prodigy2103/join.git', 'pepe': 'https://github.com/Prodigy2103/El-Pollo-Loco.git', 'pokeDex': 'https://github.com/Prodigy2103/PokedexNeu.git' };
+    const links: any = { 'join': 'https://github.com/Prodigy2103/join.git', 'pepe': 'https://github.com/Prodigy2103/El-Pollo-Loco.git', 'pokeDex': 'https://github.com/Prodigy2103/PokedexNeu.git', 'wasiri': 'https://github.com/Prodigy2103/RiesaRiesenImbiss.git' };
     return links[this.currentProject];
   }
 
   getLiveLink() {
-    const links: any = { 'join': 'http://join.marcus-guehne.com/index.html', 'pepe': 'http://elpolloloco.marcus-guehne.com/index.html', 'pokeDex': 'https://pokedex.marcus-guehne.com/index.html' };
+    const links: any = { 'join': 'http://join.marcus-guehne.com/index.html', 'pepe': 'http://elpolloloco.marcus-guehne.com/index.html', 'pokeDex': 'https://pokedex.marcus-guehne.com/index.html', 'wasiri': 'http://wasiri.marcus-guehne.com/index.html' };
     return links[this.currentProject];
   }
 

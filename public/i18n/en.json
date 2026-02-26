@@ -23,12 +23,13 @@
 		"prevBtn": "Previous"
 	},
 	"about": {
-		"title": "Who is Marcus?",
-		"privacyline": "About me",
-		"description": "Hi, I'm Marcus. I'm currently completing advanced training to become a front-end developer at the Developer Academy.<br><br> I'm passionate about programming because I enjoy turning ideas into functional applications. The constant evolution of technology inspires me to improve my skills.",
-		"location": "Based in Oschatz/Saxony",
-		"relocation": "Open to new projects",
-		"remote": "Open to work remote"
+		"privacyline": "Locally connected – Digitally ahead",
+		"title": "Your business deserves a website that works – not just exists.",
+		"headlineHighlight": "Get the web-tech of tomorrow.",
+		"description": "Hi, I'm <strong>Marcus Gühne</strong>. I don't just build standard pages – I develop digital experiences. As a Frontend Developer, I use <strong>Angular</strong> to create web applications that run smoothly, look stunning, and keep your users engaged.<br><br>From Oschatz to the cloud: I'll bring your business online, whether you run a traditional company or a fresh start-up. Let's bring your vision to the web – smart, fast, and ready for the future.",
+		"location": "Base: Oschatz, Germany",
+		"relocation": "Status: Open for new projects",
+		"remote": "Setup: Full Remote & Hybrid ready"
 	},
 	"skills": {
 		"title": "My Stack",
@@ -67,6 +68,15 @@
 			"titleDetails": "Technical Stack",
 			"titleDuration": "Duration: ",
 			"descriptionOne": "This Pokédex app serves as a comprehensive digital encyclopedia for Pokémon trainers. It fetches live data from the PokeAPI to provide an extensive library of characters, detailed combat statistics, base experience values, and unique special attacks.",
+			"descriptionTwo": "The primary objective of this solo project was the expert implementation of asynchronous communication (REST API integration) using the Fetch API. The UI/UX design emphasizes a clean, intuitive interface combined with optimized data loading strategies to ensure a fast and engaging user experience.",
+			"descriptionDuration": "4 Weeks"
+		},
+		"wasiri": {
+			"id": "Riesenimbiss Riesa",
+			"titleDesc": "App Scope",
+			"titleDetails": "Technical Stack",
+			"titleDuration": "Duration: ",
+			"descriptionOne": "This Riesenimbiss Riesa app serves as a comprehensive digital showcase for the restaurant 'Riesenimbiss Riesa'. It displays the restaurant's menu, contact information, and opening hours.",
 			"descriptionTwo": "The primary objective of this solo project was the expert implementation of asynchronous communication (REST API integration) using the Fetch API. The UI/UX design emphasizes a clean, intuitive interface combined with optimized data loading strategies to ensure a fast and engaging user experience.",
 			"descriptionDuration": "4 Weeks"
 		}

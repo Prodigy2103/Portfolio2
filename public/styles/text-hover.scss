@@ -1,25 +1,27 @@
 @mixin textSlideHover {
-	.start-text,
-	.dev-text {
-		position: absolute;
-		transition: opacity 0.4s ease;
-		white-space: nowrap;
-		font-size: 1rem;
-	}
-
-	.dev-text {
-		opacity: 0;
-	}
-
-	&:hover {
-		text-transform: uppercase;
-		background-position: right bottom;
-
-    .start-text {
-		opacity: 0;
-    }
+    .start-text,
     .dev-text {
-		opacity: 1;
-		}
-	}
+        position: absolute;
+        transition: opacity 0.4s ease;
+        white-space: nowrap;
+        font-size: 1rem;
+        will-change: opacity; // Optimiert für GPU
+    }
+
+    .dev-text {
+        opacity: 0;
+    }
+
+    &:hover {
+        text-transform: uppercase;
+        background-position: right bottom;
+
+        .start-text {
+            opacity: 0;
+        }
+        .dev-text {
+            opacity: 1;
+			color: black;
+        }
+    }
 }

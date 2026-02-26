@@ -6,16 +6,21 @@
 				<app-hello-button></app-hello-button>
 			</div>
 
-			<h1 class="main-title">
-				<span *ngFor="let letter of frontLetters; let i = index" class="letter" [style.--i]="i">{{ letter === '
-					' ? '&nbsp;' : letter }}</span>
+			<h1 class="main-title" [attr.aria-label]="'Marcus Gühne'">
+				<span aria-hidden="true" *ngFor="let letter of frontLetters; let i = index" class="letter"
+					[style.--i]="i">
+					{{ letter === ' ' ? '\u00A0' : letter }}
+				</span>
 			</h1>
 
 			<div class="subtitle-wrapper">
-				<h2 class="main-subtitle">
-					<span *ngFor="let letter of devLetters; let i = index" class="letter" [style.--i]="i">{{ letter ===
-						' ' ? '&nbsp;' : letter }}</span>
+				<h2 class="main-subtitle" [attr.aria-label]="'Frontend Developer'">
+					<span aria-hidden="true" *ngFor="let letter of devLetters; let i = index" class="letter"
+						[style.--i]="i">
+						{{ letter === ' ' ? '\u00A0' : letter }}
+					</span>
 				</h2>
+
 				<div class="cta-container">
 					<a href="#contact" class="get-in-touch-btn" [title]="'button.getBtnTitle' | translate">
 						{{ 'button.getBtn' | translate }}
@@ -27,14 +32,17 @@
 		<div class="portrait-container">
 			<div class="polaroid-frame" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
 				[style.transform]="'perspective(1000px) rotateX(' + current.rx + 'deg) rotateY(' + current.ry + 'deg)'">
-				<img src="assets/ProjectsImg/portImg.jpg" alt="Marcus">
+
+				<img ngSrc="assets/ProjectsImg/portImg.webp" alt="Porträtfoto von Marcus Gühne" width="276" height="367"
+					priority class="portrait-img">
+
 			</div>
 		</div>
 
 		<div class="social-sidebar">
-			<a *ngFor="let link of socialLinks" [href]="link.url" [title]="link.title" target="_blank"
+			<a *ngFor="let link of socialLinks" [href]="link.url" [attr.aria-label]="link.alt" target="_blank"
 				class="social-icon">
-				<img [src]="link.icon" [alt]="link.alt">
+				<img [src]="link.icon" alt="" role="presentation" [attr.width]="link.w" [attr.height]="link.h">
 			</a>
 		</div>
 

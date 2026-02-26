@@ -18,7 +18,7 @@
     border-radius: 25px;
     
     // 3. Typografie & Farben
-    color: #ffffff;
+    color: black;
     font-size: 0.85rem;
     font-weight: bold; // Entspricht font-weight: 700
     text-decoration: none;
@@ -37,7 +37,7 @@
     // 5. Der korrigierte Hover-Zustand (Invertierung wie im neuen Snippet)
     &:hover {
         background-color: #d4ff00; // Button wird komplett gelb
-        color: #000000;            // Schrift wird schwarz
+        color: black !important;            // Schrift wird schwarz
         border-color: #d4ff00;
         box-shadow: 0 0 20px rgba(212, 255, 0, 0.5); // Etwas stärkerer Glow
     }
