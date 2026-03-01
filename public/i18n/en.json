@@ -23,6 +23,7 @@
 		"prevBtn": "Previous"
 	},
 	"about": {
+		"headline": "Hi, I'm Marcus – your Frontend Developer for the digital future.",
 		"privacyline": "Locally connected – Digitally ahead",
 		"title": "Your business deserves a website that works – not just exists.",
 		"headlineHighlight": "Get the web-tech of tomorrow.",
@@ -72,13 +73,13 @@
 			"descriptionDuration": "4 Weeks"
 		},
 		"wasiri": {
-			"id": "Riesenimbiss Riesa",
+			"id": "In work: Riesenimbiss Riesa",
 			"titleDesc": "App Scope",
 			"titleDetails": "Technical Stack",
 			"titleDuration": "Duration: ",
 			"descriptionOne": "This Riesenimbiss Riesa app serves as a comprehensive digital showcase for the restaurant 'Riesenimbiss Riesa'. It displays the restaurant's menu, contact information, and opening hours.",
 			"descriptionTwo": "The primary objective of this solo project was the expert implementation of asynchronous communication (REST API integration) using the Fetch API. The UI/UX design emphasizes a clean, intuitive interface combined with optimized data loading strategies to ensure a fast and engaging user experience.",
-			"descriptionDuration": "4 Weeks"
+			"descriptionDuration": "8 Weeks"
 		}
 	},
 	"collage": {

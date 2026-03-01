@@ -1,6 +1,7 @@
 <section id="about" class="about-section">
+	<h1>{{ 'about.headline' | translate }}</h1>
 	<div class="container">
-
+		
 		<div class="cards-side">
 			@for (info of aboutInfo; track $index) {
 			<div class="info-card" [ngClass]="info.colorClass" [class.show]="isVisible">

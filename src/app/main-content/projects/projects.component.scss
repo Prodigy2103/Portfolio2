@@ -1,15 +1,41 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
-$font-cyber: 'Orbitron', sans-serif;
-$font-cyber-bold: 'OrbitronBold', sans-serif;
-$font-cyber-semi: 'OrbitronSemi', sans-serif;
+$font-cyber: "Orbitron", sans-serif;
+$font-cyber-bold: "OrbitronBold", sans-serif;
+$font-cyber-semi: "OrbitronSemi", sans-serif;
+$font-cyber-two: "BriGro", sans-serif;
 
 .projects-section {
-	backdrop-filter: blur(15px);
-	box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(0.9rem);
+	box-shadow: inset 0 0 1.9rem rgba(0, 0, 0, 0.5);
 	padding: 8rem 2rem;
 	min-height: 100vh;
 	color: #fff;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		@include all.size($w: 28.125rem, $h: 28.125rem);
+		border-radius: 50%;
+		filter: blur(6.25rem);
+		z-index: 0;
+		opacity: 0.12;
+		animation: rotateGlow 15s infinite linear;
+	}
+
+	&::before {
+		background: #007bff;
+		@include all.absolute($top: 10%, $right: 5%);
+	}
+
+	&::after {
+		z-index: -1;
+		background: #00ff88;
+		@include all.absolute($bottom: 10%, $left: 5%);
+		animation-direction: reverse;
+		animation-duration: 20s;
+	}
 
 	.max-container {
 		max-width: 1200px;
@@ -31,7 +57,6 @@ $font-cyber-semi: 'OrbitronSemi', sans-serif;
 	}
 }
 
-// 2. HEADER BOX (Info oben links)
 .header-card {
 	grid-column: 1 / -1;
 	margin-bottom: 2rem;
@@ -54,46 +79,35 @@ $font-cyber-semi: 'OrbitronSemi', sans-serif;
 	}
 }
 
-// 3. PROJEKT-KARTEN (GRID-ANSICHT)
 .project-card {
 	display: flex;
 	flex-direction: column;
 
 	.project-image-box {
 		position: relative;
+		@include all.fl($alit: center, $jc: center);
 		aspect-ratio: 16 / 9;
 		background: #1e293b;
 		border-radius: 12px;
 		overflow: hidden;
 		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 
 		img {
-			width: 100%;
-			height: 100%;
+			@include all.size($w: 100%, $h: 100%);
 			object-fit: cover;
-			transition: transform 0.3s ease, opacity 0.3s ease;
+			transition:
+				transform 0.3s ease,
+				opacity 0.3s ease;
 		}
 
 		.hover-info {
 			position: absolute;
+			@include all.fl($alit: center, $jc: center);
 			inset: 0;
 			background: rgba(0, 0, 0, 0.4);
-			display: flex;
-			align-items: center;
-			justify-content: center;
 			opacity: 0;
 			transition: opacity 0.3s ease;
 			z-index: 3;
-
-			span {
-				border: 1px solid #fff;
-				padding: 0.5rem 1rem;
-				border-radius: 8px;
-				font-size: 0.8rem;
-			}
 		}
 
 		&:hover {
@@ -132,12 +146,10 @@ $font-cyber-semi: 'OrbitronSemi', sans-serif;
 }
 
 .tech-tags {
-	display: flex;
+	@include all.fl($alit: flex-start, $gap: 0.5rem);
 	flex-wrap: wrap;
-	gap: 0.5rem;
 	margin-bottom: 1.5rem;
 	height: 10dvh;
-	align-items: flex-start;
 
 	.tag {
 		background: rgba(212, 255, 0, 0.1);
@@ -146,6 +158,7 @@ $font-cyber-semi: 'OrbitronSemi', sans-serif;
 		border-radius: 20px;
 		font-weight: 600;
 		height: auto;
+		font-family: $font-cyber-two;
 	}
 }
 
@@ -172,35 +185,29 @@ $font-cyber-semi: 'OrbitronSemi', sans-serif;
 	}
 }
 
-// 4. MODAL-OVERLAY STYLES
 .modal-backdrop {
 	position: fixed;
+	@include all.fl($alit: center, $jc: center);
 	inset: 0;
 	background: rgba(20, 19, 19, 0.3);
 	backdrop-filter: blur(15px);
 	box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 	z-index: 2;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 20px;
+	padding: 1.25rem;
 	animation: fadeIn 0.3s ease;
 }
 
 .modal-wrapper {
+	@include all.size($w: 90dvw);
+	max-height: 85dvh;
+	@include all.marpad($pad: 1rem, $mar: 5.5rem 0 0 0);
 	position: relative;
 	background: rgba(255, 255, 255, 0.03);
 	backdrop-filter: blur(15px);
 	box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-	width: 95vw; // Fast volle Breite auf Mobile
-	max-width: 1250px;
-	height: auto;
-	max-height: 80vh; // Fast volle Höhe
 	border-radius: 20px;
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	overflow-y: none;
-	padding: 1rem;
-	margin-top: 2.5rem;
 
 	@include all.notebook {
 		overflow-y: auto;
@@ -216,46 +223,5 @@ $font-cyber-semi: 'OrbitronSemi', sans-serif;
 			width: 90vw;
 			border-radius: 30px;
 		}
-	}
-}
-
-.modal-close-x {
-	position: absolute;
-	top: 25px;
-	right: 25px;
-	background: none;
-	border: none;
-	color: #fff;
-	font-size: 1.8rem;
-	cursor: pointer;
-	z-index: 100;
-	transition: transform 0.2s ease;
-
-	&:hover {
-		transform: scale(1.1);
-		color: #d4ff00;
-	}
-}
-
-// 5. ANIMATIONEN
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes slideIn {
-	from {
-		transform: translateY(30px);
-		opacity: 0;
-	}
-
-	to {
-		transform: translateY(0);
-		opacity: 1;
 	}
 }

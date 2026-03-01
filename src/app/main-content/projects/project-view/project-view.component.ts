@@ -34,7 +34,7 @@ export class ProjectViewComponent {
   }
 
   getLiveLink() {
-    const links: any = { 'join': 'http://join.marcus-guehne.com/index.html', 'pepe': 'http://elpolloloco.marcus-guehne.com/index.html', 'pokeDex': 'https://pokedex.marcus-guehne.com/index.html', 'wasiri': 'http://wasiri.marcus-guehne.com/index.html' };
+    const links: any = { 'join': 'http://join.marcus-guehne.com/index.html', 'pepe': 'http://elpolloloco.marcus-guehne.com/index.html', 'pokeDex': 'https://pokedex.marcus-guehne.com/index.html', 'wasiri': 'https://riesenimbiss.marcus-guehne.com/' };
     return links[this.currentProject];
   }
 

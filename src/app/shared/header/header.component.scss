@@ -12,7 +12,8 @@ header {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 5000; // Extrem hoch, damit der Header über ALLEM bleibt
+    height: 10dvh;
+    z-index: 50; // Extrem hoch, damit der Header über ALLEM bleibt
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: $font-cyber;
 
@@ -63,7 +64,7 @@ header {
             letter-spacing: 0.15em;
             text-decoration: none;
             transition: 0.3s;
-            white-space: nowrap; // Verhindert Zeilenumbruch im Header
+            white-space: nowrap;
 
             &:hover {
                 color: $neon-yellow;
@@ -103,28 +104,25 @@ header {
     }
 }
 
-// --- Mobile Navigation Overlay (DER FIX) ---
 .mobile-nav-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; // Volle Breite
-    height: 100vh; // Volle Höhe
-    background: #0a0a0a; // Volle Deckkraft statt rgba, falls der Background "verschwindet"
-    z-index: 4000; // Direkt unter dem Header-Inhalt (Logo/Burger), aber über den Sektionen
+    width: 100vw;
+    height: 100vh;
+    background: #0a0a0a;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 
-    // Verhindert, dass man hinter dem Menü scrollt
     overflow: hidden;
 
     &.closed {
         transform: translateX(100%);
     }
-
-    // Glassmorphism nur anwenden, wenn unterstützt
+    
     @supports (backdrop-filter: blur(20px)) {
         background: rgba(10, 10, 10, 0.95);
         backdrop-filter: blur(20px);
@@ -161,22 +159,17 @@ header {
     }
 }
 
-// --- Logo & Burger (Müssen sichtbar bleiben) ---
 .logo-container,
 .burgerBtn {
     position: relative;
-    z-index: 5100; // Über dem Overlay!
+    z-index: 5100;
 }
 
 .logo-container .header-logo {
-    height: 50px;
-    width: auto !important;
+    height: 100%;
+    width: 50%;
     aspect-ratio: 110 / 65;
     object-fit: contain;
-
-    @media (max-width: 768px) {
-        height: 38px;
-    }
 }
 
 .burgerBtn {
@@ -218,13 +211,11 @@ header {
     }
 }
 
-// Social Icons Fix für Lighthouse
-// --- Mobile Social Icons Korrektur ---
 .mobile-socials {
     display: flex;
     gap: 2rem;
     margin-top: 3rem;
-    z-index: 4100; // Sicherstellen, dass sie klickbar sind
+    z-index: 100;
 
     .social-icon {
         display: flex;

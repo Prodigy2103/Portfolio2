@@ -3,31 +3,39 @@
 .hero-section {
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    align-items: center;
+    @include all.fl($alit: center);
     position: relative;
     overflow: hidden;
 
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        @include all.size($w: 25rem, $h: 25rem);
+        border-radius: 50%;
+        filter: blur(5rem);
+        z-index: 0;
+        opacity: 0.15;
+        animation: floatGlow 10s infinite alternate ease-in-out;
+    }
 
-        to {
-            opacity: 1;
-            transform: translateY(20px);
-        }
+    &::before {
+        background: #00d4ff;
+        @include all.absolute($top: 10%, $left: 10%);
+    }
+
+    &::after {
+        background: #ff00de;
+        @include all.absolute($bottom: 10%, $right: 10%);
     }
 
     .main-content-wrapper {
         width: 100%;
         max-width: 1440px;
-        margin: 0 auto;
+        @include all.marpad($pad: 0 5rem, $mar: 0 auto);
         position: relative;
         display: flex;
         min-height: 100vh;
-        padding: 0 5rem;
 
         @media (min-width: 1126px) {
             flex-direction: row;
@@ -40,9 +48,7 @@
             }
 
             .portrait-container {
-                position: absolute;
-                top: 8%;
-                right: 5%;
+                @include all.absolute($top: 8%, $right: 5%);
                 z-index: 20;
                 display: block;
                 opacity: 0;
@@ -50,71 +56,50 @@
                 animation: fadeInPortrait 1s ease-out 0.8s forwards;
             }
 
-            @keyframes fadeInPortrait {
-                from {
-                    opacity: 0;
-                    transform: scale(0.9) rotate(0deg);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: scale(1) rotate(4deg);
-                }
-            }
-
             .subtitle-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
+                @include all.fl($alit: flex-end, $flexdir: column);
                 margin-top: -2rem;
             }
         }
 
         @media (max-width: 1125px) {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 1.5rem;
-            gap: 4rem;
+            @include all.fl($alit: center, $flexdir: column, $jc: center, $gap: 4rem);
+            padding: 6rem 0.5rem;
 
             .text-content {
+                @include all.fl($alit: center, $flexdir: column);
                 order: 2;
                 width: 100%;
                 text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
             }
 
             .portrait-container {
                 order: 1;
                 position: relative;
-                display: flex;
-                justify-content: center;
+                @include all.fl($jc: center);
             }
         }
     }
 
     .polaroid-frame {
-        width: 300px;
+        width: 18.75rem;
         background: #fff;
-        padding: 12px 12px 40px 12px;
-        border-radius: 10px;
+        padding: 0.75rem 0.75rem 2,5rem 0.75rem;
+        border-radius: 0.625rem;
         transform: rotate(4deg);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.6);
         top: 4rem;
-        will-change: transform; // Wichtig für die Tilt-Animation aus TS
+        will-change: transform;
 
         @include all.mobile {
-            width: 250px;
+            width: 15.625rem;
+            height: auto;
         }
 
         img {
-            width: 100%;
-            // Entferne die feste Höhe von 280px!
-            height: auto;
+            @include all.size($w: 100%, $h: auto);
             max-height: 35dvh;
-            aspect-ratio: 276 / 318; // Entspricht exakt deinen HTML-Attributen
+            aspect-ratio: 276 / 318;
             object-fit: cover;
             background: #111;
             display: block;
@@ -138,17 +123,17 @@
         color: #fff;
         line-height: 0.9;
         display: block;
-        min-height: 1.1em; // Reserviert Platz für CLS-Vermeidung
-        contain: layout; // Isoliert das Layout für bessere Performance
+        min-height: 1.1em;
+        contain: layout;
     }
 
     .main-title {
-        font-size: clamp(2rem, 10vw, 7rem);
+        font-size: clamp(2rem, 10dvw, 7rem);
         min-height: 1.2em;
     }
 
     .main-subtitle {
-        font-size: clamp(1.8rem, 8vw, 6rem);
+        font-size: clamp(1.8rem, 8dvw, 6rem);
         margin-top: 2rem;
     }
 
@@ -159,7 +144,7 @@
         transform: translateY(20px);
         animation: fadeInLetter 0.5s ease forwards;
         color: #fff;
-        font-size: clamp(2.7rem, 8vw, 8rem);
+        font-size: clamp(2rem, 8vw, 6rem);
 
         @for $i from 1 through 20 {
             &:nth-child(#{$i}) {
@@ -174,20 +159,9 @@
         }
     }
 
-    @keyframes fadeInLetter {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
     .social-sidebar {
-        position: absolute;
-        bottom: 40px;
-        left: 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
+        @include all.absolute($bottom: 2.5rem, $left: 2.5rem);
+        @include all.fl($flexdir: column, $gap: 1.2rem);
         z-index: 30;
 
         @media (max-width: 1125px) {
@@ -195,26 +169,22 @@
         }
 
         .social-icon {
-            width: 45px;
-            height: 45px;
+            @include all.size($w: 2.8rem, $h: 2.8rem);
+            @include all.fl($jc: center, $alit: center);
             border: 2px solid #fff;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             opacity: 0;
             will-change: transform, opacity;
-            animation: slideInSocial 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: fadeInMoveSide 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
-                    animation-delay: calc(0.8s + (#{$i} * 0.15s));
+                    animation-delay: calc(0.8s + (#{$i} * 0.25s));
                 }
             }
 
             img {
-                width: 22px;
-                height: 22px;
+                @include all.size($w: 1.4rem, $h: 1.4rem);
                 filter: brightness(0) invert(1);
                 transition: filter 0.3s ease;
             }
@@ -229,29 +199,16 @@
         }
     }
 
-    @keyframes slideInSocial {
-        from {
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
     .get-in-touch-btn {
         display: inline-block;
-        padding: 12px 35px;
+        @include all.marpad($mar: 2rem 0 0 0, $pad: 0.75rem 2.1rem);
         border: 2px solid #d4ff00;
         color: #d4ff00;
         text-decoration: none;
         font-weight: bold;
         border-radius: 8px;
         transition: all 0.3s;
-        margin-top: 2rem;
-
+        
         &:hover {
             background-color: #d4ff00;
             color: #000;

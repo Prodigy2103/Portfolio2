@@ -1,6 +1,5 @@
 @use "./../../../public/styles/all_styles.scss" as all;
 
-// Variablen passend zum restlichen Design
 $neon-yellow: #d8eb10;
 $dark-bg: #000000;
 $font-cyber: 'Orbitron', sans-serif;
@@ -35,11 +34,9 @@ section {
             padding-left: 1.5rem;
             box-sizing: border-box;
             width: 100%;
-            margin-bottom: 2rem; // Abstand zum Button
+            margin-bottom: 2rem;
             overflow-wrap: break-word;
         }
-
-        // <--- HIER muss die h1 enden
 
         .back-btn {
             margin-top: 1rem;
@@ -83,11 +80,11 @@ section {
             margin-top: 3.5rem;
             margin-bottom: 1.2rem;
             font-size: 1.4rem;
-            max-width: 100%; // Darf niemals breiter als der Content sein
+            max-width: 100%;
             box-sizing: border-box;
-            overflow-wrap: break-word; // Bricht lange Wörter um
+            overflow-wrap: break-word;
             word-wrap: break-word;
-            hyphens: auto; // Trennt Wörter bei Bedarf mit Bindestrich
+            hyphens: auto;
 
             @include all.mobile {
                 font-size: 1.2rem;
@@ -99,11 +96,11 @@ section {
             line-height: 1.8;
             color: rgba(255, 255, 255, 0.85);
             margin-bottom: 1rem;
-            font-family: sans-serif; // Bessere Lesbarkeit
+            font-family: sans-serif;
         }
 
         ol {
-            list-style: none; // Cyber-Look: keine Standard-Zahlen
+            list-style: none;
             padding: 0;
         }
     }
