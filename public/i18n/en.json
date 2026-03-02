@@ -22,6 +22,11 @@
 		"nextBtn": "Next",
 		"prevBtn": "Previous"
 	},
+	"status": {
+        "ready": "Available",
+        "busy": "Closing soon",
+        "offline": "Weekend / Break"
+    },
 	"about": {
 		"headline": "Hi, I'm Marcus – your Frontend Developer for the digital future.",
 		"privacyline": "Locally connected – Digitally ahead",
@@ -79,7 +84,8 @@
 			"titleDuration": "Duration: ",
 			"descriptionOne": "This Riesenimbiss Riesa app serves as a comprehensive digital showcase for the restaurant 'Riesenimbiss Riesa'. It displays the restaurant's menu, contact information, and opening hours.",
 			"descriptionTwo": "The primary objective of this solo project was the expert implementation of asynchronous communication (REST API integration) using the Fetch API. The UI/UX design emphasizes a clean, intuitive interface combined with optimized data loading strategies to ensure a fast and engaging user experience.",
-			"descriptionDuration": "8 Weeks"
+			"descriptionDuration": "8 Weeks",
+			"workInProgress": "Actually in development, stay tuned for updates!"
 		}
 	},
 	"collage": {

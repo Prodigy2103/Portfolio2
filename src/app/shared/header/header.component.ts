@@ -151,4 +151,27 @@ export class HeaderComponent {
   getLanguageIcon(lang: Language): string {
     return this.currentLanguage() === lang.code ? lang.hoverIcon : lang.defaultIcon;
   }
+
+  status() {
+    const now = new Date(), day = now.getDay(), hr = now.getHours() + now.getMinutes() / 60;
+    const shifts = [[9, 12], [14, 17]];
+
+    if (day === 0 || day === 6) return 'closed';
+    const active = shifts.find(([open, close]) => hr >= open && hr < close);
+
+    if (!active) return 'closed';
+    return (active[1] - hr <= 0.5) ? 'closing-soon' : 'open';
+  }
+
+  statusText(): string {
+    const currentStatus = this.status(); // Nutzt deine bestehende Logik
+
+    const statusMap: Record<string, string> = {
+      'open': 'status.ready',
+      'closing-soon': 'status.busy',
+      'closed': 'status.offline'
+    };
+
+    return statusMap[currentStatus] || 'status.offline';
+  }
 }

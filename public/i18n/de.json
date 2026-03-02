@@ -20,6 +20,12 @@
 		"nextBtn": "Nächstes",
 		"prevBtn": "Vorheriges"
 	},
+	"status": {
+        "active": "Online",
+        "busy": "Beschäftigt",
+        "offline": "Offline",
+        "ready": "Verfügbar"
+    },
 	"about": {
 		"headline": "Hallo, ich bin Marcus – Ihr Frontend-Entwickler für die digitale Zukunft.",
 		"privacyline": "Lokal vernetzt – Digital ganz vorn",
@@ -77,7 +83,8 @@
 			"titleDuration": "Dauer: ",
 			"descriptionOne": "Diese App dient als umfassender digitaler Showcase für das Restaurant 'Riesenimbiss Riesa'. Sie zeigt das Restaurant-Menü, Bestellservice, Kontaktinformationen und Öffnungszeiten.",
 			"descriptionTwo": "Kern dieses Soloprojekts war die Beherrschung von asynchroner Kommunikation (REST API Integration) mit dem Fetch API. Das UI/UX Design betont eine saubere, intuitive Oberfläche kombiniert mit optimierten Strategien zum Daten-Laden, um eine schnelle und ansprechende Benutzererfahrung zu gewährleisten.",
-			"descriptionDuration": "8 Wochen"
+			"descriptionDuration": "8 Wochen",
+			"workInProgress": "Aktuell in Entwicklung, stay tuned für Updates!"
 		}
 	},
 	"collage": {

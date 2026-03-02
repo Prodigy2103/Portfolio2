@@ -149,6 +149,54 @@ header {
     object-fit: contain;
 }
 
+.logo-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .status-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1rem;
+
+        &.open .status-dot {
+            background: #4ade80;
+            animation: pulse-green 2s infinite;
+        }
+
+        &.closing-soon {
+            color: #ffca28;
+            border-color: rgba(255, 202, 40, 0.3);
+
+            .status-dot {
+                background: #ffca28;
+                animation: pulse-orange 1.5s infinite;
+            }
+        }
+
+        &.closed {
+            opacity: 0.8;
+
+            .status-dot {
+                background: #f87171;
+            }
+        }
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+}
+
 .burgerBtn {
     @include all.size($w: 1.875rem, $h: 1.25rem);
     @include all.fl($flexdir: column, $jc: space-between);

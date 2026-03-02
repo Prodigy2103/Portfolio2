@@ -12,7 +12,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	min-height: 100dvh;
 	color: #fff;
 	position: relative;
-    overflow-x: hidden;
+	overflow-x: hidden;
 
 	&::before,
 	&::after {
@@ -110,6 +110,15 @@ $font-cyber-two: "BriGro", sans-serif;
 			opacity: 0;
 			transition: opacity 0.3s ease;
 			z-index: 3;
+
+			.work {
+				color: white;
+				font-weight: 200;
+				margin: 3rem;
+				text-align: center;
+				transform: translateY(10px);
+				transition: transform 0.3s ease;
+			}
 		}
 
 		&:hover {
@@ -143,7 +152,7 @@ $font-cyber-two: "BriGro", sans-serif;
 		color: white;
 		margin-bottom: 3rem;
 		min-height: 2.7rem;
-		height: 15ddvh;
+		height: 15dvh;
 	}
 }
 
@@ -212,6 +221,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	overflow-y: none;
 
 	@include all.notebook {
+		height: 80dvh;
 		overflow-y: auto;
 
 		&::-webkit-scrollbar {
