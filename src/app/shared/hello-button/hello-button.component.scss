@@ -2,34 +2,22 @@
 @forward '../../../../public/styles/component-styles.scss';
 
 .hello-btn {
-
-    // 2. Grundlegendes Layout (angepasst an dein neues Snippet)
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    // Mix aus beiden: Padding vom neuen, Border-Radius vom alten (25px wirkt moderner)
-    padding: 12px 35px; 
+    @include all.fl($jc: center, $alit: center);
+    padding: 0.75rem 2.2rem; 
     background: rgba(0, 0, 0, 0.4);
-    border: 2px solid #d4ff00; // Farbe vom neuen Snippet übernommen
-    border-radius: 8px;
-    
-    // 3. Typografie & Farben
+    border: 2px solid #d4ff00;
+    border-radius: 0.5rem;
     color: black;
-    font-size: 0.85rem;
-    font-weight: bold; // Entspricht font-weight: 700
+    font-size: 1rem;
+    font-weight: bold;
     text-decoration: none;
     cursor: pointer;
-    
-    // 4. Positionierung & Verhalten
     transition: all 0.3s ease;
     position: relative;
-    overflow: visible; 
-    margin-top: 2rem;    // Vom neuen Snippet
-    margin-bottom: 2rem; // Vom alten Snippet beibehalten
-    
+    overflow: visible;
+    @include all.marpad($mar: 2rem 0 2rem 0);
     box-sizing: border-box; 
-    max-width: 90vw; 
+    max-width: 90dvw; 
 
     @include all.buttonEffect();
     @include all.textSlideHover();

@@ -1,7 +1,7 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
 .hero-section {
-    min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     @include all.fl($alit: center);
     position: relative;
@@ -35,7 +35,7 @@
         @include all.marpad($pad: 0 5rem, $mar: 0 auto);
         position: relative;
         display: flex;
-        min-height: 100vh;
+        min-height: 100dvh;
 
         @media (min-width: 1126px) {
             flex-direction: row;
@@ -98,7 +98,7 @@
 
         img {
             @include all.size($w: 100%, $h: auto);
-            max-height: 35dvh;
+            max-height: 35ddvh;
             aspect-ratio: 276 / 318;
             object-fit: cover;
             background: #111;
@@ -128,12 +128,12 @@
     }
 
     .main-title {
-        font-size: clamp(2rem, 10dvw, 7rem);
+        font-size: clamp(2rem, 10ddvw, 7rem);
         min-height: 1.2em;
     }
 
     .main-subtitle {
-        font-size: clamp(1.8rem, 8dvw, 6rem);
+        font-size: clamp(1.8rem, 8ddvw, 6rem);
         margin-top: 2rem;
     }
 
@@ -144,7 +144,7 @@
         transform: translateY(20px);
         animation: fadeInLetter 0.5s ease forwards;
         color: #fff;
-        font-size: clamp(2rem, 8vw, 6rem);
+        font-size: clamp(2rem, 8dvw, 6rem);
 
         @for $i from 1 through 20 {
             &:nth-child(#{$i}) {

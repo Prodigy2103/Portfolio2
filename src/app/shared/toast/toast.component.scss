@@ -53,6 +53,6 @@ $font-cyber: 'Orbitron', sans-serif;
     border-color: #d4ff00;
     
     @include all.tablet {
-        width: auto; // Verhindert das 56dvw Problem
+        width: auto; // Verhindert das 56ddvw Problem
     }
 }

@@ -11,7 +11,7 @@ $font-cyber-two: 'BriGro', sans-serif;
 .modal-inner {
     padding: 1rem;
     color: #fff;
-    height: 85dvh;
+    height: 85ddvh;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -39,7 +39,7 @@ $font-cyber-two: 'BriGro', sans-serif;
         width: 100%;
 
         .project-id {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: clamp(1.8rem, 5dvw, 2.5rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
             word-break: break-word;
@@ -103,7 +103,7 @@ $font-cyber-two: 'BriGro', sans-serif;
                 width: 100%;
                 height: auto;
                 display: block;
-                max-height: 50dvh;
+                max-height: 50ddvh;
                 object-fit: cover;
             }
         }

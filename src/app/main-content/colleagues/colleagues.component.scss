@@ -1,17 +1,17 @@
-@use '../../../../public/styles/all_styles.scss' as all;
+@use "../../../../public/styles/all_styles.scss" as all;
 
 .testimonials-section {
     position: relative;
     padding: 8rem 1rem;
     background: #0a0a0c;
-    min-height: 80dvh;
+    min-height: 80ddvh;
     display: flex;
     align-items: center;
     overflow: hidden;
 
     &::before,
     &::after {
-        content: '';
+        content: "";
         @include all.size($w: 50rem, $h: 31.25rem);
         position: absolute;
         border-radius: 50%;
@@ -41,17 +41,17 @@
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem; 
+    margin-bottom: 4rem;
 
     .overline {
         color: white;
         text-transform: uppercase;
-        letter-spacing: 0.05em; 
+        letter-spacing: 0.05em;
         margin-bottom: 1rem;
     }
 
     .main-heading {
-        font-size: clamp(2.2rem, 8vw, 4rem);
+        font-size: clamp(2.2rem, 8dvw, 4rem);
         font-weight: 900;
         color: #ffffff;
     }
@@ -91,6 +91,10 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
+    @include all.tablet {
+        padding: 0.5rem;
+    }
+
     &:hover {
         transform: translateY(-5px) scale(1.01);
         background: rgba(255, 255, 255, 0.07);
@@ -123,6 +127,6 @@
     margin-top: 3rem;
 
     @media (min-width: 768px) {
-        display: none; 
+        display: none;
     }
 }

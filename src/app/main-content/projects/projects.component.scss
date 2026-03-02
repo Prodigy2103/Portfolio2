@@ -9,8 +9,10 @@ $font-cyber-two: "BriGro", sans-serif;
 	backdrop-filter: blur(0.9rem);
 	box-shadow: inset 0 0 1.9rem rgba(0, 0, 0, 0.5);
 	padding: 8rem 2rem;
-	min-height: 100vh;
+	min-height: 100dvh;
 	color: #fff;
+	position: relative;
+    overflow-x: hidden;
 
 	&::before,
 	&::after {
@@ -30,7 +32,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	}
 
 	&::after {
-		z-index: -1;
+		z-index: -10;
 		background: #00ff88;
 		@include all.absolute($bottom: 10%, $left: 5%);
 		animation-direction: reverse;
@@ -67,7 +69,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	}
 
 	.main-heading {
-		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		font-size: clamp(2.5rem, 5dvw, 3.5rem);
 		font-weight: 900;
 		margin: 0.5rem 0 1.5rem;
 	}
@@ -141,7 +143,7 @@ $font-cyber-two: "BriGro", sans-serif;
 		color: white;
 		margin-bottom: 3rem;
 		min-height: 2.7rem;
-		height: 15dvh;
+		height: 15ddvh;
 	}
 }
 
@@ -149,7 +151,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	@include all.fl($alit: flex-start, $gap: 0.5rem);
 	flex-wrap: wrap;
 	margin-bottom: 1.5rem;
-	height: 10dvh;
+	height: 10ddvh;
 
 	.tag {
 		background: rgba(212, 255, 0, 0.1);
@@ -198,8 +200,8 @@ $font-cyber-two: "BriGro", sans-serif;
 }
 
 .modal-wrapper {
-	@include all.size($w: 90dvw);
-	max-height: 85dvh;
+	@include all.size($w: 90ddvw);
+	max-height: 85ddvh;
 	@include all.marpad($pad: 1rem, $mar: 5.5rem 0 0 0);
 	position: relative;
 	background: rgba(255, 255, 255, 0.03);
@@ -220,7 +222,7 @@ $font-cyber-two: "BriGro", sans-serif;
 		scrollbar-width: none;
 
 		@media (min-width: 768px) {
-			width: 90vw;
+			width: 90dvw;
 			border-radius: 30px;
 		}
 	}

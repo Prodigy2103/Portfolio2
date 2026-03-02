@@ -4,7 +4,7 @@ $font-cyber: "Orbitron", sans-serif;
 $font-cyber-two: "BriGro", sans-serif;
 $font-cyber-bold: "OrbitronBold", sans-serif;
 $font-cyber-semi: "OrbitronSemi", sans-serif;
-$accent-color: #d4ff00; // Dein Signature-Gelb/Grün
+$accent-color: #d4ff00;
 $text-high-contrast: #ffffff;
 $text-low-contrast: #e0e0e0;
 
@@ -63,12 +63,11 @@ footer {
     font-display: swap;
 }
 
-/* --- Body & Background (Korrektur für Kontrastverhältnis) --- */
+/* --- Body & Background --- */
 body {
-    /* Hintergrund deutlich abgedunkelt, damit weißer Text (Kontrast > 15:1) besteht */
     background: linear-gradient(135deg, #121212 0%, #0f0f0f 50%, #070707 100%);
     color: $text-high-contrast;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
 
     &::before {
@@ -108,11 +107,9 @@ label {
     font-family: $font-cyber-two;
     font-size: 1rem;
     color: $text-low-contrast;
-    /* Hellgrau auf fast Schwarz ist sicher */
     font-weight: 400;
 }
 
-/* Spezifische Korrektur für interaktive Elemente */
 a {
     color: $accent-color;
     transition: color 0.3s ease;
@@ -133,7 +130,7 @@ button,
 
     &.active {
         color: $accent-color;
-        text-shadow: 0 0 10px rgba(212, 255, 0, 0.5);
+        text-shadow: 0 0 0.625rem rgba(212, 255, 0, 0.5);
     }
 }
 
@@ -144,29 +141,29 @@ button,
 
 .skip-link {
     position: absolute;
-    top: -100px;
+    top: -6.25rem;
     left: 0;
     background: $accent-color;
-    color: #000 !important;
-    padding: 15px 25px;
+    color: #000;
+    padding: 0.9rem 1.5rem;
     z-index: 10000;
     font-weight: bold;
-    border-radius: 0 0 10px 0;
+    border-radius: 0 0 0.9rem 0;
     transition: top 0.3s ease;
 
     &:focus {
         top: 0;
-        outline: 3px solid #fff;
+        outline: 0.2rem solid #fff;
     }
 }
 
-/* Korrektur für Tags (JavaScript, HTML, etc.) */
+/* Korrektur für Tags */
 .tag,
 .skill-name {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
     border: 1px solid rgba(212, 255, 0, 0.3);
-    font-size: 0.85rem;
+    font-size: 1rem;
 }

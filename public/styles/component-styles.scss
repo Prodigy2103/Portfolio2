@@ -153,7 +153,7 @@ $color-shadow: #000000;
     cursor: pointer;
     z-index: 10;
     gap: 1rem;
-    font-size: clamp(16px, 1dvw, 24px);
+    font-size: clamp(16px, 1ddvw, 24px);
     transition: color 0.2s ease;
 
     a {

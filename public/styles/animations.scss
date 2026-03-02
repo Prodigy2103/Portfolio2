@@ -4,7 +4,7 @@
 
 @keyframes slideInFromRight {
   from {
-    transform: translateX(20vw);
+    transform: translateX(20dvw);
     opacity: 0;
   }
   to {
@@ -23,7 +23,7 @@
     opacity: 1;
   }
   to {
-    transform: translateX(100vw);
+    transform: translateX(100dvw);
     opacity: 0;
   }
 }

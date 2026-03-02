@@ -10,18 +10,17 @@ $font-cyber-two: "BriGro", sans-serif;
 
 .skills-section {
     position: relative;
-    min-height: 100vh;
+    @include all.fl($alit: center);
+    min-height: 100dvh;
     background: $bg-dark;
     padding: 6rem 2rem;
-    display: flex;
-    align-items: center;
     overflow: hidden;
 
-    &::before, &::after {
+    &::before,
+    &::after {
         content: '';
         position: absolute;
-        width: 450px;
-        height: 450px;
+        @include all.size($w: 28.125rem, $h: 28.125rem);
         border-radius: 50%;
         filter: blur(100px);
         z-index: 0;
@@ -31,14 +30,12 @@ $font-cyber-two: "BriGro", sans-serif;
 
     &::before {
         background: #007bff;
-        top: -10%;
-        right: -5%;
+        @include all.absolute($top: -10%, $right: -5%);
     }
 
     &::after {
         background: #00ff88;
-        bottom: -10%;
-        left: -5%;
+        @include all.absolute($bottom: -10%, $left: -5%);
         animation-direction: reverse;
         animation-duration: 20s;
     }
@@ -52,67 +49,67 @@ $font-cyber-two: "BriGro", sans-serif;
     }
 }
 
-// --- Skill Header ---
 .skill-header {
     text-align: center;
     margin-bottom: 3.5rem;
 
     .overline {
         text-transform: uppercase;
+        font-family: $font-cyber;
         color: white;
         letter-spacing: 0.15rem;
         margin-bottom: 0.5rem;
-        font-family: $font-cyber;
     }
 
     .main-heading {
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-        color: #fff;
+        font-size: clamp(2.5rem, 5dvw, 3.5rem);
         font-weight: 900;
+        font-family: $font-cyber;
+        color: #fff;
         margin: 0.5rem 0;
         letter-spacing: 2px;
-        font-family: $font-cyber;
     }
 
     .accent-line {
-        width: 45px;
-        height: 3px;
+        @include all.size($w: 5.8rem, $h: 0.25rem);
         background: $neon-green;
         margin: 0.5rem auto 0;
     }
 }
 
-// --- Skills Grid (Karten) ---
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
     margin-bottom: 4rem;
 
-    @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 480px) { grid-template-columns: 1fr; }
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 
     .skill-card {
+        @include all.fl($alit: center, $jc: center, $gap: 1.25rem, $flexdir: column);
         background: $card-bg;
         backdrop-filter: blur(15px);
         box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 8px;
         padding: 1.75rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.25rem;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         filter: grayscale(1);
 
         &:hover {
-            background: #1f1f1f;
+            background: rgba($neon-yellow, 0.1);
+            mix-blend-mode: screen;
             transform: translateY(-5px) scale(1.03);
             border-color: rgba(255, 255, 255, 0.1);
             filter: grayscale(0);
+            color: $bg-dark;
 
             .icon-wrapper img {
                 transform: translateY(-3px);
@@ -120,22 +117,16 @@ $font-cyber-two: "BriGro", sans-serif;
         }
 
         .icon-wrapper {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include all.size($w: 2.8rem, $h: 2.8rem);
+            @include all.fl($alit: center, $jc: center);
 
             img {
-                // FIX: Verhindert Quetschen & behebt Lighthouse Warnung
                 width: 100%;
-                height: auto !important; 
+                height: auto;
                 max-height: 100%;
                 object-fit: contain;
                 transition: transform 0.3s ease;
-                
-                // Wirkt CLS entgegen durch Seitenverhältnis-Vorgabe
-                aspect-ratio: 1 / 1; 
+                aspect-ratio: 1 / 1;
             }
         }
 
@@ -148,9 +139,8 @@ $font-cyber-two: "BriGro", sans-serif;
     }
 }
 
-// --- Description Box ---
 .description-box {
-    background: #1a1a1a; // Dunkler als vorher für bessere Grid-Trennung
+    background: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 2.5rem;
     border-radius: 12px;
@@ -161,30 +151,23 @@ $font-cyber-two: "BriGro", sans-serif;
     font-size: 1rem;
 }
 
-// --- Peel Section ---
 .peel-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include all.fl($alit: center, $flexdir: column);
     margin-top: 4rem;
 }
 
 .sticker-container {
     position: relative;
-    width: 250px;
-    height: 250px;
-    perspective: 1000px;
+    @include all.size($w: 15.6rem, $h: 15.6rem);
+    perspective: 62.5rem;
     cursor: pointer;
 
     .sticker-cover,
     .sticker-reveal {
         position: absolute;
+        @include all.fl($alit: center, $jc: center, $flexdir: column);
         inset: 0;
         border-radius: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -233,15 +216,11 @@ $font-cyber-two: "BriGro", sans-serif;
             gap: 1.5rem;
 
             .reveal-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                @include all.fl($alit: center, $flexdir: column);
                 margin-top: 1rem;
 
                 img {
-                    // FIX: Auch hier Aspect Ratio Fix für React/Vue Icons
-                    width: 45px;
-                    height: auto !important;
+                    @include all.size($w: 2.8rem, $h: auto);
                     aspect-ratio: 1 / 1;
                     object-fit: contain;
                     margin-bottom: 0.5rem;
