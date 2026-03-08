@@ -25,7 +25,7 @@
 	"status": {
         "ready": "Available",
         "busy": "Closing soon",
-        "offline": "Weekend / Break"
+        "offline": "Break"
     },
 	"about": {
 		"headline": "Hi, I'm Marcus – your Frontend Developer for the digital future.",

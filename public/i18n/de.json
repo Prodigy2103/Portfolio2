@@ -23,7 +23,7 @@
 	"status": {
         "active": "Online",
         "busy": "Beschäftigt",
-        "offline": "Offline",
+        "offline": "Pause",
         "ready": "Verfügbar"
     },
 	"about": {

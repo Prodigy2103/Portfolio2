@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, inject, signal, Signal, HostListener } from '@angular/core';
-import { ViewportScroller, CommonModule } from '@angular/common';
+import { ViewportScroller, CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../service/language.service';
 
@@ -30,7 +30,7 @@ interface SocialLink {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, NgOptimizedImage],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -40,21 +40,24 @@ export class HeaderComponent {
 
   @Output() navigateTo = new EventEmitter<string>();
 
-  /** Signal für den mobilen Menü-Status */
   isMenuOpen = signal(false);
 
-  /** Signal für den Scroll-Status (Header Hintergrund-Wechsel) */
   isScrolled = signal(false);
 
-  /** Überwacht die Scroll-Position für das Header-Styling */
+  /**
+   * Monitors the window scroll position to toggle header styling.
+   * Updates a signal to apply 'scrolled' classes (e.g., for background blur or size reduction)
+   * once the user moves past a 50px threshold.
+   */
   @HostListener('window:scroll', [])
-  onWindowScroll() {
+  onWindowScroll(): void {
     this.isScrolled.set(window.scrollY > 50);
   }
 
   /**
-   * Schließt das Menü automatisch, wenn die Bildschirmgröße 
-   * über den Mobile-Breakpoint (768px) hinaus vergrößert wird.
+   * Responsive guard: Automatically closes the mobile navigation menu when the 
+   * viewport is expanded beyond the mobile breakpoint (768px).
+   * Prevents layout inconsistencies when switching from mobile to desktop view.
    */
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -63,8 +66,10 @@ export class HeaderComponent {
     }
   }
 
+  /** Signal reflecting the currently active language code from the translation service. */
   currentLanguage: Signal<string> = this.languageService.currentLanguage;
 
+  /** Navigation structure defined for the header links with translation and accessibility keys. */
   navItems: NavItem[] = [
     { anchor: '#about', translationKey: 'header.about', titleKey: 'header.aboutTitle', class: 'about' },
     { anchor: '#skill', translationKey: 'header.skills', titleKey: 'header.skillsTitle', class: 'skills' },
@@ -72,6 +77,7 @@ export class HeaderComponent {
     { anchor: '#contact', translationKey: 'header.contact', titleKey: 'header.contactTitle', class: 'contact' }
   ];
 
+  /** Language configuration including assets for interactive hover/active states. */
   languages: Language[] = [
     {
       code: 'en',
@@ -87,43 +93,51 @@ export class HeaderComponent {
     }
   ];
 
+  /** Social media profiles with explicit dimensions to prevent Layout Shift (CLS). */
   socialLinks: SocialLink[] = [
     {
       url: 'https://www.linkedin.com/in/robert-marcus-g%C3%BChne-a53a63385/',
       icon: 'assets/Extras/icons8-linkedin-52.png',
-      alt: 'LinkedIn Profil', // Korrigiert von 'Indeed'
+      alt: 'LinkedIn Profile',
       external: true,
       w: 32, h: 32
     },
     {
       url: 'https://github.com/Prodigy2103',
       icon: 'assets/Extras/Github.png',
-      alt: 'Github Profil',
+      alt: 'Github Profile',
       external: true,
       w: 32, h: 32
     },
     {
       url: 'mailto:anfrage@marcus-guehne.com',
       icon: 'assets/Extras/Contact.png',
-      alt: 'E-Mail Versand',
+      alt: 'Send Email',
       external: false,
       w: 32, h: 32
     }
   ];
 
-  /** Wechselt die Sprache und schließt das Menü sauber */
+  /** * Triggers a language switch via the global language service 
+   * and ensures the mobile menu is closed to provide a clean transition.
+   */
   useLanguage(language: string): void {
     this.languageService.useLanguage(language);
     this.closeMenu();
   }
 
-  /** Schaltet das mobile Menü um und aktiviert/deaktiviert Scroll-Lock */
+  /** * Toggles the mobile menu state and synchronizes the body scroll lock 
+   * to prevent background scrolling while the menu is active.
+   */
   toggleMenu(): void {
     this.isMenuOpen.update(current => !current);
     this.updateScrollLock();
   }
 
-  /** Navigiert zu einem Anchor und schließt das Menü sauber */
+  /** * Manages anchor-based navigation. 
+   * Prioritizes parent-level navigation logic (if observed) or uses the 
+   * internal scroller, ensuring the mobile menu closes after selection.
+   */
   handleNavigation(target: string): void {
     if (this.navigateTo.observed) {
       this.navigateTo.emit(target);
@@ -133,7 +147,9 @@ export class HeaderComponent {
     this.closeMenu();
   }
 
-  /** Private Hilfsmethode für konsistenten Scroll-Lock-Status */
+  /** * Synchronizes the HTML body's overflow style with the menu state 
+   * to maintain a high-quality User Experience (Scroll Locking).
+   */
   private updateScrollLock(): void {
     if (this.isMenuOpen()) {
       document.body.style.overflow = 'hidden';
@@ -142,36 +158,44 @@ export class HeaderComponent {
     }
   }
 
-  /** Hilfsmethode zum Schließen des Menüs von überall aus */
+  /** Central helper to reset the menu state and restore window scrolling. */
   private closeMenu(): void {
     this.isMenuOpen.set(false);
     document.body.style.overflow = 'auto';
   }
 
+  /** Logic to determine the correct language icon based on the current selection. */
   getLanguageIcon(lang: Language): string {
     return this.currentLanguage() === lang.code ? lang.hoverIcon : lang.defaultIcon;
   }
 
-  status() {
-    const now = new Date(), day = now.getDay(), hr = now.getHours() + now.getMinutes() / 60;
-    const shifts = [[9, 12], [14, 17]];
+  /** * Calculates the availability status based on business hours (Mon-Fri, 9-12 & 14-17).
+   * @returns 'open', 'closing-soon' (within 30 mins of break/close), or 'closed' (weekend/off-hours).
+   */
+  status(): string {
+  const now = new Date();
+  const day = now.getDay();
+  const hr = now.getHours() + now.getMinutes() / 60;
+  
+  if (day === 0 || day === 6) return 'closed';
+  
+  const shifts = [[9, 12], [14, 17]];
+  const active = shifts.find(([open, close]) => hr >= open && hr < close);
+  
+  if (!active) return 'closed';
+  return (active[1] - hr <= 0.5) ? 'closing-soon' : 'open';
+}
 
-    if (day === 0 || day === 6) return 'closed';
-    const active = shifts.find(([open, close]) => hr >= open && hr < close);
-
-    if (!active) return 'closed';
-    return (active[1] - hr <= 0.5) ? 'closing-soon' : 'open';
-  }
-
+  /** * Maps the raw availability state to its corresponding translation key 
+   * for consistent multi-language support.
+   */
   statusText(): string {
-    const currentStatus = this.status(); // Nutzt deine bestehende Logik
-
+    const currentStatus = this.status();
     const statusMap: Record<string, string> = {
       'open': 'status.ready',
       'closing-soon': 'status.busy',
       'closed': 'status.offline'
     };
-
     return statusMap[currentStatus] || 'status.offline';
   }
 }

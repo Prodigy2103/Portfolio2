@@ -86,12 +86,6 @@ $font-cyber: 'Orbitron', sans-serif;
                 text-shadow: 0 0 10px rgba(216, 235, 16, 0.5);
             }
         }
-
-        span {
-            @include all.mobile {
-                display: none;
-            }
-        }
     }
 }
 

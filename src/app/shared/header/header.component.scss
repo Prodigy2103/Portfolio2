@@ -8,7 +8,7 @@ $bg-dark: #0e0d0d;
 header {
     @include all.absolute($pos: fixed, $top: 0, $left: 0, $right: 0);
     @include all.size($w: 100%, $h: 10ddvh);
-    z-index: 10;
+    z-index: 20;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: $font-cyber;
 
@@ -143,17 +143,21 @@ header {
     z-index: 100;
 }
 
-.logo-container .header-logo {
-    @include all.size($w: 50%, $h: 100%);
-    aspect-ratio: 110 / 65;
-    object-fit: contain;
+.logo-container {
+    .header-logo {
+        height: 3rem;
+        width: auto;
+        display: block;
+        object-fit: contain;
+        filter: drop-shadow(0 0 5px rgba(212, 255, 0, 0.2));
+    }
 }
 
 .logo-wrapper {
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    height: 100%;
 
     .status-chip {
         display: inline-flex;
