@@ -7,7 +7,7 @@ $bg-dark: #0e0d0d;
 
 header {
     @include all.absolute($pos: fixed, $top: 0, $left: 0, $right: 0);
-    @include all.size($w: 100%, $h: 10ddvh);
+    @include all.size($w: 100%, $h: 10dvh);
     z-index: 20;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: $font-cyber;
@@ -92,7 +92,7 @@ header {
 
 .mobile-nav-overlay {
     @include all.absolute($pos: fixed, $top: 0, $left: 0);
-    @include all.size($w: 100dvw, $h: 100ddvh);
+    @include all.size($w: 100dvw, $h: 100dvh);
     @include all.fl($jc: center, $alit: center);
     background: #0a0a0a;
     z-index: 50;

@@ -98,11 +98,12 @@
 
         img {
             @include all.size($w: 100%, $h: auto);
-            max-height: 35ddvh;
+            max-height: 35dvh;
             aspect-ratio: 276 / 318;
             object-fit: cover;
             background: #111;
             display: block;
+            border-radius: 0.625rem;
 
             @include all.mobile {
                 height: 220px;

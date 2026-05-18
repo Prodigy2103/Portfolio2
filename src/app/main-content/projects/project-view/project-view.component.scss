@@ -11,7 +11,7 @@ $font-cyber-two: 'BriGro', sans-serif;
 .modal-inner {
     padding: 1rem;
     color: #fff;
-    height: 85ddvh;
+    height: 85dvh;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -101,10 +101,14 @@ $font-cyber-two: 'BriGro', sans-serif;
 
             img {
                 width: 100%;
-                height: auto;
                 display: block;
-                max-height: 50ddvh;
+                height: 50dvh;
                 object-fit: cover;
+
+                @include all.tablet {
+                    height: auto;
+                    min-height: 40dvh;
+                }
             }
         }
 

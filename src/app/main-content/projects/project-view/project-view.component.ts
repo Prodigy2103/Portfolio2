@@ -12,29 +12,30 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ProjectViewComponent {
   @Output() closeEvent = new EventEmitter<void | string>();
   @Input() currentProject: string = '';
-  projects = ['join', 'pepe', 'pokeDex', 'wasiri'];
+  projects = ['join', 'pepe', 'pokeDex', 'wasiri', 'truck'];
 
   skillIcons: any = {
     join: [{ name: 'Angular', src: 'assets/Extras/icons/Angular.png' }, { name: 'Firebase', src: 'assets/Extras/icons/Firebase.png' }, { name: 'TypeScript', src: 'assets/Extras/icons/TS.png' }],
     pepe: [{ name: 'JavaScript', src: 'assets/Extras/icons/JS.png' }, { name: 'HTML', src: 'assets/Extras/icons/HTML.png' }, { name: 'CSS', src: 'assets/Extras/icons/CSS.png' }],
     pokeDex: [{ name: 'JavaScript', src: 'assets/Extras/icons/JS.png' }, { name: 'Rest-API', src: 'assets/Extras/icons/HTML.png' }],
-    wasiri: [{ name: 'Typescript', src: 'assets/Extras/icons/TS.png' }, { name: 'Angular', src: 'assets/Extras/icons/Angular.png' }, { name: 'Firebase', src: 'assets/Extras/icons/Firebase.png' }]
+    wasiri: [{ name: 'Typescript', src: 'assets/Extras/icons/TS.png' }, { name: 'Angular', src: 'assets/Extras/icons/Angular.png' }, { name: 'Firebase', src: 'assets/Extras/icons/Firebase.png' }],
+    truck: [{ name: 'Typescript', src: 'assets/Extras/icons/TS.png' }, { name: 'Angular', src: 'assets/Extras/icons/Angular.png' }, { name: 'Firebase', src: 'assets/Extras/icons/Firebase.png' }]
   };
 
   get currentSkills() { return this.skillIcons[this.currentProject] || []; }
   
   get currentImg() {
-    const imgs: any = { join: 'assets/ProjectsImg/join.webp', pepe: 'assets/ProjectsImg/Pepe30.webp', pokeDex: 'assets/ProjectsImg/Component 30.webp', wasiri: 'assets/ProjectsImg/WasiriProject2.webp' };
+    const imgs: any = { join: 'assets/ProjectsImg/join.webp', pepe: 'assets/ProjectsImg/Pepe30.webp', pokeDex: 'assets/ProjectsImg/Component 30.webp', wasiri: 'assets/ProjectsImg/ImbissOrder.webp', truck: 'assets/ProjectsImg/truck2.webp' };
     return imgs[this.currentProject];
   }
 
   getGithubLink() {
-    const links: any = { 'join': 'https://github.com/Prodigy2103/join.git', 'pepe': 'https://github.com/Prodigy2103/El-Pollo-Loco.git', 'pokeDex': 'https://github.com/Prodigy2103/PokedexNeu.git', 'wasiri': 'https://github.com/Prodigy2103/RiesaRiesenImbiss.git' };
+    const links: any = { 'join': 'https://github.com/Prodigy2103/join.git', 'pepe': 'https://github.com/Prodigy2103/El-Pollo-Loco.git', 'pokeDex': 'https://github.com/Prodigy2103/PokedexNeu.git', 'wasiri': 'https://github.com/Prodigy2103/RiesaRiesenImbiss_NEW.git', 'truck': 'https://github.com/Prodigy2103/truck-tracker.git' };
     return links[this.currentProject];
   }
 
   getLiveLink() {
-    const links: any = { 'join': 'http://join.marcus-guehne.com/index.html', 'pepe': 'http://elpolloloco.marcus-guehne.com/index.html', 'pokeDex': 'https://pokedex.marcus-guehne.com/index.html', 'wasiri': 'https://riesenimbiss.marcus-guehne.com/' };
+    const links: any = { 'join': 'http://join.marcus-guehne.com/index.html', 'pepe': 'http://elpolloloco.marcus-guehne.com/index.html', 'pokeDex': 'https://pokedex.marcus-guehne.com/index.html', 'wasiri': 'https://riesenimbiss.de/#/order', 'truck': 'https://truck-tracker.marcus-guehne.com' };
     return links[this.currentProject];
   }
 

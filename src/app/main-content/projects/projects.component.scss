@@ -160,7 +160,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	@include all.fl($alit: flex-start, $gap: 0.5rem);
 	flex-wrap: wrap;
 	margin-bottom: 1.5rem;
-	height: 10ddvh;
+	height: 10dvh;
 
 	.tag {
 		background: rgba(212, 255, 0, 0.1);
@@ -209,8 +209,8 @@ $font-cyber-two: "BriGro", sans-serif;
 }
 
 .modal-wrapper {
-	@include all.size($w: 90ddvw);
-	max-height: 85ddvh;
+	@include all.size($w: 90dvw);
+	max-height: 85dvh;
 	@include all.marpad($pad: 1rem, $mar: 5.5rem 0 0 0);
 	position: relative;
 	background: rgba(255, 255, 255, 0.03);
