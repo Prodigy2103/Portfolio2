@@ -21,11 +21,11 @@
 		"prevBtn": "Vorheriges"
 	},
 	"status": {
-        "active": "Online",
-        "busy": "Beschäftigt",
-        "offline": "Pause",
-        "ready": "Verfügbar"
-    },
+		"active": "Online",
+		"busy": "Beschäftigt",
+		"offline": "Pause",
+		"ready": "Verfügbar"
+	},
 	"about": {
 		"headline": "Hallo, ich bin Marcus – Ihr Frontend-Entwickler für die digitale Zukunft.",
 		"privacyline": "Lokal vernetzt – Digital ganz vorn",
@@ -77,7 +77,7 @@
 			"descriptionDuration": "4 Wochen"
 		},
 		"wasiri": {
-			"id": "In Arbeit: Riesenimbiss Riesa",
+			"id": "Riesenimbiss Riesa",
 			"titleDesc": "Funktionsumfang",
 			"titleDetails": "Technologie-Stack",
 			"titleDuration": "Dauer: ",
@@ -86,6 +86,13 @@
 			"descriptionDuration": "8 Wochen"
 		},
 		"truck": {
+			"id": "In Arbeit: Truckmanagement Dashboard",
+			"titleDesc": "Funktionsumfang",
+			"titleDetails": "Technologie-Stack",
+			"titleDuration": "Dauer:",
+			"descriptionOne": "Entwicklung eines zentralen Flotten-Dashboards für Logistikunternehmen zur Echtzeit-Verwaltung von Fahrzeugen. Die Anwendung ermöglicht die direkte Zuweisung von Fahrern, das Koppeln und Entkoppeln von Trailern sowie die detaillierte Erfassung von Fahrzeugschäden.",
+			"descriptionTwo": "Die technische Umsetzung basiert auf Angular 19 mit einem reaktiven State-Management über Signals. Für die Datenkonsistenz und Echtzeit-Aktualisierung der Disponenten-Ansicht wurde Supabase (PostgreSQL, Realtime-Datenbank) integriert, abgesichert durch restriktive Row Level Security (RLS).",
+			"descriptionDuration": "8 Wochen",
 			"workInProgress": "Aktuell in Entwicklung, stay tuned für Updates!"
 		}
 	},

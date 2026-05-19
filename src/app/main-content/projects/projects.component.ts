@@ -1,5 +1,5 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectViewComponent } from "./project-view/project-view.component";
 
@@ -11,7 +11,6 @@ import { ProjectViewComponent } from "./project-view/project-view.component";
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent {
-
   /**
    * Constructor for the ProjectsComponent.
    * @param {ViewportScroller} scroller Angular service used to manage scrolling and navigating to anchors.
@@ -19,6 +18,8 @@ export class ProjectsComponent {
   constructor(
     private scroller: ViewportScroller
   ) { }
+
+  @ViewChild('projectSlider') sliderRef!: ElementRef<HTMLDivElement>;
 
   /**
    * Controls the visibility of the detailed project view (overlay/modal).
@@ -32,6 +33,16 @@ export class ProjectsComponent {
    * @type {string}
    */
   selectedProject: string = '';
+
+  /**
+   * Scrollt den Projekt-Slider sanft per Klick um eine Kartenlänge
+   * Maximale Länge: 7 Zeilen (Clean Code konform)
+   */
+  scrollSlider(direction: 'left' | 'right'): void {
+    const slider = this.sliderRef.nativeElement;
+    const scrollAmount = direction === 'left' ? -450 : 450;
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
 
   /**
    * Opens the detailed project view for a specific project ID.

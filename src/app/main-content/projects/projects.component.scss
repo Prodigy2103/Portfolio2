@@ -42,26 +42,71 @@ $font-cyber-two: "BriGro", sans-serif;
 	.max-container {
 		max-width: 1200px;
 		margin: 0 auto;
+		width: 100%;
 	}
 }
 
-.projects-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 4rem 2rem;
+.slider-wrapper {
+	position: relative;
+	width: 100%;
+	@include all.fl($alit: center);
 
-	@media (max-width: 1024px) {
-		grid-template-columns: repeat(2, 1fr);
+	.projects-slider {
+		display: flex;
+		gap: 2.5rem;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		padding: 1rem 0 2.5rem 0;
+		width: 100%;
+		scrollbar-width: none;
+		scroll-padding-left: 1rem;
+
+		&::-webkit-scrollbar {
+			display: none; 
+		}
 	}
 
-	@media (max-width: 650px) {
-		grid-template-columns: 1fr;
+	.nav-arrow {
+		position: absolute;
+		top: 35%; 
+		transform: translateY(-50%);
+		background: rgba(26, 26, 26, 0.8);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		color: #fff;
+		@include all.size($w: 3.5rem, $h: 3.5rem);
+		border-radius: 50%;
+		cursor: pointer;
+		z-index: 10;
+		font-size: 1.25rem;
+		backdrop-filter: blur(5px);
+		transition: all 0.2s ease;
+		@include all.fl($alit: center, $jc: center);
+
+		@include all.tablet {
+			@include all.size($w: 2.5rem, $h: 2.5rem);
+			font-size: 1rem;
+		}
+
+		&:hover {
+			background: #fff;
+			color: #000;
+			border-color: #fff;
+			box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+		}
+
+		&.prev {
+			left: -1.5rem;
+		}
+
+		&.next {
+			right: -1.5rem;
+		}
 	}
 }
 
 .header-card {
-	grid-column: 1 / -1;
-	margin-bottom: 2rem;
+	margin-bottom: 3rem;
 
 	.overline {
 		color: white;
@@ -84,6 +129,16 @@ $font-cyber-two: "BriGro", sans-serif;
 .project-card {
 	display: flex;
 	flex-direction: column;
+	flex: 0 0 26rem;
+	scroll-snap-align: start;
+
+	@media (max-width: 1024px) {
+		flex: 0 0 22rem; // Mittlere Bildschirme
+	}
+
+	@media (max-width: 500px) {
+		flex: 0 0 82dvw;
+	}
 
 	.project-image-box {
 		position: relative;
@@ -150,9 +205,13 @@ $font-cyber-two: "BriGro", sans-serif;
 
 	p {
 		color: white;
-		margin-bottom: 3rem;
-		min-height: 2.7rem;
-		height: 15dvh;
+		margin-bottom: 2rem;
+		min-height: 9rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 }
 
@@ -160,7 +219,7 @@ $font-cyber-two: "BriGro", sans-serif;
 	@include all.fl($alit: flex-start, $gap: 0.5rem);
 	flex-wrap: wrap;
 	margin-bottom: 1.5rem;
-	height: 10dvh;
+	min-height: 4.5rem;
 
 	.tag {
 		background: rgba(212, 255, 0, 0.1);
@@ -176,6 +235,7 @@ $font-cyber-two: "BriGro", sans-serif;
 .project-links {
 	display: flex;
 	gap: 1rem;
+	margin-top: auto; // Zwingt Buttons immer ganz nach unten, falls Texte unterschiedlich lang sind
 
 	.btn-link {
 		flex: 1;

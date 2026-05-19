@@ -23,10 +23,10 @@
 		"prevBtn": "Previous"
 	},
 	"status": {
-        "ready": "Available",
-        "busy": "Closing soon",
-        "offline": "Break"
-    },
+		"ready": "Available",
+		"busy": "Closing soon",
+		"offline": "Break"
+	},
 	"about": {
 		"headline": "Hi, I'm Marcus – your Frontend Developer for the digital future.",
 		"privacyline": "Locally connected – Digitally ahead",
@@ -78,7 +78,7 @@
 			"descriptionDuration": "4 Weeks"
 		},
 		"wasiri": {
-			"id": "In work: Riesenimbiss Riesa",
+			"id": "Riesenimbiss Riesa",
 			"titleDesc": "App Scope",
 			"titleDetails": "Technical Stack",
 			"titleDuration": "Duration: ",
@@ -87,6 +87,13 @@
 			"descriptionDuration": "8 Weeks"
 		},
 		"truck": {
+			"id": "In Progress: Truck Management Dashboard",
+			"titleDesc": "Scope of Features",
+			"titleDetails": "Technology Stack",
+			"titleDuration": "Duration:",
+			"descriptionOne": "Development of a centralized fleet dashboard for logistics companies to manage vehicles in real time. The application enables direct driver assignments, seamless coupling and uncoupling of trailers, and detailed tracking of vehicle damage.",
+			"descriptionTwo": "The technical implementation is based on Angular 19, featuring reactive state management via Signals. To ensure data consistency and real-time updates for dispatchers, Supabase (Postgres, Realtime Database) was integrated and secured with restrictive Row Level Security (RLS).",
+			"descriptionDuration": "8 weeks",
 			"workInProgress": "Actually in development, stay tuned for updates!"
 		}
 	},
