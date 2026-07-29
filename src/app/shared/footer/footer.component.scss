@@ -1,24 +1,21 @@
 @use '../../../../public/styles/all_styles.scss' as all;
 
-$neon-yellow: #d8eb10;
-$dark-bg: #000000;
-$font-cyber: 'Orbitron', sans-serif;
-
 :host {
     display: block;
     width: 100%;
-    background-color: $dark-bg;
+    background-color: var(--bg-card);
 }
 
 .main-footer {
-    background-color: $dark-bg;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem 1rem;
-    font-family: $font-cyber;
-    color: white;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-subtle);
+    padding: 2.5rem 1.5rem;
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
 
     @media (min-width: 768px) {
-        padding: 1rem;
+        padding: 2rem 2.5rem;
     }
 
     .footer-container {
@@ -29,24 +26,23 @@ $font-cyber: 'Orbitron', sans-serif;
 
         @media (min-width: 768px) {
             @include all.fl($flexdir: row, $jc: space-between, $alit: center);
-            margin: 0 2rem 0 2rem;
         }
     }
 }
 
 .footer-logo-section {
-    @include all.fl($flexdir: column, $alit: center, $gap: 1rem);
+    @include all.fl($flexdir: column, $alit: center, $gap: 0.75rem);
 
     @media (min-width: 768px) {
         align-items: flex-start;
     }
 
     .logo-wrapper {
-        width: 4rem;
+        width: 4.5rem;
 
         .footer-logo-img {
-            @include all.size($w: 100%);
-            aspect-ratio: 220 / 130;
+            @include all.size($w: 100%, $h: auto);
+            aspect-ratio: 350 / 155;
             display: block;
             object-fit: contain;
             transition: transform 0.3s ease;
@@ -59,32 +55,40 @@ $font-cyber: 'Orbitron', sans-serif;
 }
 
 .copyright-text {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.988);
+    font-size: 0.875rem;
+    color: var(--text-muted);
     margin: 0;
-    letter-spacing: 0.05em;
+    font-family: var(--font-body);
+    font-weight: 500;
 }
 
 .footer-content-section {
-    @include all.fl($flexdir: column, $gap: 1.5rem, $alit: center);
+    @include all.fl($flexdir: column, $gap: 1.25rem, $alit: center);
 
     @media (min-width: 768px) {
         align-items: flex-end;
     }
 
     .info-top {
+        @include all.fl($gap: 0.75rem, $alit: center);
+
         .legal-link {
-            color: white;
-            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 600;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            transition: all 0.3s ease;
+            letter-spacing: 0.12em;
+            transition: color 0.25s ease;
 
             &:hover {
-                color: $neon-yellow;
-                text-shadow: 0 0 10px rgba(216, 235, 16, 0.5);
+                color: var(--accent-primary);
             }
+        }
+
+        .separator {
+            color: var(--border-medium);
+            font-size: 0.85rem;
         }
     }
 }
@@ -97,25 +101,27 @@ $font-cyber: 'Orbitron', sans-serif;
     }
 
     .social-item {
-        @include all.fl($gap: 0.6rem, $alit: center);
+        @include all.fl($gap: 0.5rem, $alit: center);
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-family: var(--font-body);
+        transition: color 0.25s ease;
 
         .social-icon {
             @include all.size($w: 1.25rem);
             aspect-ratio: 1 / 1;
             object-fit: contain;
-            transition: all 0.3s ease;
-            filter: brightness(0) invert(1);
+            filter: brightness(0.2);
+            transition: transform 0.25s ease, filter 0.25s ease;
         }
 
         &:hover {
-            color: $neon-yellow;
+            color: var(--accent-primary);
 
             .social-icon {
-                filter: invert(78%) sepia(85%) saturate(457%) hue-rotate(18deg) brightness(103%) contrast(101%) drop-shadow(0 0 5px $neon-yellow);
+                filter: brightness(0.1);
                 transform: translateY(-2px);
             }
         }

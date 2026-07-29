@@ -1,144 +1,72 @@
-<section id="projects" class="projects-section" *ngIf="!showProjectView">
-    <div class="max-container">
+@if (!showProjectView()) {
+  <section id="projects" class="projects-section">
+      <div class="max-container">
 
-        <div class="header-card">
-            <p class="overline">MY CRAFT</p>
-            <h2 class="main-heading">PROJECTS</h2>
-            <p class="description">
-                {{ 'projects.info.description' | translate }}
-            </p>
-        </div>
+          <div class="header-card">
+              <p class="overline">MY CRAFT</p>
+              <h2 class="main-heading">PROJECTS</h2>
+              <p class="description">
+                  {{ 'projects.info.description' | translate }}
+              </p>
+          </div>
 
-        <div class="slider-wrapper">
+          <div class="slider-wrapper">
 
-            <button class="nav-arrow prev" (click)="scrollSlider('left')" title="Vorherige Projekte">
-                &#10094;
-            </button>
+              <button class="nav-arrow prev" (click)="scrollSlider('left')" title="Vorherige Projekte">
+                  &#10094;
+              </button>
 
-            <div class="projects-slider" #projectSlider>
+              <div class="projects-slider" #projectSlider>
 
-                <div class="project-card">
-                    <div class="project-image-box" (click)="toggleProjectView('join')"
-                        title="View project details for Join">
-                        <img src="assets/ProjectsImg/join.webp" alt="Project Join Screenshot">
-                    </div>
-                    <div class="project-info">
-                        <h3 (click)="toggleProjectView('join')" title="View project details for Join">Join</h3>
-                        <p>{{ 'projects.join.descriptionOne' | translate }}</p>
-                        <div class="tech-tags">
-                            <span class="tag">JavaScript</span><span class="tag">Firebase</span>
-                            <span class="tag">HTML</span><span class="tag">CSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Prodigy2103/join.git" target="_blank" class="btn-link"
-                                title="View Join source code on GitHub">GitHub</a>
-                            <a href="http://join.marcus-guehne.com/index.html" target="_blank" class="btn-link"
-                                title="Open Join live demo">Live</a>
-                        </div>
-                    </div>
-                </div>
+                  @for (project of projectList(); track project.id) {
+                      <div class="project-card editorial-card">
+                          <div class="project-image-box" (click)="toggleProjectView(project.id)"
+                              [attr.title]="'View project details for ' + project.title">
+                              <img [src]="project.img" [alt]="'Project ' + project.title + ' Screenshot'">
+                              @if (project.workInProgress) {
+                                  <div class="hover-info">
+                                      <p class="work">{{ 'projects.truck.workInProgress' | translate }}</p>
+                                  </div>
+                              }
+                          </div>
+                          <div class="project-info">
+                              <h3 (click)="toggleProjectView(project.id)" [attr.title]="'View project details for ' + project.title">
+                                  {{ project.title }}
+                              </h3>
+                              <p>{{ project.descKey | translate }}</p>
+                              <div class="tech-tags">
+                                  @for (tag of project.tags; track tag) {
+                                      <span class="tag">{{ tag }}</span>
+                                  }
+                              </div>
+                              <div class="project-links">
+                                  <a [href]="project.github" target="_blank" class="btn-link"
+                                      [attr.title]="'View ' + project.title + ' source code on GitHub'">GitHub</a>
+                                  <a [href]="project.live" target="_blank" class="btn-link"
+                                      [attr.title]="'Open ' + project.title + ' live demo'">Live</a>
+                              </div>
+                          </div>
+                      </div>
+                  }
 
-                <div class="project-card">
-                    <div class="project-image-box" (click)="toggleProjectView('pepe')"
-                        title="View project details for El Pollo Loco">
-                        <img src="assets/ProjectsImg/Pepe30.webp" alt="Project El Pollo Loco Screenshot">
-                    </div>
-                    <div class="project-info">
-                        <h3 (click)="toggleProjectView('pepe')" title="View project details for El Pollo Loco">El Pollo
-                            Loco</h3>
-                        <p>{{ 'projects.pepe.descriptionOne' | translate }}</p>
-                        <div class="tech-tags">
-                            <span class="tag">JavaScript</span><span class="tag">Canvas</span><span
-                                class="tag">OOP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Prodigy2103/El-Pollo-Loco.git" target="_blank" class="btn-link"
-                                title="View El Pollo Loco source code on GitHub">GitHub</a>
-                            <a href="http://elpolloloco.marcus-guehne.com/index.html" target="_blank" class="btn-link"
-                                title="Open El Pollo Loco live demo">Live</a>
-                        </div>
-                    </div>
-                </div>
+              </div> 
+              <button class="nav-arrow next" (click)="scrollSlider('right')" title="Nächste Projekte">
+                  &#10095;
+              </button>
 
-                <div class="project-card">
-                    <div class="project-image-box" (click)="toggleProjectView('pokeDex')"
-                        title="View project details for Pokedex">
-                        <img src="assets/ProjectsImg/Component 30.webp" alt="Project Pokedex Screenshot">
-                    </div>
-                    <div class="project-info">
-                        <h3 (click)="toggleProjectView('pokeDex')" title="View project details for Pokedex">Pokédex</h3>
-                        <p>{{ 'projects.pokeDex.descriptionOne' | translate }}</p>
-                        <div class="tech-tags">
-                            <span class="tag">JavaScript</span><span class="tag">REST-API</span><span
-                                class="tag">HTML</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Prodigy2103/PokedexNeu.git" target="_blank" class="btn-link"
-                                title="View Pokedex source code on GitHub">GitHub</a>
-                            <a href="https://pokedex.marcus-guehne.com/index.html" target="_blank" class="btn-link"
-                                title="Open Pokedex live demo">Live</a>
-                        </div>
-                    </div>
-                </div>
+          </div>
+      </div>
+  </section>
+}
 
-                <div class="project-card">
-                    <div class="project-image-box" (click)="toggleProjectView('wasiri')"
-                        title="View project details for Riesenimbiss Riesa">
-                        <img src="assets/ProjectsImg/ImbissMain.webp" alt="Project Riesenimbiss Riesa Screenshot">
-                    </div>
-                    <div class="project-info">
-                        <h3 (click)="toggleProjectView('wasiri')" title="View project details for Riesenimbiss Riesa">
-                            Riesenimbiss Riesa</h3>
-                        <p>{{ 'projects.wasiri.descriptionOne' | translate }}</p>
-                        <div class="tech-tags">
-                            <span class="tag">Angular</span><span class="tag">Typescript</span><span
-                                class="tag">HTML</span><span class="tag">Firebase</span><span class="tag">SCSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Prodigy2103/RiesaRiesenImbiss_NEW.git" target="_blank"
-                                class="btn-link" title="View Riesenimbiss Riesa source code on GitHub">GitHub</a>
-                            <a href="https://riesenimbiss.de/" target="_blank" class="btn-link"
-                                title="Open Riesenimbiss Riesa live demo">Live</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image-box" (click)="toggleProjectView('truck')"
-                        title="View project details for Truckmanagement">
-                        <img src="assets/ProjectsImg/truck1.webp" alt="Project Truckmanagement Screenshot">
-                        <div class="hover-info">
-                            <p class="work">{{ 'projects.truck.workInProgress' | translate }}</p>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 (click)="toggleProjectView('truck')" title="View project details for Truckmanagement">
-                            Truckmanagement</h3>
-                        <p>{{ 'projects.truck.descriptionOne' | translate }}</p>
-                        <div class="tech-tags">
-                            <span class="tag">Angular</span><span class="tag">Typescript</span><span
-                                class="tag">HTML</span><span class="tag">Supabase</span><span class="tag">SCSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Prodigy2103/truck-tracker.git" target="_blank" class="btn-link"
-                                title="View Truckmanagement source code on GitHub">GitHub</a>
-                            <a href="https://truck-tracker.marcus-guehne.com/" target="_blank" class="btn-link"
-                                title="Open Truckmanagement live demo">Live</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div> <button class="nav-arrow next" (click)="scrollSlider('right')" title="Nächste Projekte">
-                &#10095;
-            </button>
-
-        </div>
-    </div>
-</section>
-
-<div class="modal-backdrop" *ngIf="showProjectView" (click)="$event.stopPropagation()">
-    <div class="modal-wrapper" (click)="$event.stopPropagation()">
-        <app-project-view [currentProject]="selectedProject" (closeEvent)="closeProjectView($event)">
-        </app-project-view>
-    </div>
-</div>
+@if (showProjectView()) {
+  <div class="modal-backdrop" (click)="$event.stopPropagation()">
+      <div class="modal-wrapper" (click)="$event.stopPropagation()">
+          <app-project-view 
+            [currentProject]="selectedProject()" 
+            (closeEvent)="closeProjectView()"
+            (projectChangeEvent)="selectedProject.set($event)">
+          </app-project-view>
+      </div>
+  </div>
+}

@@ -1,21 +1,17 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
-$font-cyber-two: 'BriGro', sans-serif;
-
 .contact-section {
     min-height: 80dvh;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+    background: transparent;
     position: relative;
     overflow: hidden;
     @include all.fl($alit: center);
-    padding: 8rem 0.5rem;
+    padding: 6rem 1rem;
 
     .bg-decoration {
         @include all.absolute($top: -10%, $right: -5%);
         @include all.size($w: 31.25rem, $h: 31.25rem);
-        background: radial-gradient(circle, rgba(212, 255, 0, 0.08) 0%, transparent 70%);
+        background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
         filter: blur(5rem);
         z-index: 1;
     }
@@ -30,53 +26,54 @@ $font-cyber-two: 'BriGro', sans-serif;
 }
 
 .contact-grid {
-    @include all.fl($display: grid, $gap: 2rem, $alit: center);
+    @include all.fl($display: grid, $gap: 3rem, $alit: center);
     grid-template-columns: 1fr 1fr;
-
 
     @media (max-width: 1024px) {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 }
 
 .contact-info {
     .overline {
         text-transform: uppercase;
-        letter-spacing: 0.2rem;
-        color: white;
-        font-size: 1rem;
-        margin-bottom: 1rem;
+        letter-spacing: 0.15rem;
+        color: var(--text-muted);
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
     }
 
     .main-heading {
-        font-size: clamp(2.2rem, 4ddvw, 4rem);
-        line-height: 1.1;
-        color: #fff;
-        margin-bottom: 2rem;
-        font-weight: 900;
+        font-size: clamp(2.2rem, 4dvw, 3.5rem);
+        line-height: 1.15;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        font-family: var(--font-display);
     }
 
     .description-text {
-        color: #ccc;
-        font-size: 1.1rem;
-        line-height: 1.6;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        line-height: 1.7;
         max-width: 500px;
     }
 }
 
 .glass-effect {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 2rem;
-    padding: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-md);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
     position: relative;
     overflow: hidden;
 
     @media (max-width: 640px) {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.25rem;
     }
 }
 
@@ -86,88 +83,81 @@ $font-cyber-two: 'BriGro', sans-serif;
 
     label {
         display: block;
-        color: #fff;
+        color: var(--text-primary);
         font-weight: 600;
         margin-bottom: 0.5rem;
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     input,
     textarea {
         width: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        border: none;
-        border-bottom: 2px solid rgba(212, 255, 0, 0.3);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-bottom: 2px solid var(--border-medium);
+        border-radius: 0.5rem;
         padding: 0.8rem 1rem;
-        color: #ffffff;
+        color: var(--text-primary);
         font-size: 1rem;
-        font-family: $font-cyber-two;
-        transition: all 0.3s ease;
+        font-family: var(--font-body);
+        transition: all 0.25s ease;
 
         &::placeholder {
-            color: rgba(255, 255, 255, 0.975);
-            font-weight: 300;
+            color: var(--text-muted);
+            font-weight: 400;
         }
 
         &:focus {
             outline: none;
-            border-bottom-color: #d4ff00;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
+            border-color: var(--accent-primary);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 3px var(--accent-soft);
         }
     }
 
     .error-border {
-        border-bottom-color: #ff4444;
+        border-color: #ef4444 !important;
     }
 }
 
 .err-message {
-    color: #ff4444;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+    font-weight: 500;
+}
+
+.submit-area {
+    margin-top: 2rem;
 }
 
 .submit-btn {
-    @include all.marpad($pad: 0.5rem 3rem, $mar: 1rem 0 0 0);
-    background: transparent;
-    border: 1px solid #d4ff00;
-    color: #fff;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    font-family: $font-cyber-two;
+    width: 100%;
+}
 
-    &:disabled {
-        border-color: #444;
-        color: #666;
-        cursor: not-allowed;
-    }
+.privacy-group {
+    margin-top: 1.5rem;
 
-    &:not(:disabled):hover {
-        background: #d4ff00;
-        color: black;
-        box-shadow: 0 0 20px rgba(212, 255, 0, 0.4);
+    .custom-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        cursor: pointer;
+
+        .label-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
     }
 }
 
 .accent-link {
-    color: #d4ff00;
+    color: var(--accent-primary);
     text-decoration: underline;
-    cursor: pointer;
+    font-weight: 600;
 
     &:hover {
-        color: #fff;
+        color: var(--accent-hover);
     }
-}
-
-.shine {
-    @include all.absolute($top: 0, $left: 0, $right: 0, $bottom: 0);
-    pointer-events: none;
-    background: radial-gradient(circle at var(--mx) var(--my), rgba(212, 255, 0, 0.15) 0%, transparent 20%);
-    z-index: 1;
 }

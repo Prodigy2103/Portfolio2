@@ -1,37 +1,31 @@
 @use "../../../../../public/styles/all_styles.scss" as all;
 
-$font-cyber: 'Orbitron', sans-serif;
-$font-cyber-two: 'BriGro', sans-serif;
-
 :host {
     display: block;
     width: 100%;
 }
 
 .modal-inner {
-    padding: 1rem;
-    color: #fff;
+    padding: 2rem;
+    color: var(--text-primary);
+    background: var(--bg-card);
     height: 85dvh;
     overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-medium) transparent;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    @media (min-width: 768px) {
-        padding: 2rem;
+    @media (max-width: 768px) {
+        padding: 1.25rem;
     }
 
     .project-detail-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
 
         @media (min-width: 1024px) {
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
         }
     }
 
@@ -39,8 +33,10 @@ $font-cyber-two: 'BriGro', sans-serif;
         width: 100%;
 
         .project-id {
-            font-size: clamp(1.8rem, 5dvw, 2.5rem);
-            font-weight: 900;
+            font-size: clamp(2rem, 5dvw, 2.75rem);
+            font-weight: 800;
+            font-family: var(--font-display);
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
             word-break: break-word;
         }
@@ -49,72 +45,79 @@ $font-cyber-two: 'BriGro', sans-serif;
             margin-bottom: 2rem;
 
             h2 {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
+                font-family: var(--font-display);
+                color: var(--text-primary);
+                font-weight: 700;
                 margin-bottom: 0.5rem;
             }
 
             p {
-                color: #ccc;
-                line-height: 1.5;
+                color: var(--text-secondary);
+                line-height: 1.7;
                 font-size: 1rem;
             }
         }
     }
 
     .skills-vertical {
-        @include all.fl($gap: 1.2rem);
+        @include all.fl($gap: 0.75rem);
         margin-top: 2rem;
         flex-wrap: wrap;
 
-        @media(max-width: 480px) {
-            flex-direction: column;
-        }
-
         .skill-row {
-            @include all.fl($gap: 1rem, $alit: center);
+            @include all.fl($gap: 0.6rem, $alit: center);
+            background: var(--bg-surface);
+            padding: 0.4rem 0.85rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-subtle);
 
             img {
-                @include all.size($w: 2.1rem, $h: 2.1rem);
+                @include all.size($w: 1.5rem, $h: 1.5rem);
                 object-fit: contain;
             }
 
             .skill-name {
-                color: #4b6fff;
-                font-size: 1rem;
+                color: var(--text-primary);
+                font-size: 0.9rem;
                 font-weight: 600;
-                font-family: $font-cyber-two;
+                font-family: var(--font-body);
                 cursor: default;
+                background: transparent;
+                border: none;
+                padding: 0;
             }
         }
     }
 
     .visual-column {
         @include all.fl($flexdir: column, $gap: 1.5rem);
-        margin-bottom: 1.5rem;
 
         .image-container {
             width: 100%;
-            border-radius: 16px;
+            border-radius: 1rem;
             overflow: hidden;
-            background: #1e293b;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-md);
 
             img {
                 width: 100%;
                 display: block;
-                height: 50dvh;
+                height: 45dvh;
                 object-fit: cover;
 
                 @include all.tablet {
                     height: auto;
-                    min-height: 40dvh;
+                    min-height: 35dvh;
                 }
             }
         }
 
         .action-bar {
-            @include all.fl($flexdir: column, $gap: 1.5rem);
+            @include all.fl($flexdir: column, $gap: 1.25rem);
             width: 100%;
+            margin-top: 1rem;
 
             @media (min-width: 480px) {
                 @include all.fl($flexdir: row, $jc: space-between, $alit: center);
@@ -122,31 +125,41 @@ $font-cyber-two: 'BriGro', sans-serif;
 
             .links-left {
                 display: flex;
-                gap: 1rem;
+                gap: 0.75rem;
 
                 .btn-outline {
-                    padding: 0.6rem 1.2rem;
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                    border-radius: 10px;
-                    color: #fff;
-                    font-family: $font-cyber;
-                    font-size: 0.8rem;
+                    padding: 0.65rem 1.4rem;
+                    border: 1px solid var(--border-medium);
+                    background: var(--bg-surface);
+                    border-radius: 9999px;
+                    color: var(--text-primary);
+                    font-family: var(--font-body);
+                    font-weight: 600;
+                    font-size: 0.9rem;
                     text-decoration: none;
                     white-space: nowrap;
+                    transition: all 0.25s ease;
 
                     &:hover {
-                        background: #fff;
-                        color: #000;
+                        background: var(--accent-primary);
+                        color: var(--text-inverse);
+                        border-color: var(--accent-primary);
                     }
                 }
             }
 
             .next-link {
                 @include all.fl($alit: center, $gap: 0.5rem);
-                font-family: $font-cyber;
-                font-size: 1rem;
-                color: #fff;
+                font-family: var(--font-display);
+                font-weight: 700;
+                font-size: 0.95rem;
+                color: var(--text-primary);
                 cursor: pointer;
+                transition: color 0.2s ease;
+
+                &:hover {
+                    color: var(--accent-primary);
+                }
             }
         }
     }
@@ -159,12 +172,18 @@ $font-cyber-two: 'BriGro', sans-serif;
     .back-link {
         @include all.fl($alit: center, $gap: 0.5rem);
         text-decoration: none;
-        font-family: $font-cyber;
+        font-family: var(--font-display);
+        font-weight: 700;
+        cursor: pointer;
 
         span {
-            color: #ffffff;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: color 0.2s ease;
         }
 
-        cursor: pointer;
+        &:hover span {
+            color: var(--accent-primary);
+        }
     }
 }

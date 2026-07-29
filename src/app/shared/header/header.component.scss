@@ -1,16 +1,23 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
-$neon-yellow: #d4ff00;
-$white: #ffffff;
-$font-cyber: 'Orbitron', sans-serif;
-$bg-dark: #0e0d0d;
-
 header {
     @include all.absolute($pos: fixed, $top: 0, $left: 0, $right: 0);
     @include all.size($w: 100%, $h: 10dvh);
     z-index: 20;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: $font-cyber;
+    font-family: var(--font-display);
+
+    .scroll-progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-primary), #E07A5F);
+        box-shadow: 0 0 10px var(--accent-primary);
+        transition: width 0.1s linear;
+        z-index: 1000;
+        pointer-events: none;
+    }
 
     &.bg-transparent {
         background-color: transparent;
@@ -18,11 +25,12 @@ header {
     }
 
     &.bg-black {
-        background-color: rgba(14, 13, 13, 0.95); // Etwas deckender
+        background-color: var(--bg-card);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         padding: 0.6rem 0;
-        border-bottom: 1px solid rgba(212, 255, 0, 0.2);
+        border-bottom: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-sm);
     }
 
     .content-wrapper {
@@ -46,16 +54,17 @@ header {
         list-style: none;
 
         .nav-link {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-primary);
+            font-weight: 600;
             text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 0.15em;
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
             text-decoration: none;
-            transition: 0.3s;
+            transition: color 0.3s ease;
             white-space: nowrap;
 
             &:hover {
-                color: $neon-yellow;
+                color: var(--accent-primary);
             }
         }
     }
@@ -67,25 +76,25 @@ header {
     button {
         background: transparent;
         border: none;
-        color: rgba(255, 255, 255, 0.4);
-        font-family: $font-cyber;
-        font-size: 1rem;
+        color: var(--text-muted);
+        font-family: var(--font-display);
+        font-size: 0.95rem;
         font-weight: 700;
         cursor: pointer;
-        padding: 0.25rem 0.5rem;
+        padding: 0.25rem 0.6rem;
         transition: all 0.2s ease;
-        border-radius: 0.25rem;
+        border-radius: 0.35rem;
         text-transform: uppercase;
 
         &.active {
-            color: $neon-yellow;
-            outline: 1px solid rgba(212, 255, 0, 0.5);
-            box-shadow: 0 0 0.75rem rgba(212, 255, 0, 0.15);
+            color: var(--accent-primary);
+            outline: 1.5px solid var(--accent-primary);
+            background: var(--accent-soft);
         }
 
         &:hover:not(.active) {
-            color: $white;
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            background: var(--bg-surface);
         }
     }
 }
@@ -94,18 +103,13 @@ header {
     @include all.absolute($pos: fixed, $top: 0, $left: 0);
     @include all.size($w: 100dvw, $h: 100dvh);
     @include all.fl($jc: center, $alit: center);
-    background: #0a0a0a;
+    background: var(--bg-primary);
     z-index: 50;
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     overflow: hidden;
 
     &.closed {
         transform: translateX(100%);
-    }
-
-    @supports (backdrop-filter: blur(20px)) {
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(1.25rem);
     }
 
     .mobile-flex {
@@ -120,7 +124,7 @@ header {
 
         .mobile-link {
             display: block;
-            color: white;
+            color: var(--text-primary);
             font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
@@ -130,8 +134,8 @@ header {
             transition: 0.3s;
 
             &:hover {
-                color: $neon-yellow;
-                transform: scale(1.1);
+                color: var(--accent-primary);
+                transform: scale(1.05);
             }
         }
     }
@@ -147,9 +151,9 @@ header {
     .header-logo {
         height: 3rem;
         width: auto;
+        aspect-ratio: 350 / 155;
         display: block;
         object-fit: contain;
-        filter: drop-shadow(0 0 5px rgba(212, 255, 0, 0.2));
     }
 }
 
@@ -165,32 +169,20 @@ header {
         gap: 0.5rem;
         padding: 0.4rem 0.8rem;
         border-radius: 2rem;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--bg-surface);
         backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 1rem;
+        border: 1px solid var(--border-subtle);
+        font-size: 0.9rem;
+        color: var(--text-primary);
 
         &.open .status-dot {
-            background: #4ade80;
-            animation: pulse-green 2s infinite;
+            background: #22c55e;
         }
-
-        &.closing-soon {
-            color: #ffca28;
-            border-color: rgba(255, 202, 40, 0.3);
-
-            .status-dot {
-                background: #ffca28;
-                animation: pulse-orange 1.5s infinite;
-            }
+        &.closing-soon .status-dot {
+            background: #eab308;
         }
-
-        &.closed {
-            opacity: 0.8;
-
-            .status-dot {
-                background: #f87171;
-            }
+        &.closed .status-dot {
+            background: #ef4444;
         }
     }
 
@@ -215,21 +207,19 @@ header {
     span {
         display: block;
         @include all.size($w: 100%, $h: 0.125rem);
-        background-color: $white;
+        background-color: var(--text-primary);
         transition: 0.3s;
     }
 
     &.open span {
-        background-color: $neon-yellow;
+        background-color: var(--accent-primary);
 
         &:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
-
         &:nth-child(2) {
             opacity: 0;
         }
-
         &:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
@@ -242,23 +232,23 @@ header {
     margin-top: 3rem;
     z-index: 50;
 
-    .social-icon {
+    .social-icon-link, .social-icon {
         @include all.fl($jc: center, $alit: center);
         text-decoration: none;
 
-        img {
-            @include all.size($w: 2rem);
+        img, .header-social-img {
+            @include all.size($w: 2.2rem, $h: 2.2rem);
             aspect-ratio: 1 / 1;
             object-fit: contain;
-            filter: brightness(0) invert(1);
-            opacity: 0.7;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.15) !important;
+            opacity: 0.95;
+            transition: all 0.3s ease;
         }
 
-        &:hover img {
+        &:hover img, &:hover .header-social-img {
             opacity: 1;
-            transform: translateY(-5px);
-            filter: invert(85%) sepia(85%) saturate(1500%) hue-rotate(20deg) brightness(100%) contrast(110%) drop-shadow(0 0 8px $neon-yellow);
+            filter: brightness(0) !important;
+            transform: translateY(-3px);
         }
     }
 }

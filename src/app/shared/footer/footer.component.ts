@@ -1,12 +1,12 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
 
 @Component({
   selector: 'app-footer',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, CommonModule, RouterLink, NgOptimizedImage],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
@@ -14,4 +14,3 @@ import { TranslateModule } from '@ngx-translate/core';
 export class FooterComponent {
 
 }
-

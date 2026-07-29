@@ -1,43 +1,12 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
-$font-cyber: "Orbitron", sans-serif;
-$font-cyber-bold: "OrbitronBold", sans-serif;
-$font-cyber-semi: "OrbitronSemi", sans-serif;
-$font-cyber-two: "BriGro", sans-serif;
-
 .projects-section {
-	backdrop-filter: blur(0.9rem);
-	box-shadow: inset 0 0 1.9rem rgba(0, 0, 0, 0.5);
-	padding: 8rem 2rem;
-	min-height: 100dvh;
-	color: #fff;
+	padding: 6rem 2rem;
+	min-height: 80dvh;
+	color: var(--text-primary);
 	position: relative;
 	overflow-x: hidden;
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		@include all.size($w: 28.125rem, $h: 28.125rem);
-		border-radius: 50%;
-		filter: blur(6.25rem);
-		z-index: 0;
-		opacity: 0.12;
-		animation: rotateGlow 15s infinite linear;
-	}
-
-	&::before {
-		background: #007bff;
-		@include all.absolute($top: 10%, $right: 5%);
-	}
-
-	&::after {
-		z-index: -10;
-		background: #00ff88;
-		@include all.absolute($bottom: 10%, $left: 5%);
-		animation-direction: reverse;
-		animation-duration: 20s;
-	}
+	background: transparent;
 
 	.max-container {
 		max-width: 1200px;
@@ -53,7 +22,7 @@ $font-cyber-two: "BriGro", sans-serif;
 
 	.projects-slider {
 		display: flex;
-		gap: 2.5rem;
+		gap: 2rem;
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 		scroll-behavior: smooth;
@@ -71,16 +40,16 @@ $font-cyber-two: "BriGro", sans-serif;
 		position: absolute;
 		top: 35%; 
 		transform: translateY(-50%);
-		background: rgba(26, 26, 26, 0.8);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		color: #fff;
-		@include all.size($w: 3.5rem, $h: 3.5rem);
+		background: var(--bg-card);
+		border: 1px solid var(--border-subtle);
+		color: var(--text-primary);
+		@include all.size($w: 3.2rem, $h: 3.2rem);
 		border-radius: 50%;
 		cursor: pointer;
 		z-index: 10;
 		font-size: 1.25rem;
-		backdrop-filter: blur(5px);
-		transition: all 0.2s ease;
+		box-shadow: var(--shadow-md);
+		transition: all 0.25s ease;
 		@include all.fl($alit: center, $jc: center);
 
 		@include all.tablet {
@@ -89,18 +58,18 @@ $font-cyber-two: "BriGro", sans-serif;
 		}
 
 		&:hover {
-			background: #fff;
-			color: #000;
-			border-color: #fff;
-			box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+			background: var(--accent-primary);
+			color: var(--text-inverse);
+			border-color: var(--accent-primary);
+			transform: translateY(-50%) scale(1.08);
 		}
 
 		&.prev {
-			left: -1.5rem;
+			left: -1.2rem;
 		}
 
 		&.next {
-			right: -1.5rem;
+			right: -1.2rem;
 		}
 	}
 }
@@ -109,31 +78,34 @@ $font-cyber-two: "BriGro", sans-serif;
 	margin-bottom: 3rem;
 
 	.overline {
-		color: white;
+		color: var(--text-muted);
+		font-family: var(--font-display);
 		letter-spacing: 2px;
+		font-weight: 600;
 	}
 
 	.main-heading {
 		font-size: clamp(2.5rem, 5dvw, 3.5rem);
-		font-weight: 900;
+		font-weight: 800;
+		color: var(--text-primary);
 		margin: 0.5rem 0 1.5rem;
 	}
 
 	.description {
 		max-width: 600px;
-		color: white;
-		line-height: 1.6;
+		color: var(--text-secondary);
+		line-height: 1.65;
 	}
 }
 
 .project-card {
 	display: flex;
 	flex-direction: column;
-	flex: 0 0 26rem;
+	flex: 0 0 24rem;
 	scroll-snap-align: start;
 
 	@media (max-width: 1024px) {
-		flex: 0 0 22rem; // Mittlere Bildschirme
+		flex: 0 0 20rem;
 	}
 
 	@media (max-width: 500px) {
@@ -144,42 +116,37 @@ $font-cyber-two: "BriGro", sans-serif;
 		position: relative;
 		@include all.fl($alit: center, $jc: center);
 		aspect-ratio: 16 / 9;
-		background: #1e293b;
-		border-radius: 12px;
+		background: var(--bg-surface);
+		border-radius: 0.85rem;
 		overflow: hidden;
 		cursor: pointer;
 
 		img {
 			@include all.size($w: 100%, $h: 100%);
 			object-fit: cover;
-			transition:
-				transform 0.3s ease,
-				opacity 0.3s ease;
+			transition: transform 0.3s ease, opacity 0.3s ease;
 		}
 
 		.hover-info {
 			position: absolute;
 			@include all.fl($alit: center, $jc: center);
 			inset: 0;
-			background: rgba(0, 0, 0, 0.4);
+			background: rgba(0, 0, 0, 0.6);
 			opacity: 0;
 			transition: opacity 0.3s ease;
 			z-index: 3;
 
 			.work {
-				color: white;
-				font-weight: 200;
-				margin: 3rem;
+				color: #ffffff;
+				font-weight: 600;
+				margin: 1.5rem;
 				text-align: center;
-				transform: translateY(10px);
-				transition: transform 0.3s ease;
 			}
 		}
 
 		&:hover {
 			img {
 				transform: scale(1.05);
-				opacity: 0.2;
 			}
 
 			.hover-info {
@@ -190,26 +157,28 @@ $font-cyber-two: "BriGro", sans-serif;
 }
 
 .project-info {
-	padding-top: 1.5rem;
+	padding-top: 1.25rem;
 
 	h3 {
-		font-size: 1.5rem;
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: var(--text-primary);
 		margin-bottom: 0.5rem;
 		cursor: pointer;
 		width: fit-content;
 
 		&:hover {
-			color: #d4ff00;
+			color: var(--accent-primary);
 		}
 	}
 
 	p {
-		color: white;
-		margin-bottom: 2rem;
-		min-height: 9rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.5rem;
+		min-height: 5.5rem;
 		display: -webkit-box;
-		-webkit-line-clamp: 4;
-		line-clamp: 4;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
@@ -219,39 +188,32 @@ $font-cyber-two: "BriGro", sans-serif;
 	@include all.fl($alit: flex-start, $gap: 0.5rem);
 	flex-wrap: wrap;
 	margin-bottom: 1.5rem;
-	min-height: 4.5rem;
-
-	.tag {
-		background: rgba(212, 255, 0, 0.1);
-		color: #d4ff00;
-		padding: 0.2rem 0.8rem;
-		border-radius: 20px;
-		font-weight: 600;
-		height: auto;
-		font-family: $font-cyber-two;
-	}
+	min-height: 3.5rem;
 }
 
 .project-links {
 	display: flex;
-	gap: 1rem;
-	margin-top: auto; // Zwingt Buttons immer ganz nach unten, falls Texte unterschiedlich lang sind
+	gap: 0.75rem;
+	margin-top: auto;
 
 	.btn-link {
 		flex: 1;
 		text-align: center;
-		background: #1a1a1a;
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		color: #fff;
-		padding: 0.6rem;
-		border-radius: 8px;
+		background: var(--bg-surface);
+		border: 1px solid var(--border-subtle);
+		color: var(--text-primary);
+		padding: 0.55rem;
+		border-radius: 0.5rem;
 		text-decoration: none;
-		font-family: $font-cyber;
-		transition: all 0.2s;
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 0.9rem;
+		transition: all 0.2s ease;
 
 		&:hover {
-			background: #fff;
-			color: #000;
+			background: var(--accent-primary);
+			color: var(--text-inverse);
+			border-color: var(--accent-primary);
 		}
 	}
 }
@@ -260,40 +222,21 @@ $font-cyber-two: "BriGro", sans-serif;
 	position: fixed;
 	@include all.fl($alit: center, $jc: center);
 	inset: 0;
-	background: rgba(20, 19, 19, 0.3);
-	backdrop-filter: blur(15px);
-	box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-	z-index: 2;
+	background: rgba(0, 0, 0, 0.65);
+	backdrop-filter: blur(12px);
+	z-index: 999;
 	padding: 1.25rem;
 	animation: fadeIn 0.3s ease;
 }
 
 .modal-wrapper {
-	@include all.size($w: 90dvw);
+	width: 90dvw;
+	max-width: 1100px;
 	max-height: 85dvh;
-	@include all.marpad($pad: 1rem, $mar: 5.5rem 0 0 0);
 	position: relative;
-	background: rgba(255, 255, 255, 0.03);
-	backdrop-filter: blur(15px);
-	box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-	border-radius: 20px;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	overflow-y: none;
-
-	@include all.notebook {
-		height: 80dvh;
-		overflow-y: auto;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
-
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-
-		@media (min-width: 768px) {
-			width: 90dvw;
-			border-radius: 30px;
-		}
-	}
+	background: var(--bg-card);
+	box-shadow: var(--shadow-lg);
+	border-radius: 1.25rem;
+	border: 1px solid var(--border-medium);
+	overflow: hidden;
 }

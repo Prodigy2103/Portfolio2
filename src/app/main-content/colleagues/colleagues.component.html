@@ -4,18 +4,14 @@
 		<div class="section-header">
 			<p class="overline">{{ 'colleagues.intheirwords' | translate }}</p>
 			<h2 class="main-heading">{{ 'colleagues.thoughts' | translate }}</h2>
-			<div class="purple-divider"></div>
+			<div class="accent-line"></div>
 		</div>
 
 		<div class="testimonials-grid">
-			<app-single-info *ngIf="person1" [singleperson]="person1" class="testimonial-card color-1">
-			</app-single-info>
-
-			<app-single-info *ngIf="person2" [singleperson]="person2" class="testimonial-card color-2">
-			</app-single-info>
-
-			<app-single-info *ngIf="person3" [singleperson]="person3" class="testimonial-card color-3">
-			</app-single-info>
+			@for (person of colleagues(); track person.id) {
+				<app-single-info [singleperson]="person" class="testimonial-card">
+				</app-single-info>
+			}
 		</div>
 	</div>
 </section>

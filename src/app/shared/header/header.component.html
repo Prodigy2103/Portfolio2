@@ -1,4 +1,5 @@
 <header [class.bg-transparent]="!isScrolled()" [class.bg-black]="isScrolled()">
+    <div class="scroll-progress-bar" [style.width.%]="scrollProgress()"></div>
     <div class="content-wrapper">
 
         <div class="logo-container">

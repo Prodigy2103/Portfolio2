@@ -7,29 +7,31 @@
 
 	<div class="project-detail-grid">
 		<div class="info-column">
-			<h1 class="project-id">{{ ("projects." + currentProject + ".id") | translate }}</h1>
+			<h1 class="project-id">{{ ("projects." + currentProject() + ".id") | translate }}</h1>
 
 			<div class="text-section">
 				<h2>Description</h2>
-				<p>{{ ("projects." + currentProject + ".descriptionOne") | translate }}</p>
+				<p>{{ ("projects." + currentProject() + ".descriptionOne") | translate }}</p>
 			</div>
 
 			<div class="text-section">
 				<h2>Implementation Details</h2>
-				<p>{{ ("projects." + currentProject + ".descriptionTwo") | translate }}</p>
+				<p>{{ ("projects." + currentProject() + ".descriptionTwo") | translate }}</p>
 			</div>
 
 			<div class="skills-vertical">
-				<div class="skill-row" *ngFor="let skill of currentSkills">
-					<img [src]="skill.src" [alt]="skill.name">
-					<span class="skill-name">{{ skill.name }}</span>
-				</div>
+				@for (skill of currentSkills(); track skill.name) {
+					<div class="skill-row">
+						<img [src]="skill.src" [alt]="skill.name">
+						<span class="skill-name">{{ skill.name }}</span>
+					</div>
+				}
 			</div>
 		</div>
 
 		<div class="visual-column">
 			<div class="image-container">
-				<img [src]="currentImg" alt="Project Thumbnail">
+				<img [src]="currentImg()" alt="Project Thumbnail">
 			</div>
 
 			<div class="action-bar">
@@ -37,8 +39,8 @@
 					{{ 'button.prevBtn' | translate }}
 				</a>
 				<div class="links-left">
-					<a [href]="getGithubLink()" target="_blank" class="btn-outline">Github</a>
-					<a [href]="getLiveLink()" target="_blank" class="btn-outline">Live Test</a>
+					<a [href]="currentGithub()" target="_blank" class="btn-outline">Github</a>
+					<a [href]="currentLive()" target="_blank" class="btn-outline">Live Test</a>
 				</div>
 				<a (click)="nextProject()" class="next-link">
 					{{ 'button.nextBtn' | translate }}

@@ -1,44 +1,12 @@
 @use "../../../../public/styles/all_styles.scss" as all;
 
-$font-cyber: 'Orbitron', sans-serif;
-$neon-green: #10b981;
-$neon-yellow: #d4ff00;
-$bg-dark: #0d0d0d;
-$card-bg: rgba(255, 255, 255, 0.03);
-
-$font-cyber-two: "BriGro", sans-serif;
-
 .skills-section {
     position: relative;
     @include all.fl($alit: center);
-    min-height: 100dvh;
-    background: $bg-dark;
+    min-height: 80dvh;
+    background: transparent;
     padding: 6rem 2rem;
     overflow: hidden;
-
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        @include all.size($w: 28.125rem, $h: 28.125rem);
-        border-radius: 50%;
-        filter: blur(100px);
-        z-index: 0;
-        opacity: 0.12;
-        animation: rotateGlow 15s infinite linear;
-    }
-
-    &::before {
-        background: #007bff;
-        @include all.absolute($top: -10%, $right: -5%);
-    }
-
-    &::after {
-        background: #00ff88;
-        @include all.absolute($bottom: -10%, $left: -5%);
-        animation-direction: reverse;
-        animation-duration: 20s;
-    }
 
     .max-container {
         width: 100%;
@@ -55,24 +23,26 @@ $font-cyber-two: "BriGro", sans-serif;
 
     .overline {
         text-transform: uppercase;
-        font-family: $font-cyber;
-        color: white;
+        font-family: var(--font-display);
+        color: var(--text-muted);
         letter-spacing: 0.15rem;
+        font-weight: 600;
         margin-bottom: 0.5rem;
     }
 
     .main-heading {
         font-size: clamp(2.5rem, 5dvw, 3.5rem);
-        font-weight: 900;
-        font-family: $font-cyber;
-        color: #fff;
+        font-weight: 800;
+        font-family: var(--font-display);
+        color: var(--text-primary);
         margin: 0.5rem 0;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
     }
 
     .accent-line {
-        @include all.size($w: 5.8rem, $h: 0.25rem);
-        background: $neon-green;
+        @include all.size($w: 5rem, $h: 0.25rem);
+        background: var(--accent-primary);
+        border-radius: 9999px;
         margin: 0.5rem auto 0;
     }
 }
@@ -81,7 +51,7 @@ $font-cyber-two: "BriGro", sans-serif;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 
     @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
@@ -92,28 +62,20 @@ $font-cyber-two: "BriGro", sans-serif;
     }
 
     .skill-card {
-        @include all.fl($alit: center, $jc: center, $gap: 1.25rem, $flexdir: column);
-        background: $card-bg;
-        backdrop-filter: blur(15px);
-        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-        padding: 1.75rem 1rem;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        @include all.fl($alit: center, $jc: center, $gap: 1rem, $flexdir: column);
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 1rem;
+        padding: 1.5rem 1rem;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         cursor: pointer;
-        filter: grayscale(1);
+        box-shadow: var(--shadow-sm);
 
         &:hover {
-            background: rgba($neon-yellow, 0.1);
-            mix-blend-mode: screen;
-            transform: translateY(-5px) scale(1.03);
-            border-color: rgba(255, 255, 255, 0.1);
-            filter: grayscale(0);
-            color: $bg-dark;
-
-            .icon-wrapper img {
-                transform: translateY(-3px);
-            }
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
         }
 
         .icon-wrapper {
@@ -131,29 +93,33 @@ $font-cyber-two: "BriGro", sans-serif;
         }
 
         .skill-name {
-            color: #fff;
-            font-weight: 700;
+            color: var(--text-primary);
+            font-weight: 600;
             letter-spacing: 0.5px;
-            font-family: $font-cyber;
+            font-family: var(--font-body);
+            background: transparent;
+            border: none;
+            padding: 0;
         }
     }
 }
 
 .description-box {
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     padding: 2.5rem;
-    border-radius: 12px;
+    border-radius: 1rem;
     text-align: center;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
     margin-bottom: 4rem;
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .peel-wrapper {
     @include all.fl($alit: center, $flexdir: column);
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 .sticker-container {
@@ -172,15 +138,15 @@ $font-cyber-two: "BriGro", sans-serif;
     }
 
     .sticker-cover {
-        background-color: $neon-yellow;
+        background-color: var(--accent-primary);
         z-index: 2;
         transform: rotate(12deg);
-        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+        box-shadow: var(--shadow-md);
 
         .peel-label {
-            color: #000;
-            font-family: $font-cyber;
-            font-weight: 900;
+            color: var(--text-inverse);
+            font-family: var(--font-display);
+            font-weight: 800;
             font-size: 1.1rem;
         }
 
@@ -192,8 +158,9 @@ $font-cyber-two: "BriGro", sans-serif;
     }
 
     .sticker-reveal {
-        background-color: #1a1a1a;
-        border: 1px solid $neon-yellow;
+        background-color: var(--bg-card);
+        border: 1px solid var(--accent-primary);
+        box-shadow: var(--shadow-sm);
         z-index: 1;
         opacity: 0;
         transform: rotate(12deg) scale(0.9);
@@ -204,9 +171,9 @@ $font-cyber-two: "BriGro", sans-serif;
         }
 
         .reveal-title {
-            color: $neon-yellow;
-            font-family: $font-cyber-two;
-            font-weight: 900;
+            color: var(--accent-primary);
+            font-family: var(--font-display);
+            font-weight: 800;
             font-size: 1.25rem;
             margin-bottom: 1rem;
         }
@@ -224,13 +191,20 @@ $font-cyber-two: "BriGro", sans-serif;
                     aspect-ratio: 1 / 1;
                     object-fit: contain;
                     margin-bottom: 0.5rem;
+                    filter: brightness(0.2);
+                    transition: filter 0.3s ease, transform 0.3s ease;
+                }
+
+                &:hover img {
+                    filter: brightness(0);
+                    transform: scale(1.1);
                 }
 
                 span {
-                    color: #fff;
+                    color: var(--text-primary);
                     font-weight: bold;
                     font-size: 1rem;
-                    font-family: $font-cyber-two;
+                    font-family: var(--font-body);
                 }
             }
         }

@@ -1,82 +1,108 @@
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  signal,
+  inject,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectViewComponent } from "./project-view/project-view.component";
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  img: string;
+  descKey: string;
+  tags: string[];
+  github: string;
+  live: string;
+  workInProgress?: boolean;
+}
 
 @Component({
   selector: 'app-projects',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, TranslateModule, ProjectViewComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent {
-  /**
-   * Constructor for the ProjectsComponent.
-   * @param {ViewportScroller} scroller Angular service used to manage scrolling and navigating to anchors.
-   */
-  constructor(
-    private scroller: ViewportScroller
-  ) { }
+  private readonly scroller = inject(ViewportScroller);
 
   @ViewChild('projectSlider') sliderRef!: ElementRef<HTMLDivElement>;
 
-  /**
-   * Controls the visibility of the detailed project view (overlay/modal).
-   * When true, the ProjectViewComponent is shown.
-   * @type {boolean}
-   */
-  showProjectView: boolean = false;
+  public readonly showProjectView = signal(false);
+  public readonly selectedProject = signal('');
 
-  /**
-   * Stores the unique identifier (ID) of the project currently selected for viewing.
-   * @type {string}
-   */
-  selectedProject: string = '';
+  public readonly projectList = signal<ProjectItem[]>([
+    {
+      id: 'join',
+      title: 'Join',
+      img: 'assets/ProjectsImg/join.webp',
+      descKey: 'projects.join.descriptionOne',
+      tags: ['JavaScript', 'Firebase', 'HTML', 'CSS'],
+      github: 'https://github.com/Prodigy2103/join.git',
+      live: 'http://join.marcus-guehne.com/index.html'
+    },
+    {
+      id: 'pepe',
+      title: 'El Pollo Loco',
+      img: 'assets/ProjectsImg/Pepe30.webp',
+      descKey: 'projects.pepe.descriptionOne',
+      tags: ['JavaScript', 'Canvas', 'OOP'],
+      github: 'https://github.com/Prodigy2103/El-Pollo-Loco.git',
+      live: 'http://elpolloloco.marcus-guehne.com/index.html'
+    },
+    {
+      id: 'pokeDex',
+      title: 'Pokédex',
+      img: 'assets/ProjectsImg/Component 30.webp',
+      descKey: 'projects.pokeDex.descriptionOne',
+      tags: ['JavaScript', 'REST-API', 'HTML'],
+      github: 'https://github.com/Prodigy2103/PokedexNeu.git',
+      live: 'https://pokedex.marcus-guehne.com/index.html'
+    },
+    {
+      id: 'wasiri',
+      title: 'Riesenimbiss Riesa',
+      img: 'assets/ProjectsImg/ImbissMain.webp',
+      descKey: 'projects.wasiri.descriptionOne',
+      tags: ['Angular', 'TypeScript', 'HTML', 'Firebase', 'SCSS'],
+      github: 'https://github.com/Prodigy2103/RiesaRiesenImbiss_NEW.git',
+      live: 'https://riesenimbiss.de/'
+    },
+    {
+      id: 'truck',
+      title: 'Truckmanagement',
+      img: 'assets/ProjectsImg/truck1.webp',
+      descKey: 'projects.truck.descriptionOne',
+      tags: ['Angular', 'TypeScript', 'HTML', 'Supabase', 'SCSS'],
+      github: 'https://github.com/Prodigy2103/truck-tracker.git',
+      live: 'https://truck-tracker.marcus-guehne.com/',
+      workInProgress: true
+    }
+  ]);
 
-  /**
-   * Scrollt den Projekt-Slider sanft per Klick um eine Kartenlänge
-   * Maximale Länge: 7 Zeilen (Clean Code konform)
-   */
-  scrollSlider(direction: 'left' | 'right'): void {
-    const slider = this.sliderRef.nativeElement;
+  public scrollSlider(direction: 'left' | 'right'): void {
+    if (!this.sliderRef) return;
     const scrollAmount = direction === 'left' ? -450 : 450;
-    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    this.sliderRef.nativeElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   }
 
-  /**
-   * Opens the detailed project view for a specific project ID.
-   * It sets the selected project ID, displays the view, and disables scrolling on the main body
-   * by adding the 'no-scroll' class to prevent background movement while the overlay is open.
-   *
-   * @param {string} projectId - The unique identifier of the project to be displayed.
-   * @returns {void}
-   */
-  toggleProjectView(projectId: string): void {
-    this.selectedProject = projectId;
-    this.showProjectView = true;
+  public toggleProjectView(projectId: string): void {
+    this.selectedProject.set(projectId);
+    this.showProjectView.set(true);
     document.body.classList.add('no-scroll');
   }
 
-  /**
-   * Closes the Project View overlay and optionally scrolls the main page to a specified anchor.
-   * This method is typically called by the ProjectViewComponent's closeEvent.
-   *
-   * @param {string | void} [target] - The navigation target anchor (e.g., '#about') emitted by the header, or void if it's a standard close action (like 'Go Back').
-   * @returns {void}
-   */
-  closeProjectView(target?: string | void): void {
-    this.showProjectView = false;
-    // Re-enables scrolling on the main body.
+  public closeProjectView(target?: string | void): void {
+    this.showProjectView.set(false);
     document.body.classList.remove('no-scroll');
-
-    // Check if a navigation target was passed (indicating a click on a header link)
     if (typeof target === 'string' && target) {
-      // Use setTimeout(0) to ensure the DOM is updated (overlay is removed) 
-      // before attempting to scroll to the anchor.
-      setTimeout(() => {
-        this.scroller.scrollToAnchor(target.substring(1));
-      }, 0);
+      setTimeout(() => this.scroller.scrollToAnchor(target.substring(1)), 0);
     }
   }
 }

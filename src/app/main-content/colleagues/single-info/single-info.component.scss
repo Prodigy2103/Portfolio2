@@ -5,88 +5,55 @@
 	height: 100%;
 }
 
-$orange-glass: rgba(255, 120, 0, 0.15);
-$glass-border: rgba(255, 255, 255, 0.2);
-$orange-glow: #ff8c00;
-
 .card-body {
-    @include all.fl($flexdir: column);
-    height: 100%;
-    min-height: 35dvh;
-    backdrop-filter: blur(1.8rem) saturate(180%);
-    -webkit-backdrop-filter: blur(1.8rem) saturate(180%);
-    border: 1px solid $glass-border;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 1rem;
-    box-shadow: 0 0.8rempx 2.4rem 0 rgba(0, 0, 0, 0.3);
-    padding: 1.5rem;
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: "";
-        @include all.absolute($top: 0, $left: 0, $right: 0);
-        height: 73%;
-        background: linear-gradient(
-            135deg, 
-            rgba(255, 255, 255, 0.15) 0%, 
-            rgba(255, 255, 255, 0) 60%
-        );
-        pointer-events: none;
-        border-radius: inherit;
-    }
-
-    &:hover {
-        background: rgba(255, 120, 0, 0.2);
-        border-color: rgba(255, 140, 0, 0.5);
-        transform: translateY( -0.3rem);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        box-shadow: 0 15px 45px rgba(255, 140, 0, 0.15);
-    }
+	@include all.fl($flexdir: column);
+	height: 100%;
+	min-height: 20rem;
+	background: transparent;
+	padding: 0;
+	color: var(--text-primary);
+	position: relative;
 }
 
 .quote {
-	color: #f4f2f2;
-	line-height: 1.625;
-	font-weight: 500;
-    min-height: 25dvh;
+	color: var(--text-secondary);
+	line-height: 1.65;
+	font-weight: 400;
+	font-size: 1.05rem;
+	min-height: 10rem;
+	font-style: italic;
 }
 
 .profile-footer {
-	margin-top: 0.5rem;
-	padding-top: 1.5rem;
-	border-top: 2px solid rgba(0, 0, 0, 0.1);
+	width: 100%;
+	margin-top: auto;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--border-subtle);
+	@include all.fl($jc: space-between, $alit: center);
 
 	h3 {
-		color: #fafafa;
+		color: var(--text-primary);
 		font-weight: 700;
-		font-size: 1.125rem;
+		font-size: 1.1rem;
+		font-family: var(--font-display);
 		margin: 0;
 	}
 
 	.position {
-		color: rgba(250, 246, 246, 0.7);
-		margin-bottom: 1rem;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		display: block;
+		margin-top: 0.2rem;
 	}
 }
 
 .linkedin-link {
-    @include all.fl($display: inline-flex, $alit: center, $gap: 0.5rem);
-	color: #000000;
-	text-decoration: none;
-	font-size: 0.875rem;
-	font-weight: 500;
-	transition: color 0.2s;
-
-	&:hover {
-		color: rgba(0, 0, 0, 0.7);
-	}
+	font-size: 0.85rem;
+	padding: 0.4rem 0.85rem;
 
 	img {
 		width: 1rem;
 		height: 1rem;
-		filter: brightness(0); // Icon schwarz machen
+		filter: brightness(0) invert(1);
 	}
 }

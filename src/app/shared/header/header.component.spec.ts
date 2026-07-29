@@ -2,31 +2,35 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { By } from '@angular/platform-browser';
 import { NgOptimizedImage } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HeaderComponent Image Ratio', () => {
-	let component: HeaderComponent;
-	let fixture: ComponentFixture<HeaderComponent>;
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [HeaderComponent, NgOptimizedImage]
-		}).compileComponents();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HeaderComponent, NgOptimizedImage, TranslateModule.forRoot()]
+    }).compileComponents();
 
-		fixture = TestBed.createComponent(HeaderComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-	it('should toggle isScrolled signal on window scroll', () => {
-		window.scrollTo(0, 100);
-		window.dispatchEvent(new Event('scroll'));
+  it('should create the header component', () => {
+    expect(component).toBeTruthy();
+  });
 
-		expect(component.isScrolled()).toBeTrue();
-	});
+  it('should toggle isScrolled signal on window scroll', () => {
+    window.scrollTo(0, 100);
+    window.dispatchEvent(new Event('scroll'));
+    expect(component.isScrolled()).toBeTrue();
+  });
 
-	it('should verify image dimensions', () => {
-		const img = fixture.debugElement.query(By.css('.header-logo')).nativeElement;
-		expect(img.getAttribute('width')).toBe('350');
-		expect(img.getAttribute('height')).toBe('155');
-	});
+  it('should verify image dimensions', () => {
+    const img = fixture.debugElement.query(By.css('.header-logo')).nativeElement;
+    expect(img.getAttribute('width')).toBe('350');
+    expect(img.getAttribute('height')).toBe('155');
+  });
 });

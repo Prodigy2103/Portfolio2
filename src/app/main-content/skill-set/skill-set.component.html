@@ -12,28 +12,32 @@
         </div>
 
         <div class="skills-grid">
-            <div class="skill-card" *ngFor="let skill of skillIcons">
-                <div class="icon-wrapper">
-                    <img [ngSrc]="skill.src" [alt]="skill.name" width="40" height="44" />
+            @for (skill of skillIcons(); track skill.name) {
+                <div class="skill-card editorial-card">
+                    <div class="icon-wrapper">
+                        <img [ngSrc]="skill.src" [alt]="skill.name" [width]="skill.w" [height]="skill.h" />
+                    </div>
+                    <span class="skill-name">{{ skill.name }}</span>
                 </div>
-                <span class="skill-name">{{ skill.name }}</span>
-            </div>
+            }
         </div>
 
         <div class="peel-wrapper">
-            <div class="sticker-container" (click)="isCoverVisible = !isCoverVisible">
+            <div class="sticker-container" (click)="toggleCover()">
 
-                <div class="sticker-reveal" [class.active]="!isCoverVisible">
+                <div class="sticker-reveal" [class.active]="!isCoverVisible()">
                     <p class="reveal-title" [innerHTML]="'skills.interested' | translate"></p>
                     <div class="reveal-icons-row">
-                        <div class="reveal-item" *ngFor="let peel of peelIcons">
-                            <img [src]="peel.src" [alt]="peel.name" [attr.width]="peel.w" [attr.height]="peel.h" />
-                            <span>{{ peel.name }}</span>
-                        </div>
+                        @for (peel of peelIcons(); track peel.name) {
+                            <div class="reveal-item">
+                                <img [src]="peel.src" [alt]="peel.name" [attr.width]="peel.w" [attr.height]="peel.h" />
+                                <span>{{ peel.name }}</span>
+                            </div>
+                        }
                     </div>
                 </div>
 
-                <div class="sticker-cover" [class.peeled]="!isCoverVisible">
+                <div class="sticker-cover" [class.peeled]="!isCoverVisible()">
                     <p class="peel-label" [innerHTML]="'skills.peelAni' | translate"></p>
                     <span class="finger-emoji">👉</span>
                 </div>
