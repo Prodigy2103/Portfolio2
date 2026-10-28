@@ -9,6 +9,7 @@ import {
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectViewComponent } from "./project-view/project-view.component";
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 export interface ProjectItem {
   id: string;
@@ -25,7 +26,7 @@ export interface ProjectItem {
   selector: 'app-projects',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TranslateModule, ProjectViewComponent],
+  imports: [CommonModule, TranslateModule, ProjectViewComponent, ScrollRevealDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })

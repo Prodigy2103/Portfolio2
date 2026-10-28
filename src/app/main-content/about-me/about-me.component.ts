@@ -10,6 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { animate, stagger } from 'animejs';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 export interface AboutInfo {
   svgPath: string;
@@ -21,7 +22,7 @@ export interface AboutInfo {
   selector: 'app-about-me',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, ScrollRevealDirective],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.scss'
 })

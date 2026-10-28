@@ -9,6 +9,7 @@ import {
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { animate, stagger } from 'animejs';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 export interface SkillItem {
   name: string;
@@ -21,7 +22,7 @@ export interface SkillItem {
   selector: 'app-skill-set',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, NgOptimizedImage, TranslateModule],
+  imports: [CommonModule, NgOptimizedImage, TranslateModule, ScrollRevealDirective],
   templateUrl: './skill-set.component.html',
   styleUrl: './skill-set.component.scss'
 })

@@ -1,17 +1,17 @@
 <section id="skill" class="skills-section">
     <div class="max-container">
 
-        <div class="skill-header">
+        <div class="skill-header" appScrollReveal>
             <p class="overline">{{ 'skills.title' | translate }}</p>
             <h2 class="main-heading">{{ 'skills.privacyline' | translate }}</h2>
             <div class="accent-line"></div>
         </div>
 
-        <div class="description-box">
+        <div class="description-box stagger-1" appScrollReveal>
             <p [innerHTML]="'skills.description' | translate"></p>
         </div>
 
-        <div class="skills-grid">
+        <div class="skills-grid stagger-2" appScrollReveal>
             @for (skill of skillIcons(); track skill.name) {
                 <div class="skill-card editorial-card">
                     <div class="icon-wrapper">

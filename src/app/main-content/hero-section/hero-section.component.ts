@@ -10,7 +10,7 @@ import {
   computed,
   inject
 } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage, ViewportScroller } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { HelloButtonComponent } from "../../shared/hello-button/hello-button.component";
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
@@ -37,6 +37,7 @@ export interface SocialLink {
 export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly ngZone = inject(NgZone);
   private readonly elRef = inject(ElementRef);
+  private readonly scroller = inject(ViewportScroller);
 
   public readonly frontLetters = signal<string[]>('Frontend'.split(''));
   public readonly devLetters = signal<string[]>('DEVELOPER'.split(''));
@@ -128,6 +129,11 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public scrollToContact(e: Event): void {
     e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const contactEl = document.getElementById('contact');
+    if (contactEl) {
+      contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      this.scroller.scrollToAnchor('contact');
+    }
   }
 }
