@@ -40,7 +40,7 @@
 	"skills": {
 		"title": "My Stack",
 		"privacyline": "Skill set",
-		"description": "My training at the Developer Academy focused on developing these core competencies and tools:",
+		"description": "My training at the Developer Academy focused on developing these core competencies and tools.<br><br><b>In addition, I am self-taught in cutting-edge AI and backend architectures, having built my own advanced workflows:</b><br><ul class='portfolio-list'><li><b>Backend & BaaS:</b> Supabase for relational databases and authentication.</li><li><b>Agentic Engineering:</b> Google Antigravity IDE & Roo Code for deterministic, rule-based AI workflows.</li><li><b>AI Orchestration:</b> Omniroute for local routing of specialized multi-agent systems.</li><li><b>Context-Aware Design:</b> MCP (Chrome DevTools) for live DOM inspection and automated layout debugging in the browser.</li><li><b>Clean Code Governance:</b> Strict 4-step approval protocol and TDD loops.</li></ul>",
 		"peelAni": "Pull to peel",
 		"interested": "I want to delve deeper"
 	},

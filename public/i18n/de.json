@@ -39,7 +39,7 @@
 	"skills": {
 		"title": "Meine",
 		"privacyline": "Fähigkeiten",
-		"description": "Mein Ausbildungsschwerpunkt an der Developer Akademie lag auf der Entwicklung dieser Kernkompetenzen und Tools:",
+		"description": "Mein Ausbildungsschwerpunkt an der Developer Akademie lag auf der Entwicklung dieser Kernkompetenzen und Tools.<br><br><b>Ergänzend dazu habe ich mir als Autodidakt modernste KI- und Backend-Architekturen selbst beigebracht und eigene Workflows aufgebaut:</b><br><ul class='portfolio-list'><li><b>Backend & BaaS:</b> Supabase für relationale Datenbanken und Authentifizierung.</li><li><b>Agentic Engineering:</b> Google Antigravity IDE & Roo Code für deterministische, regelbasierte KI-Workflows.</li><li><b>AI Orchestration:</b> Omniroute zur lokalen Steuerung spezialisierter Multi-Agenten-Systeme.</li><li><b>Context-Aware Design:</b> MCP (Chrome DevTools) für Live-DOM-Inspektion und automatisiertes Layout-Debugging im Browser.</li><li><b>Clean Code Governance:</b> Striktes 4-Schritte-Freigabeprotokoll und TDD-Loops.</li></ul>",
 		"peelAni": "Zum Öffen ziehen",
 		"interested": "Ich will tiefer einsteigen"
 	},

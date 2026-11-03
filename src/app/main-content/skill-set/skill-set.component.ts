@@ -40,12 +40,13 @@ export class SkillSetComponent implements AfterViewInit {
     { name: 'Rest-API', src: 'assets/Extras/icons/API.png', w: 40, h: 40 },
     { name: 'Scrum', src: 'assets/Extras/icons/Scrum.png', w: 72, h: 68 },
     { name: 'Material Design', src: 'assets/Extras/icons/MaterialDesign.png', w: 40, h: 40 },
-    { name: 'Supabase', src: 'assets/Extras/icons/Supabase.png', w: 40, h: 40 }
+    { name: 'Supabase', src: 'assets/Extras/icons/Supabase.png', w: 40, h: 40 },
+    { name: 'Antigravity', src: 'assets/Extras/icons/google-antigravity.webp', w: 40, h: 40 },
+    { name: 'Omniroute', src: 'assets/Extras/icons/omniroute.webp', w: 40, h: 40 }
   ]);
 
   public readonly peelIcons = signal<SkillItem[]>([
-    { name: 'React', src: 'assets/Extras/icons/icons8-react-native-50.png', w: 50, h: 50 },
-    { name: 'Vue.js', src: 'assets/Extras/icons/icons8-vuetify-64.png', w: 64, h: 64 }
+    { name: 'KI Development', src: 'assets/Extras/icons/icons8-prompt-80.png', w: 50, h: 50 }
   ]);
 
   public readonly isCoverVisible = signal(true);
