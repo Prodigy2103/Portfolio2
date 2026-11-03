@@ -38,11 +38,11 @@
     }
 
     .logo-wrapper {
-        width: 4.5rem;
+        width: clamp(8.5rem, 14vw, 11.5rem);
 
         .footer-logo-img {
             @include all.size($w: 100%, $h: auto);
-            aspect-ratio: 350 / 155;
+            aspect-ratio: 669 / 373;
             display: block;
             object-fit: contain;
             transition: transform 0.3s ease;
