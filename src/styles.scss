@@ -1,33 +1,33 @@
 @use "bootstrap-icons/font/bootstrap-icons.scss";
 
-/* --- Warm Editorial & Modern Dark Theme Tokens --- */
+/* --- Modern Dark Obsidian & Neon Theme Tokens --- */
 :root {
   /* Fonts */
   --font-display: "BriGro", "Syne", system-ui, sans-serif;
   --font-body: "BriGro", "Plus Jakarta Sans", system-ui, sans-serif;
 
-  /* Light Theme (Default Warm Editorial) */
-  --bg-primary: #FDFBF7;
-  --bg-surface: #F5F2EB;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #FAF7F2;
+  /* Theme Tokens: Aligned to Hero-Section Dark Obsidian & Neon Glow */
+  --bg-primary: #0b0f17;
+  --bg-surface: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
 
-  --text-primary: #1C1917;
-  --text-secondary: #57534E;
-  --text-muted: #78716C;
-  --text-inverse: #F5F5F4;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0b0f17;
 
-  --accent-primary: #C85A32;
-  --accent-hover: #A7431F;
-  --accent-soft: rgba(200, 90, 50, 0.12);
-  --accent-glow: rgba(200, 90, 50, 0.25);
+  --accent-primary: #8b5cf6;
+  --accent-hover: #a855f7;
+  --accent-soft: rgba(139, 92, 246, 0.15);
+  --accent-glow: rgba(139, 92, 246, 0.4);
 
-  --border-subtle: rgba(28, 25, 23, 0.08);
-  --border-medium: rgba(28, 25, 23, 0.16);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(139, 92, 246, 0.35);
 
-  --shadow-sm: 0 2px 8px rgba(28, 25, 23, 0.04);
-  --shadow-md: 0 8px 24px rgba(28, 25, 23, 0.08);
-  --shadow-lg: 0 16px 40px rgba(28, 25, 23, 0.12);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
 
   /* Rezan.me Motion Tokens */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,29 +37,28 @@
 
 [data-theme="dark"],
 body.dark-theme {
-  --bg-primary: #0C0A09;
-  --bg-surface: #1C1917;
-  --bg-card: #181615;
-  --bg-card-hover: #262322;
+  --bg-primary: #0b0f17;
+  --bg-surface: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
 
-  --text-primary: #F5F5F4;
-  --text-secondary: #D6D3D1;
-  --text-muted: #A8A29E;
-  --text-inverse: #1C1917;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0b0f17;
 
-  --accent-primary: #D4FF00;
-  --accent-hover: #E2FF42;
-  --accent-soft: rgba(212, 255, 0, 0.12);
-  --accent-glow: rgba(212, 255, 0, 0.35);
+  --accent-primary: #8b5cf6;
+  --accent-hover: #a855f7;
+  --accent-soft: rgba(139, 92, 246, 0.15);
+  --accent-glow: rgba(139, 92, 246, 0.4);
 
-  --border-subtle: rgba(245, 245, 244, 0.08);
-  --border-medium: rgba(245, 245, 244, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(139, 92, 246, 0.35);
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
-
 /* --- Fonts Declarations --- */
 @font-face {
   font-family: "BriGro";
@@ -213,24 +212,26 @@ button {
   display: none !important;
 }
 
-/* Modern Editorial Badge / Tag */
+/* Modern Neon Badge / Tag */
 .tag,
 .skill-name {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--bg-surface);
-  color: var(--text-primary);
+  background: rgba(168, 85, 247, 0.1);
+  color: #d8b4fe;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  border: 1px solid var(--border-subtle);
-  font-size: 0.875rem;
-  font-weight: 500;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: var(--accent-primary);
-    background: var(--accent-soft);
+    border-color: rgba(168, 85, 247, 0.6);
+    background: rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
   }
 }
 
@@ -238,15 +239,17 @@ button {
 .editorial-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s ease;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s ease, background 0.3s ease;
   will-change: transform;
 
   &:hover {
     transform: translateY(-6px) scale(1.01);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 25px -4px rgba(139, 92, 246, 0.25);
     border-color: var(--border-medium);
     background: var(--bg-card-hover);
   }
@@ -258,15 +261,15 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: var(--accent-primary);
-  color: var(--text-inverse);
-  padding: 0.85rem 1.75rem;
+  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  color: #ffffff;
+  padding: 0.85rem 1.8rem;
   border-radius: 9999px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 0 20px -3px rgba(139, 92, 246, 0.5);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 
   &::after {
@@ -291,9 +294,8 @@ button {
 
   &:hover {
     transform: translateY(-2px);
-    background: var(--accent-hover);
-    box-shadow: 0 4px 20px var(--accent-glow);
-    color: var(--text-inverse);
+    box-shadow: 0 0 28px -1px rgba(139, 92, 246, 0.75);
+    color: #ffffff;
   }
 
   &:active {
@@ -324,4 +326,4 @@ button {
     transform: none !important;
     transition: none !important;
   }
-}
+}

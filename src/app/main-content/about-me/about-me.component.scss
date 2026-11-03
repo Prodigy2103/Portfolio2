@@ -9,6 +9,18 @@
     min-height: 80dvh;
     overflow: hidden;
 
+    .bg-glow-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(6rem);
+        pointer-events: none;
+        opacity: 0.16;
+        z-index: 0;
+        @include all.size($w: 26rem, $h: 26rem);
+        background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+        @include all.absolute($top: 8%, $left: -6%);
+    }
+
     h1 {
         font-size: clamp(2.2rem, 8dvw, 4rem);
         margin-bottom: 3.5rem;
@@ -37,10 +49,12 @@
             @include all.fl($gap: 1rem, $alit: center);
             @include all.marpad($pad: 1.2rem 1.5rem);
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 1rem;
             border: 1px solid var(--border-subtle);
-            border-left: 0.35rem solid var(--accent-primary);
-            box-shadow: var(--shadow-sm);
+            border-left: 0.35rem solid #8b5cf6;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transform: translateX(-30px);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -53,13 +67,14 @@
             &:hover {
                 transform: translateY(-3px) translateX(6px);
                 background: var(--bg-card-hover);
-                border-color: var(--border-medium);
-                box-shadow: var(--shadow-md);
+                border-color: rgba(139, 92, 246, 0.5);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 18px rgba(139, 92, 246, 0.25);
             }
 
             svg {
-                color: var(--accent-primary);
+                color: #c084fc;
                 flex-shrink: 0;
+                filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.4));
             }
 
             span {
@@ -84,9 +99,9 @@
 
         .subtitle {
             font-family: var(--font-display);
-            color: var(--text-muted);
+            color: #d8b4fe;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.15em;
             margin-bottom: 0.7rem;
             font-size: 0.9rem;
             font-weight: 600;
@@ -101,7 +116,7 @@
 
         .divider {
             @include all.size($w: 5rem, $h: 0.25rem);
-            background-color: var(--accent-primary);
+            background: linear-gradient(90deg, #8b5cf6 0%, #06b6d4 100%);
             margin-bottom: 2rem;
             border-radius: 9999px;
         }
@@ -113,7 +128,7 @@
             margin-bottom: 2.5rem;
 
             strong {
-                color: var(--accent-primary);
+                color: #c084fc;
                 font-weight: 700;
             }
         }

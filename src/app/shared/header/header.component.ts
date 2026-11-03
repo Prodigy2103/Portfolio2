@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, inject, signal, Signal, HostListener } from '@angular/core';
-import { ViewportScroller, CommonModule, NgOptimizedImage } from '@angular/common';
+import { ViewportScroller, CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../service/language.service';
 
@@ -28,8 +28,7 @@ interface SocialLink {
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, TranslateModule, NgOptimizedImage],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

@@ -22,15 +22,14 @@ describe('HeaderComponent Image Ratio', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should toggle isScrolled signal on window scroll', () => {
-    window.scrollTo(0, 100);
-    window.dispatchEvent(new Event('scroll'));
+  it('should toggle isScrolled signal on onWindowScroll', () => {
+    spyOnProperty(window, 'scrollY', 'get').and.returnValue(100);
+    component.onWindowScroll();
     expect(component.isScrolled()).toBeTrue();
   });
 
-  it('should verify image dimensions', () => {
-    const img = fixture.debugElement.query(By.css('.header-logo')).nativeElement;
-    expect(img.getAttribute('width')).toBe('350');
-    expect(img.getAttribute('height')).toBe('155');
+  it('should render status chip in logo container', () => {
+    const chip = fixture.debugElement.query(By.css('.status-chip'));
+    expect(chip).toBeTruthy();
   });
 });

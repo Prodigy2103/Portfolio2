@@ -8,6 +8,21 @@
 	overflow-x: hidden;
 	background: transparent;
 
+    .bg-glow-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(6rem);
+        pointer-events: none;
+        opacity: 0.16;
+        z-index: 0;
+
+        &.orb-left {
+            @include all.size($w: 32rem, $h: 32rem);
+            background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+            @include all.absolute($top: 20%, $left: -10%);
+        }
+    }
+
 	.max-container {
 		max-width: 1200px;
 		margin: 0 auto;
@@ -40,15 +55,16 @@
 		position: absolute;
 		top: 35%;
 		transform: translateY(-50%);
-		background: var(--bg-card);
-		border: 1px solid var(--border-subtle);
+		background: rgba(15, 23, 42, 0.85);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(12px);
 		color: var(--text-primary);
 		@include all.size($w: 3.2rem, $h: 3.2rem);
 		border-radius: 50%;
 		cursor: pointer;
 		z-index: 10;
 		font-size: 1.25rem;
-		box-shadow: var(--shadow-md);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 		transition: all 0.25s ease;
 		@include all.fl($alit: center, $jc: center);
 
@@ -58,9 +74,10 @@
 		}
 
 		&:hover {
-			background: var(--accent-primary);
-			color: var(--text-inverse);
-			border-color: var(--accent-primary);
+			background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+			color: #ffffff;
+			border-color: transparent;
+			box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
 			transform: translateY(-50%) scale(1.08);
 		}
 
@@ -199,21 +216,23 @@
 	.btn-link {
 		flex: 1;
 		text-align: center;
-		background: var(--bg-surface);
-		border: 1px solid var(--border-subtle);
-		color: var(--text-primary);
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(8px);
+		color: #f1f5f9;
 		padding: 0.55rem;
-		border-radius: 0.5rem;
+		border-radius: 9999px;
 		text-decoration: none;
 		font-family: var(--font-body);
 		font-weight: 600;
 		font-size: 0.9rem;
-		transition: all 0.2s ease;
+		transition: all 0.25s ease;
 
 		&:hover {
-			background: var(--accent-primary);
-			color: var(--text-inverse);
-			border-color: var(--accent-primary);
+			background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+			color: #ffffff;
+			border-color: transparent;
+			box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
 		}
 	}
 }
@@ -222,8 +241,8 @@
 	position: fixed;
 	@include all.fl($alit: center, $jc: center);
 	inset: 0;
-	background: rgba(0, 0, 0, 0.65);
-	backdrop-filter: blur(12px);
+	background: rgba(5, 8, 15, 0.8);
+	backdrop-filter: blur(16px);
 	z-index: 999;
 	padding: 1.25rem;
 	animation: fadeIn 0.3s ease;
@@ -234,9 +253,9 @@
 	max-width: 1100px;
 	max-height: 85dvh;
 	position: relative;
-	background: var(--bg-card);
-	box-shadow: var(--shadow-lg);
+	background: rgba(15, 23, 42, 0.95);
+	box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(139, 92, 246, 0.2);
 	border-radius: 1.25rem;
-	border: 1px solid var(--border-medium);
+	border: 1px solid rgba(139, 92, 246, 0.35);
 	overflow: hidden;
 }

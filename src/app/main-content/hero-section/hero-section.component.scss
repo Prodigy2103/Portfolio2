@@ -6,196 +6,386 @@
     @include all.fl($alit: center);
     position: relative;
     overflow: hidden;
-    background: transparent;
+    background: #0b0f17;
 
-    .hero-bg-svg {
+    .ambient-glow {
         position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0.7;
-    }
-
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        @include all.size($w: 25rem, $h: 25rem);
         border-radius: 50%;
-        filter: blur(5rem);
-        z-index: 0;
-        opacity: 0.12;
+        filter: blur(6rem);
         pointer-events: none;
-        animation: floatGlow 10s infinite alternate ease-in-out;
-    }
+        opacity: 0.22;
+        z-index: 0;
 
-    &::before {
-        background: var(--accent-primary);
-        @include all.absolute($top: 10%, $left: 10%);
-    }
+        &.orb-left {
+            @include all.size($w: 32rem, $h: 32rem);
+            background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+            @include all.absolute($top: 5%, $left: -5%);
+        }
 
-    &::after {
-        background: var(--accent-hover);
-        @include all.absolute($bottom: 10%, $right: 10%);
+        &.orb-right {
+            @include all.size($w: 35rem, $h: 35rem);
+            background: radial-gradient(circle, #06b6d4 0%, #3b82f6 40%, rgba(59, 130, 246, 0) 70%);
+            @include all.absolute($top: 20%, $right: -8%);
+        }
     }
 
     .main-content-wrapper {
         width: 100%;
         max-width: 1440px;
-        @include all.marpad($pad: 0 5rem, $mar: 0 auto);
+        @include all.marpad($pad: 7rem 4rem 4rem 4rem, $mar: 0 auto);
         position: relative;
         display: flex;
-        min-height: 100dvh;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        z-index: 2;
 
-        @media (min-width: 1126px) {
-            flex-direction: row;
-            align-items: center;
+        @media (max-width: 1125px) {
+            flex-direction: column;
+            @include all.marpad($pad: 6rem 1.5rem 3rem 1.5rem);
+            gap: 4rem;
+        }
+    }
 
-            .text-content {
-                flex: 1;
-                z-index: 10;
-                margin-top: 5rem;
-            }
+    .text-content {
+        flex: 1;
+        max-width: 680px;
+        z-index: 5;
 
-            .portrait-container {
-                @include all.absolute($top: 8%, $right: 5%);
-                z-index: -20;
-                display: block;
-                opacity: 0;
-                will-change: transform, opacity;
-                animation: fadeInPortrait 1s ease-out 0.8s forwards;
-            }
+        @media (max-width: 1125px) {
+            max-width: 100%;
+            text-align: center;
+            @include all.fl($flexdir: column, $alit: center);
+        }
+    }
 
-            .subtitle-wrapper {
-                @include all.fl($alit: flex-end, $flexdir: column);
-                margin-top: -2rem;
+    .hero-liquid-glass-wrapper {
+        width: 100%;
+        max-width: 540px;
+        height: 280px;
+        position: relative;
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+
+        .hero-glass-logo {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            ::ng-deep .liquid-glass-logo,
+            ::ng-deep .fractal-glass {
+                min-height: unset;
+                height: 100%;
+                width: 100%;
+                aspect-ratio: auto;
             }
         }
 
         @media (max-width: 1125px) {
-            @include all.fl($alit: center, $flexdir: column, $jc: center, $gap: 4rem);
-            padding: 6rem 0.5rem;
+            max-width: 420px;
+            height: 220px;
+            margin: 0 auto 0.5rem auto;
+        }
 
-            .text-content {
-                @include all.fl($alit: center, $flexdir: column);
-                order: 2;
-                width: 100%;
-                text-align: center;
-                position: relative;
-                z-index: 10;
-            }
-
-            .portrait-container {
-                order: 1;
-                position: relative;
-                @include all.fl($jc: center);
-            }
+        @media (max-width: 480px) {
+            max-width: 320px;
+            height: 170px;
         }
     }
 
-    .polaroid-frame {
-        width: 18.75rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border-subtle);
-        padding: 0.75rem;
-        border-radius: 1rem;
-        transform: rotate(4deg);
-        box-shadow: var(--shadow-md);
-        top: 4rem;
-        will-change: transform;
+    .hello-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.35rem 1.1rem;
+        border-radius: 9999px;
+        background: rgba(168, 85, 247, 0.12);
+        border: 1px solid rgba(168, 85, 247, 0.5);
+        box-shadow: 0 0 16px -2px rgba(168, 85, 247, 0.4);
+        margin-bottom: 1.25rem;
 
-        @include all.mobile {
-            width: 15.625rem;
-            height: auto;
+        span {
+            color: #d8b4fe;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
-
-        img {
-            @include all.size($w: 100%, $h: auto);
-            aspect-ratio: 276 / 367;
-            object-fit: cover;
-            display: block;
-            border-radius: 0.75rem;
-        }
-    }
-
-    .main-title,
-    .main-subtitle {
-        color: var(--text-primary);
-        line-height: 0.95;
-        display: block;
-        min-height: 1.1em;
-        contain: layout;
     }
 
     .main-title {
-        font-size: clamp(2.5rem, 10dvw, 7rem);
-        min-height: 1.2em;
-    }
-
-    .main-subtitle {
-        font-size: clamp(2rem, 8dvw, 6rem);
-        margin-top: 2rem;
-    }
-
-    .letter {
-        display: inline-block;
-        opacity: 0;
-        will-change: transform, opacity;
-        transform: translateY(20px);
-        animation: fadeInLetter 0.5s ease forwards;
-        color: var(--text-primary);
-        font-size: clamp(2.5rem, 8dvw, 6rem);
+        color: #ffffff;
+        font-size: clamp(2.8rem, 5.5vw, 4.8rem);
         font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin: 0 0 1rem 0;
+        display: block;
+        width: 100%;
 
-        &:hover {
-            color: var(--accent-primary);
-            transform: scale(1.2);
-            transition: transform 0.3s ease, color 0.3s ease;
+        .hero-refracted-title {
+            display: inline-block;
+            width: 100%;
+            max-width: 100%;
+            vertical-align: middle;
         }
     }
 
-    .social-sidebar {
-        @include all.absolute($bottom: 2.5rem, $left: 2.5rem);
-        @include all.fl($flexdir: column, $gap: 1.2rem);
+    .role-tags {
+        color: #94a3b8;
+        font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin: 0 0 1rem 0;
+    }
+
+    .hero-bio {
+        color: #cbd5e1;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 520px;
+        margin: 0 0 2.2rem 0;
+    }
+
+    .actions-row {
+        @include all.fl($alit: center, $gap: 1.2rem);
+        flex-wrap: wrap;
 
         @media (max-width: 1125px) {
-            display: none;
+            @include all.fl($jc: center, $gap: 1rem);
         }
+    }
 
-        .social-icon {
-            @include all.size($w: 3rem, $h: 3rem);
+    .btn-primary-gradient,
+    .btn-secondary-glass {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.8rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-primary-gradient {
+        background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+        color: #ffffff;
+        box-shadow: 0 0 20px -3px rgba(139, 92, 246, 0.5);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px -1px rgba(139, 92, 246, 0.7);
+        }
+    }
+
+    .btn-secondary-glass {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        color: #f1f5f9;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+    }
+
+    .social-icons-group {
+        @include all.fl($alit: center, $gap: 0.75rem);
+        margin-left: 0.5rem;
+
+        .social-icon-btn {
+            @include all.size($w: 2.75rem, $h: 2.75rem);
             @include all.fl($jc: center, $alit: center);
-            border: 1px solid var(--border-medium);
-            background: var(--bg-card);
             border-radius: 50%;
-            box-shadow: var(--shadow-sm);
-            opacity: 0;
-            will-change: transform, opacity;
-            animation: fadeInMoveSide 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            transition: all 0.25s ease;
 
             img {
-                @include all.size($w: 1.4rem, $h: 1.4rem);
-                filter: brightness(0.2);
-                transition: transform 0.3s ease, filter 0.3s ease;
+                filter: brightness(0) invert(0.85);
+                transition: transform 0.25s ease, filter 0.25s ease;
             }
 
             &:hover {
-                background: var(--accent-primary);
-                border-color: var(--accent-primary);
+                background: rgba(139, 92, 246, 0.25);
+                border-color: #8b5cf6;
                 transform: translateY(-3px);
+                box-shadow: 0 0 14px rgba(139, 92, 246, 0.4);
 
                 img {
-                    filter: brightness(1) invert(1);
+                    filter: brightness(0) invert(1);
+                    transform: scale(1.1);
                 }
             }
         }
     }
 
-    .get-in-touch-btn {
-        margin-top: 2rem;
-        z-index: 10;
+    .visual-content {
+        flex: 1;
+        width: 100%;
+        @include all.fl($jc: center, $alit: center);
+        position: relative;
+    }
+
+    .composition-container {
+        position: relative;
+        width: 100%;
+        max-width: 580px;
+        height: 480px;
+        @include all.fl($jc: center, $alit: center);
+
+        @media (max-width: 1200px) {
+            max-width: 520px;
+            height: 440px;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 440px;
+            height: 400px;
+        }
+
+        @media (max-width: 520px) {
+            max-width: 100%;
+            height: 390px;
+        }
+    }
+
+    .ide-window {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        width: 350px;
+        background: rgba(15, 23, 42, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.85rem;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+        overflow: hidden;
+        z-index: 1;
+
+        @media (max-width: 1200px) {
+            width: 330px;
+            top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            width: 300px;
+            top: 5px;
+        }
+
+        @media (max-width: 520px) {
+            width: 100%;
+            top: 0;
+            left: 0;
+            // max-width: 100%;
+        }
+
+        .ide-header {
+            padding: 0.55rem 0.85rem;
+            background: rgba(30, 41, 59, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            @include all.fl($alit: center, $gap: 0.45rem);
+
+            .dot {
+                @include all.size($w: 0.6rem, $h: 0.6rem);
+                border-radius: 50%;
+
+                &.red { background: #ef4444; }
+                &.yellow { background: #f59e0b; }
+                &.green { background: #10b981; }
+            }
+        }
+
+        .ide-code {
+            padding: 0.85rem 1rem;
+            margin: 0;
+            font-family: 'Fira Code', monospace, Consolas, sans-serif;
+            font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+            line-height: 1.5;
+            color: #94a3b8;
+            white-space: pre;
+
+            .c-keyword { color: #c084fc; font-weight: 600; }
+            .c-string { color: #34d399; }
+        }
+    }
+
+    .polaroid-card {
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+        width: 230px;
+        background: #ffffff;
+        padding: 0.65rem 0.65rem 1.15rem 0.65rem;
+        border-radius: 0.4rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(139, 92, 246, 0.25);
+        z-index: 3;
+        will-change: transform;
+        transition: box-shadow 0.3s ease;
+
+        @media (max-width: 1200px) {
+            width: 210px;
+            bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            width: 185px;
+            bottom: 5px;
+        }
+
+        @media (max-width: 520px) {
+            width: 155px;
+            right: 0;
+            bottom: -25px;
+            padding: 0.5rem 0.5rem 0.8rem 0.5rem;
+        }
+
+        .photo-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 0.2rem;
+            overflow: hidden;
+            background: #1e293b;
+
+            @media (max-width: 1200px) {
+                height: 200px;
+            }
+
+            @media (max-width: 768px) {
+                height: 180px;
+            }
+
+            @media (max-width: 520px) {
+                height: 150px;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+                display: block;
+            }
+        }
+
+        .polaroid-signature {
+            font-family: 'Caveat', 'Dancing Script', cursive, sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: center;
+            margin: 0.65rem 0 0 0;
+            line-height: 1;
+            transform: rotate(-1.5deg);
+
+            @media (max-width: 520px) {
+                font-size: 1.15rem;
+                margin-top: 0.35rem;
+            }
+        }
     }
 }

@@ -1,58 +1,100 @@
 <section id="hero" class="hero-section">
-	<svg class="hero-bg-svg" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-		<path class="hero-svg-path" d="M -100 200 C 300 50, 700 450, 1100 250" stroke="var(--accent-primary)" stroke-width="2" fill="none" stroke-dasharray="1000" stroke-dashoffset="1000" />
-		<path class="hero-svg-path" d="M -100 400 C 400 600, 600 100, 1100 350" stroke="var(--border-medium)" stroke-width="1.5" fill="none" stroke-dasharray="1000" stroke-dashoffset="1000" />
-	</svg>
+	<div class="ambient-glow orb-left" aria-hidden="true"></div>
+	<div class="ambient-glow orb-right" aria-hidden="true"></div>
 
 	<div class="main-content-wrapper">
-
 		<div class="text-content">
-			<div class="hello-world-badge">
-				<app-hello-button></app-hello-button>
+			<div class="hero-liquid-glass-wrapper">
+				<app-fractal-glass [src]="'assets/ProjectsImg/LOGO_NEW.png'" alt="Logo Marcus Gühne"
+					[animateEntrance]="true" mode="default" [stripes]="26" [distortion]="24" [refractionBias]="-0.1"
+					[blur]="20" [grain]="0.005" [smoothness]="7.3" [textureScale]="103" [blackPoint]="0"
+					[whitePoint]="232" [gamma]="0.78" [edgeWidth]="0" [coverage]="0.55" coverageMode="stripes"
+					side="left" direction="vertical" [hoverEffect]="true" hoverPreset="reveal-on-hover"
+					recoveryDirection="same" hoverAnimation="procedural" [hoverDuration]="880" [hoverRadius]="120"
+					[hoverFeather]="16" [transitionBlend]="0.5" [duration]="570" ease="power4.out" [disabled]="false"
+					[height]="'100%'" [borderRadius]="0" class="hero-glass-logo">
+				</app-fractal-glass>
+			</div>
+
+			<div class="hello-badge">
+				<span>HELLO WORLD</span>
 			</div>
 
 			<h1 class="main-title" [attr.aria-label]="'Marcus Gühne'">
-				@for (letter of frontLetters(); track $index) {
-					<span aria-hidden="true" class="letter">
-						{{ letter === ' ' ? '\u00A0' : letter }}
-					</span>
-				}
+				<app-refracted-text [text]="'Marcus Gühne'" [theme]="'dark'" [topColor]="'#080e18'"
+					[bottomColor]="'#718ab1'" [beamColor]="'#7baaff'" [spectrumWarmColor]="'#d09bef'"
+					[spectrumMiddleColor]="'#2979ff'" [spectrumCoolColor]="'#00328f'" [reveal]="true" [stagger]="0.55"
+					[liftDuration]="1.75" [ease]="'power4.out'" [beamFollowsLift]="false" [animateBeam]="true"
+					[openingDuration]="6.9" [duration]="13.2" [intensity]="1.2" [dispersion]="1.75"
+					[colorIntensity]="1.1" [beamPosition]="0.5" [fixedBeam]="false" [paused]="false"
+					[cursorMovesBeam]="false" [fontSize]="'clamp(2.8rem, 5.5vw, 4.6rem)'"
+					fontFamily="'ReactDrops Square Display', 'Arial Black', sans-serif" [fontWeight]="900"
+					letterSpacing="normal" [extraBold]="2.25" [fontHeight]="80" [cornerRounding]="1"
+					class="hero-refracted-title">
+				</app-refracted-text>
 			</h1>
 
-			<div class="subtitle-wrapper">
-				<h2 class="main-subtitle" [attr.aria-label]="'Frontend Developer'">
-					@for (letter of devLetters(); track $index) {
-						<span aria-hidden="true" class="letter">
-							{{ letter === ' ' ? '\u00A0' : letter }}
-						</span>
-					}
-				</h2>
+			<p class="role-tags">
+				{{ 'hero.subtitle' | translate }}
+			</p>
 
-				<div class="cta-container">
-					<a href="#contact" (click)="scrollToContact($event)" appMagnetic [magneticStrength]="0.35" class="get-in-touch-btn btn-primary" [title]="'button.getBtnTitle' | translate">
-						{{ 'button.getBtn' | translate }}
+			<p class="hero-bio">
+				{{ 'hero.bio' | translate }}
+			</p>
+
+			<div class="actions-row">
+				<a href="#projects" (click)="scrollToProjects($event)" appMagnetic [magneticStrength]="0.3"
+					class="btn-primary-gradient" [attr.title]="'hero.viewWork' | translate">
+					<span>{{ 'hero.viewWork' | translate }}</span>
+				</a>
+
+				<a href="#contact" (click)="scrollToContact($event)" appMagnetic [magneticStrength]="0.3"
+					class="btn-secondary-glass" [attr.title]="'hero.contactMe' | translate">
+					<span>{{ 'hero.contactMe' | translate }}</span>
+				</a>
+
+				<div class="social-icons-group">
+					@for (link of socialLinks(); track link.url) {
+					<a [href]="link.url" appMagnetic [magneticStrength]="0.25" [attr.aria-label]="link.alt"
+						[attr.title]="link.title" [attr.target]="link.external ? '_blank' : null"
+						[attr.rel]="link.external ? 'noopener noreferrer' : null" class="social-icon-btn">
+						<img [src]="link.icon" alt="" role="presentation" [attr.width]="link.w" [attr.height]="link.h">
 					</a>
+					}
 				</div>
 			</div>
 		</div>
 
-		<div class="portrait-container">
-			<div class="polaroid-frame" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
-				[style.transform]="transformStyle()">
+		<!-- Right Column: Code Window + Polaroid Composition -->
+		<div class="visual-content">
+			<div class="composition-container">
+				<!-- Background IDE Window -->
+				<div class="ide-window" aria-hidden="true">
+					<div class="ide-header">
+						<span class="dot red"></span>
+						<span class="dot yellow"></span>
+						<span class="dot green"></span>
+					</div>
+					<pre class="ide-code"><code><span class="c-keyword">import</span> &#123; Component &#125; <span class="c-keyword">from</span> <span class="c-string">'&#64;angular/core'</span>;
 
-				<img ngSrc="assets/ProjectsImg/portImg.webp" alt="Porträtfoto von Marcus Gühne" width="276" height="367"
-					priority class="portrait-img">
+<span class="c-keyword">export</span> <span class="c-keyword">const</span> marcus = &#123;
+  role: <span class="c-string">'Frontend Developer'</span>,
+  passion: <span class="c-string">'KI Development'</span>,
+  status: <span class="c-string">'Available for Work'</span>,
+  stack: [<span class="c-string">'Angular'</span>, <span class="c-string">'Signals'</span>, <span class="c-string">'SCSS'</span>]
+&#125;;</code></pre>
+				</div>
 
+				<!-- Floating Polaroid Photo with signature -->
+				<div class="polaroid-card" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()"
+					[style.transform]="transformStyle()">
+					<div class="photo-wrapper">
+						<img ngSrc="assets/ProjectsImg/portImg.webp" alt="Porträtfoto von Marcus Gühne" width="276"
+							height="310" priority class="portrait-img">
+					</div>
+					<p class="polaroid-signature">Marcus Gühne</p>
+				</div>
 			</div>
 		</div>
-
-		<div class="social-sidebar">
-			@for (link of socialLinks(); track link.url) {
-				<a [href]="link.url" appMagnetic [magneticStrength]="0.25" [attr.aria-label]="link.alt" target="_blank" class="social-icon">
-					<img [src]="link.icon" alt="" role="presentation" [attr.width]="link.w" [attr.height]="link.h">
-				</a>
-			}
-		</div>
-
 	</div>
 </section>

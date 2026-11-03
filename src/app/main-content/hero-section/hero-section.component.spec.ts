@@ -20,13 +20,12 @@ describe('HeroSectionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize signals with default values', () => {
-    expect(component.frontLetters().length).toBeGreaterThan(0);
-    expect(component.devLetters().length).toBeGreaterThan(0);
+  it('should initialize social links and name letters', () => {
+    expect(component.nameLetters().length).toBeGreaterThan(0);
     expect(component.socialLinks().length).toBe(3);
   });
 
-  it('should update mouse target on mousemove', () => {
+  it('should update mouse coordinates on mousemove', () => {
     const mockElement = document.createElement('div');
     spyOn(mockElement, 'getBoundingClientRect').and.returnValue({
       left: 0, top: 0, width: 100, height: 100, x: 0, y: 0, bottom: 100, right: 100, toJSON: () => {}
@@ -39,13 +38,13 @@ describe('HeroSectionComponent', () => {
     } as unknown as MouseEvent;
 
     component.onMouseMove(mockEvent);
-    expect(component.target().mx).toBe(50);
-    expect(component.target().my).toBe(50);
+    expect(component.mouseX()).toBe(0);
+    expect(component.mouseY()).toBe(0);
+    expect(component.isHovering()).toBe(true);
   });
 
-  it('should reset mouse target on mouseleave', () => {
+  it('should reset hover state on mouseleave', () => {
     component.onMouseLeave();
-    expect(component.target().rx).toBe(0);
-    expect(component.target().ry).toBe(0);
+    expect(component.isHovering()).toBe(false);
   });
 });

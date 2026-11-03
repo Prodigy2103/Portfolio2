@@ -35,7 +35,7 @@
 		"description": "Hi, I'm <strong>Marcus Gühne</strong>. I don't just build standard pages – I develop digital experiences. As a Frontend Developer, I use <strong>Angular</strong> to create web applications that run smoothly, look stunning, and keep your users engaged.<br><br>From Oschatz to the cloud: I'll bring your business online, whether you run a traditional company or a fresh start-up. Let's bring your vision to the web – smart, fast, and ready for the future.",
 		"location": "Base: Oschatz, Germany",
 		"relocation": "Status: Open for new projects",
-		"remote": "Setup: Full Remote & Hybrid ready"
+		"remote": "Setup: Full Remote"
 	},
 	"skills": {
 		"title": "My Stack",
@@ -209,5 +209,11 @@
 	},
 	"accessibility": {
 		"skipToContent": "Skip to main content"
+	},
+	"hero": {
+		"subtitle": "FRONTEND DEVELOPER | UI/UX DESIGNER | CREATIVE CODER",
+		"bio": "Crafting visually stunning, performant digital experiences. Built with passion.",
+		"viewWork": "View My Work",
+		"contactMe": "Contact Me"
 	}
 }

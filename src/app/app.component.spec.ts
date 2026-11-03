@@ -20,6 +20,6 @@ describe('AppComponent', () => {
   it(`should have the 'MyPortfolio' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('MyPortfolio');
+    expect(app.title).toEqual('Marcus Gühne | Frontend Developer');
   });
 });

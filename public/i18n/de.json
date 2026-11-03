@@ -34,7 +34,7 @@
 		"description": "Hi, ich bin <strong>Marcus Gühne</strong>. Ich baue keine Standard-Seiten – ich entwickle digitale Erlebnisse. Als Frontend Developer nutze ich <strong>Angular</strong>, um Webanwendungen zu kreieren, die flüssig laufen, top aussehen und deine Kunden begeistern.<br><br>Von Oschatz aus in die Cloud: Ich bringe dein Business online, egal ob du einen Traditionsbetrieb führst oder ein junges Start-up bist. Lass uns deine Vision ins Netz bringen – smart, schnell und ready for the future.",
 		"location": "Base: Oschatz, Sachsen",
 		"relocation": "Status: Ready für neue Projekte",
-		"remote": "Setup: Full Remote & Hybrid möglich"
+		"remote": "Setup: Full Remote"
 	},
 	"skills": {
 		"title": "Meine",
@@ -208,5 +208,11 @@
 	},
 	"accessibility": {
 		"skipToContent": "Direkt zum Hauptinhalt springen"
+	},
+	"hero": {
+		"subtitle": "FRONTEND DEVELOPER | UI/UX DESIGNER | CREATIVE CODER",
+		"bio": "Visuell beeindruckende und performante digitale Erlebnisse. Entwickelt mit Leidenschaft.",
+		"viewWork": "Projekte ansehen",
+		"contactMe": "Kontakt aufnehmen"
 	}
 }

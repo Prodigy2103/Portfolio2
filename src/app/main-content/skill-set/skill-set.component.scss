@@ -8,6 +8,21 @@
     padding: 6rem 2rem;
     overflow: hidden;
 
+    .bg-glow-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(6rem);
+        pointer-events: none;
+        opacity: 0.16;
+        z-index: 0;
+
+        &.orb-right {
+            @include all.size($w: 30rem, $h: 30rem);
+            background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0) 70%);
+            @include all.absolute($top: 15%, $right: -8%);
+        }
+    }
+
     .max-container {
         width: 100%;
         max-width: 1100px;
@@ -41,7 +56,7 @@
 
     .accent-line {
         @include all.size($w: 5rem, $h: 0.25rem);
-        background: var(--accent-primary);
+        background: linear-gradient(90deg, #8b5cf6 0%, #06b6d4 100%);
         border-radius: 9999px;
         margin: 0.5rem auto 0;
     }
@@ -64,18 +79,20 @@
     .skill-card {
         @include all.fl($alit: center, $jc: center, $gap: 1rem, $flexdir: column);
         background: var(--bg-card);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border: 1px solid var(--border-subtle);
         border-radius: 1rem;
         padding: 1.5rem 1rem;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         cursor: pointer;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 
         &:hover {
             background: var(--bg-card-hover);
             transform: translateY(-4px);
-            border-color: var(--accent-primary);
-            box-shadow: var(--shadow-md);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 16px rgba(139, 92, 246, 0.3);
         }
 
         .icon-wrapper {
@@ -106,6 +123,8 @@
 
 .description-box {
     background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-subtle);
     padding: 2.5rem;
     border-radius: 1rem;
@@ -114,7 +133,7 @@
     margin-bottom: 4rem;
     line-height: 1.6;
     font-size: 1.05rem;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .peel-wrapper {
@@ -138,7 +157,8 @@
     }
 
     .sticker-cover {
-        background-color: var(--accent-primary);
+        background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+        box-shadow: 0 0 25px -4px rgba(139, 92, 246, 0.6);
         z-index: 2;
         transform: rotate(12deg);
         box-shadow: var(--shadow-md);
@@ -158,8 +178,8 @@
     }
 
     .sticker-reveal {
-        background-color: var(--bg-card);
-        border: 1px solid var(--accent-primary);
+        background-color: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(139, 92, 246, 0.5);
         box-shadow: var(--shadow-sm);
         z-index: 1;
         opacity: 0;
@@ -191,12 +211,12 @@
                     aspect-ratio: 1 / 1;
                     object-fit: contain;
                     margin-bottom: 0.5rem;
-                    filter: brightness(0.2);
+                    filter: brightness(0.9);
                     transition: filter 0.3s ease, transform 0.3s ease;
                 }
 
                 &:hover img {
-                    filter: brightness(0);
+                    filter: brightness(1.2);
                     transform: scale(1.1);
                 }
 

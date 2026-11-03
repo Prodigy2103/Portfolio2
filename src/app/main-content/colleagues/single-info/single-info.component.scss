@@ -16,7 +16,7 @@
 }
 
 .quote {
-	color: var(--text-secondary);
+	color: #cbd5e1;
 	line-height: 1.65;
 	font-weight: 400;
 	font-size: 1.05rem;
@@ -50,10 +50,21 @@
 .linkedin-link {
 	font-size: 0.85rem;
 	padding: 0.4rem 0.85rem;
+	background: rgba(139, 92, 246, 0.12);
+	border: 1px solid rgba(139, 92, 246, 0.35);
+	color: #d8b4fe;
+	border-radius: 9999px;
+	transition: all 0.25s ease;
 
 	img {
 		width: 1rem;
 		height: 1rem;
 		filter: brightness(0) invert(1);
+	}
+
+	&:hover {
+		background: rgba(139, 92, 246, 0.25);
+		border-color: rgba(139, 92, 246, 0.6);
+		box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
 	}
 }

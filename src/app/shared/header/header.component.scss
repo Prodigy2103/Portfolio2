@@ -12,8 +12,8 @@ header {
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--accent-primary), #E07A5F);
-        box-shadow: 0 0 10px var(--accent-primary);
+        background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+        box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
         transition: width 0.1s linear;
         z-index: 1000;
         pointer-events: none;
@@ -54,7 +54,7 @@ header {
         list-style: none;
 
         .nav-link {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
@@ -103,7 +103,8 @@ header {
     @include all.absolute($pos: fixed, $top: 0, $left: 0);
     @include all.size($w: 100dvw, $h: 100dvh);
     @include all.fl($jc: center, $alit: center);
-    background: var(--bg-primary);
+    background: rgba(11, 15, 23, 0.98);
+    backdrop-filter: blur(20px);
     z-index: 50;
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     overflow: hidden;
@@ -151,7 +152,6 @@ header {
     .header-logo {
         height: 3rem;
         width: auto;
-        aspect-ratio: 350 / 155;
         display: block;
         object-fit: contain;
     }
@@ -178,9 +178,11 @@ header {
         &.open .status-dot {
             background: #22c55e;
         }
+
         &.closing-soon .status-dot {
             background: #eab308;
         }
+
         &.closed .status-dot {
             background: #ef4444;
         }
@@ -217,9 +219,11 @@ header {
         &:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
+
         &:nth-child(2) {
             opacity: 0;
         }
+
         &:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
@@ -232,22 +236,25 @@ header {
     margin-top: 3rem;
     z-index: 50;
 
-    .social-icon-link, .social-icon {
+    .social-icon-link,
+    .social-icon {
         @include all.fl($jc: center, $alit: center);
         text-decoration: none;
 
-        img, .header-social-img {
+        img,
+        .header-social-img {
             @include all.size($w: 2.2rem, $h: 2.2rem);
             aspect-ratio: 1 / 1;
             object-fit: contain;
-            filter: brightness(0.15) !important;
+            filter: brightness(0) invert(0.85) !important;
             opacity: 0.95;
             transition: all 0.3s ease;
         }
 
-        &:hover img, &:hover .header-social-img {
+        &:hover img,
+        &:hover .header-social-img {
             opacity: 1;
-            filter: brightness(0) !important;
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(139, 92, 246, 0.7)) !important;
             transform: translateY(-3px);
         }
     }

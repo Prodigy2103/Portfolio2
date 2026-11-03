@@ -1,3 +1,5 @@
+import { FractalGlassComponent } from '../../shared/components/fractal-glass/fractal-glass.component';
+import { RefractedTextComponent } from '../../shared/components/refracted-text/refracted-text.component';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,9 +14,7 @@ import {
 } from '@angular/core';
 import { CommonModule, NgOptimizedImage, ViewportScroller } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { HelloButtonComponent } from "../../shared/hello-button/hello-button.component";
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
-import { animate, stagger } from 'animejs';
 
 export interface SocialLink {
   url: string;
@@ -30,7 +30,14 @@ export interface SocialLink {
   selector: 'app-hero-section',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TranslateModule, HelloButtonComponent, NgOptimizedImage, MagneticDirective],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    NgOptimizedImage,
+    MagneticDirective,
+    RefractedTextComponent,
+    FractalGlassComponent
+  ],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss'
 })
@@ -39,101 +46,76 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly elRef = inject(ElementRef);
   private readonly scroller = inject(ViewportScroller);
 
-  public readonly frontLetters = signal<string[]>('Frontend'.split(''));
-  public readonly devLetters = signal<string[]>('DEVELOPER'.split(''));
+  public readonly nameLetters = signal<string[]>('Marcus Gühne'.split(''));
 
   public readonly socialLinks = signal<SocialLink[]>([
-    { url: 'https://www.linkedin.com/', icon: 'assets/Extras/icons8-linkedin-52.png', alt: 'LinkedIn Profil', title: 'Besuchen Sie mein Profil auf LinkedIn', external: true, w: 32, h: 32 },
-    { url: 'https://github.com/Prodigy2103', icon: 'assets/Extras/Github.png', alt: 'Github Profil', title: 'Meinen Code auf GitHub ansehen', external: true, w: 32, h: 32 },
-    { url: 'mailto:marcusghne@gmx.de', icon: 'assets/Extras/Contact.png', alt: 'E-Mail Versand', title: 'Eine E-Mail an Marcus Gühne schreiben', external: false, w: 32, h: 32 }
+    {
+      url: 'https://github.com/Prodigy2103',
+      icon: 'assets/Extras/Github.png',
+      alt: 'Github',
+      title: 'GitHub Profil ansehen',
+      external: true,
+      w: 22,
+      h: 22
+    },
+    {
+      url: 'https://www.linkedin.com/',
+      icon: 'assets/Extras/icons8-linkedin-52.png',
+      alt: 'LinkedIn',
+      title: 'LinkedIn Profil ansehen',
+      external: true,
+      w: 22,
+      h: 22
+    },
+    {
+      url: 'mailto:marcusghne@gmx.de',
+      icon: 'assets/Extras/Contact.png',
+      alt: 'Mail',
+      title: 'E-Mail schreiben',
+      external: false,
+      w: 22,
+      h: 22
+    }
   ]);
 
-  private readonly MAX_ROTATE = 15;
-  private animationId?: number;
+  public readonly mouseX = signal<number>(0);
+  public readonly mouseY = signal<number>(0);
+  public readonly isHovering = signal<boolean>(false);
 
-  public target = signal({ rx: 0, ry: 0, mx: 50, my: 50 });
-  public current = signal({ rx: 0, ry: 0, mx: 50, my: 50 });
-
-  public transformStyle = computed(() => {
-    const c = this.current();
-    return `perspective(1000px) rotateX(${c.rx}deg) rotateY(${c.ry}deg)`;
+  public readonly transformStyle = computed(() => {
+    if (!this.isHovering()) return 'rotate(5deg)';
+    const x = this.mouseX();
+    const y = this.mouseY();
+    return `rotate(5deg) perspective(1000px) rotateX(${y * -14}deg) rotateY(${x * 14}deg) scale3d(1.04, 1.04, 1.04)`;
   });
 
-  ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => this.startAnimationLoop());
-  }
+  ngOnInit(): void { }
 
-  ngAfterViewInit(): void {
-    this.initHeroEntranceAnimation();
-  }
+  ngAfterViewInit(): void { }
 
-  ngOnDestroy(): void {
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId);
-    }
-  }
+  ngOnDestroy(): void { }
 
-  private startAnimationLoop(): void {
-    const c = this.current();
-    const t = this.target();
-
-    const rx = this.lerp(c.rx, t.rx, 0.08);
-    const ry = this.lerp(c.ry, t.ry, 0.08);
-    const mx = this.lerp(c.mx, t.mx, 0.12);
-    const my = this.lerp(c.my, t.my, 0.12);
-
-    this.current.set({ rx, ry, mx, my });
-    this.animationId = requestAnimationFrame(() => this.startAnimationLoop());
-  }
-
-  private lerp(a: number, b: number, t: number): number {
-    return a + (b - a) * t;
-  }
-
-  private initHeroEntranceAnimation(): void {
-    animate(this.elRef.nativeElement.querySelectorAll('.letter'), {
-      translateY: [40, 0],
-      opacity: [0, 1],
-      delay: stagger(40, { start: 200 }),
-      ease: 'outExpo',
-      duration: 800
-    });
-
-    animate(this.elRef.nativeElement.querySelectorAll('.hero-svg-path'), {
-      strokeDashoffset: [1000, 0],
-      opacity: [0.2, 0.6],
-      ease: 'easeInOutQuad',
-      duration: 2500,
-      loop: true,
-      direction: 'alternate'
-    });
-  }
-
-  public onMouseMove(e: MouseEvent): void {
-    const el = e.currentTarget as HTMLElement;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const mx = (x / rect.width) * 100;
-    const my = (y / rect.height) * 100;
-    const ry = ((x / rect.width) - 0.5) * (this.MAX_ROTATE * 2);
-    const rx = ((y / rect.height) - 0.5) * -(this.MAX_ROTATE * 2);
-
-    this.target.set({ rx, ry, mx, my });
+  public onMouseMove(event: MouseEvent): void {
+    const target = event.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    this.mouseX.set(x);
+    this.mouseY.set(y);
+    this.isHovering.set(true);
   }
 
   public onMouseLeave(): void {
-    this.target.set({ rx: 0, ry: 0, mx: 50, my: 50 });
+    this.isHovering.set(false);
   }
 
-  public scrollToContact(e: Event): void {
-    e.preventDefault();
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      this.scroller.scrollToAnchor('contact');
-    }
+  public scrollToProjects(event: Event): void {
+    event.preventDefault();
+    this.scroller.scrollToAnchor('projects');
+  }
+
+  public scrollToContact(event: Event): void {
+    event.preventDefault();
+    this.scroller.scrollToAnchor('contact');
   }
 }

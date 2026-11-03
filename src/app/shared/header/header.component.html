@@ -6,9 +6,6 @@
             <a href="#home" (click)="handleNavigation('#home'); $event.preventDefault()" class="logo-link"
                 [attr.aria-label]="'header.homeLink' | translate">
                 <div class="logo-wrapper">
-                    <img ngSrc="assets/ProjectsImg/NewLogo1.webp" alt="Logo Marcus Gühne" class="header-logo"
-                        width="350" height="155" priority>
-
                     <div class="status-chip" [ngClass]="status()">
                         <span class="status-dot"></span>
                         <span>{{ statusText() | translate }}</span>
